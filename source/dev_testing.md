@@ -1,34 +1,33 @@
 # Integration Testing
 
-Legion uses the robotframework for an integration testing.
+Odahu uses the robotframework for an integration testing.
 System/integration tests located in the following directories:
-* `legion/robot` - a python package with additional Robot libraries. For example: kubernetes, auth_client, feedback, and so on. 
-* `legion/tests/stuff` - artifacts for integration testing. For example: pre-trained ML artifacts, test toolchain integrations, and so on.
-* `legion/tests/e2e` - directory with the RobotFramework tests.
+* `packages/robot` - a python package with additional Robot libraries. For example: kubernetes, auth_client, feedback, and so on. 
+* `packages/tests/stuff` - artifacts for integration testing. For example: pre-trained ML artifacts, test toolchain integrations, and so on.
+* `packages/tests/e2e` - directory with the RobotFramework tests.
 
 ## Running system/integration tests
 
-We set up robot tests for `gke-legion-test` cluster in the example below.
-*Do not forget change your cluster url and legion version.*
+We set up robot tests for `gke-odahu-flow-test` cluster in the example below.
+*Do not forget change your cluster url and odahu-flow version.*
 
-Export cluster secrets from legion-profiles directory.
-* Clones *internal* legion-profiles repository. Checkout your or the developer branch.
-* Clones [legion-infrastructure](https://github.com/legion-platform/legion-infrastructure) repository. Checkout your or the developer branch.
-* Build terraform docker image using the `make docker-build-terraform` command in legion-infrastructure directory.
+Export cluster secrets from odahu-flow-profiles directory.
+* Clones *internal* odahu-flow-profiles repository. Checkout your or the developer branch.
+* Build hiera docker image using the `make docker-build-hiera` command in odahu-flow-profiles directory.
 * You can optionally override the following parameters in `.env` file:
   * `CLUSTER_NAME`
   * `HIERA_KEYS_DIR`
   * `SECRET_DIR`
   * `CLOUD_PROVIDER`
   * `EXPORT_HIERA_DOCKER_IMAGE`
-  * `LEGION_PROFILES_DIR`
-* Executes `make export-hiera` command in the legion dir.
+  * `ODAHUFLOW_PROFILES_DIR`
+* Executes `make export-hiera` command.
 * Verify that `${SECRET_DIR}/.cluster_profile.json` file was created.
 
 Updates the `.env` file when you should override a default Makefile option:
 ```bash
 # Cluster name
-CLUSTER_NAME=gke-legion-test
+CLUSTER_NAME=gke-odahu-flow-test
 # Optionnaly, you can provide RobotFramework settings below.
 # Additional robot parameters. For example, you can specify tags or variables.
 ROBOT_OPTIONS=-e disable
@@ -36,7 +35,7 @@ ROBOT_OPTIONS=-e disable
 ROBOT_FILES=**/*.robot
 ```
 
-Afterward, you should set up a Legion cluster for RobotFramework tests using the `make setup-e2e-robot` command.
+Afterward, you should set up a Odahu cluster for RobotFramework tests using the `make setup-e2e-robot` command.
 You should execute the previous command only once.
 
 Finally, starts the robot tests:

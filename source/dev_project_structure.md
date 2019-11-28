@@ -1,52 +1,53 @@
-# Project structure
+# A repository directory structure
 
-## What is it inside Legion?
-Core:
-* Python 3.6, Golang – as main development languages
-* Kubernetes – as runtime platform
-* Docker – as containerization engine for runtime platform
-* FluentD – as logging aggregator for feedback loop
-* Operator - as handler of Legion's custom resources
-* EDGE – as model API traffic manager
-* EDI – model manager
-* Toolchains - APIs for adding to ML Legion capabilities
-
-Optional:
-* Airflow – as optional ETL engine
-
-# Repositories structure
-## Legion
-Project **Legion** locates in GitHub Repository [legion-platform/legion](https://github.com/legion-platform/legion) and contains of next items:
-
-* Legion application - several Docker images:
-* EDI
-* FluentD
-* Toolchain application
-* Helm charts
-* legion-core HELM chart
-* legion HELM chart
-* Legion Python source codes
-* Operator
-
-### Legion's repository directory structure
-* `containers` - all Legion components that are distributed as docker images.
-* `docs` - documentation that describes Legion platform, architecture, usage and etc.
-* `helms` - Legion Helm packages (distribution packages for Kubernetes).
-* `legion` - source code of Legion python packages.
+* `containers` - docker files
+* `helms` - core helm chart
+* `packages` - source code of packages and applications.
 * `scripts` - utility scripts for CI/CD process.
 
-## Infra-specific repositories
+# Repositories
+
+## [odahu/odahu-flow](https://github.com/odahu/odahu-flow)
+
+Core services of Odahu-flow project.
+
+* Odahu-flow-cli python package
+* Odahu-flow-sdk python package
+* E2E Odahu tests
+* Training, packaging and deployment operator
+* API server
+* Feedback services
+
+## [odahu/odahu-automation](https://github.com/odahu/odahu-automation)
+
 For deploying purposes there are platform-specific repositories that contains platform-specific deploying logic.
 
-**Legion Infrastructure** locates in GitHub Repository [legion-platform/legion-infrastructure](https://github.com/legion-platform/legion-infrastructure) and contains:
+* Docker images and helm chart for external services
 * Terraform modules
-* Jenkins pipelines for Jenkins CI/CD jobs
-* Infrastructure specific containers:
-* Terraform modules
+* The kickstarter script
 
-## Additional integrations repositories
+## [odahu/odahu-trainer](https://github.com/odahu/odahu-trainer)
 
-* [Legion Airflow plugin](https://github.com/legion-platform/legion-airflow-plugins)
-* [Legion MLflow integration](https://github.com/legion-platform/legion-mlflow)
-* [Legion examples](https://github.com/legion-platform/legion-examples)
-* [Legion infrastructure](https://github.com/legion-platform/legion-infrastructure)
+Collection of training extensions:
+* mlflow
+
+## [odahu/odahu-packager](https://github.com/odahu/odahu-packager)
+
+Collection of model packagers:
+* docker-rest
+
+## [odahu/odahu-flow-jupyterlab-plugin](https://github.com/odahu/odahu-flow-jupyterlab-plugin)
+
+The jupyterlab-plugin that provides UI for Odahu-flow API service.
+
+## [odahu/odahu-airflow-plugin](https://github.com/odahu/odahu-airflow-plugin)
+
+An apache airflow plugin for the Odahu Platform.
+
+## [odahu/odahu-docs](https://github.com/odahu/odahu-docs)
+
+The repository contains Odahu documentation, which is available [here](http://odahu.github.io/).
+
+## [odahu/odahu-examples](https://github.com/odahu/odahu-examples)
+
+Examples of ML models.

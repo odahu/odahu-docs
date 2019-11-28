@@ -2,75 +2,75 @@
 Distributions
 =====
 
-:term:`Legion distributions<Legion distribution>` are provided via :term:`HELM Charts <Legion HELM Chart>`, docker images, Python and NPM packages.
-
-Helm charts
+HELM charts
 ----
-Legion distributes a :term:`Helm Chart <Legion Helm Chart>` named **legion**, that contains all Legion components, such as **EDI**, **CR Operator**, etc.
 
-HELM chart locations
-~~~~~
+- Release and pre-release :term:`Helm charts <Odahu HELM Chart>` are in `github <https://github.com/odahu/odahu-helm>`_.
 
-- Release and pre-release :term:`Helm charts <Legion HELM Chart>` are in `github <https://github.com/legion-platform/legion-helm-charts>`_.
+.. csv-table::
+   :header: "Helm chart name", "Repository", "Description"
+   :widths: 20, 30, 40
 
+   "odahu-flow-fluentd", "odahu/odahu-automation", "Fluentd with gcp, s3 and abs plugins"
+   "odahu-flow-k8s-gke-saa", "odahu/odahu-automation", "GKE role assigner"
+   "odahu-flow-knative", "odahu/odahu-automation", "Custom knative chart"
+   "odahu-flow-monitoring", "odahu/odahu-automation", "Prometheus, grafana and alertmanager"
+   "odahu-flow-tekton", "odahu/odahu-automation", "Custom tekton chart"
+   "odahu-flow-core", "odahu/odahu-flow", "Core Odahu-flow services"
+   "odahu-flow-jupyterlab", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
+   "odahu-flow-mlflow", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
+   "odahu-flow-rest-packager", "odahu/odahu-packager", "Odahu-flow REST packager"
 
 Docker Images
 ------
 
+ Release versions of images are on Docker Hub in the `odahu <https://hub.docker.com/u/odahu>`_ team.
+
 .. csv-table::
-   :header: "Name", "Image name", "Description"
+   :header: "Image name", "Repository", "Description"
    :widths: 20, 30, 40
 
-   "Pipeline agent", "`legion-pipeline-agent`", "CI/CD pipeline component (not used by Legion cluster)"
-   "EDI", "`k8s-edi`", "Management API"
-   "Fluentd", "`k8s-fluentd`", "Log aggregator"
-   "Feedback aggregator", "`k8s-feedback-aggregator`", "Feedback aggregator, traffic capture"
-   "Kubernetes Operator", "`k8s-operator`", "CustomResource Operator"
-   "Model builder", "`k8s-model-builder`", "Training process sidecar"
-
-
-.. todo::
-
-   Update model builder & training images due to changes in packaging & training
-
-
-Docker images locations
-~~~~~
-
-- Release versions of images are on Docker Hub in the `legionplatform <https://hub.docker.com/u/legionplatform>`_ organization. An example image name is `legionplatform/k8s-edi`.
-
-- Pre-release versions of images are on Docker Hub in the `legionplatformtest <https://hub.docker.com/u/legionplatformtest>`_ organization. An example image name is `legionplatformtest/k8s-edi`.
+   "odahu-flow-automation", "odahu/odahu-automation", "CI/CD pipeline component (not used by Odahu cluster)"
+   "odahu-flow-fluentd", "odahu/odahu-automation", "Fluentd with gcp, s3 and abs plugins"
+   "odahu-flow-api", "odahu/odahu-flow", "Odahu-flow API service"
+   "odahu-flow-model-cli", "odahu/odahu-flow", "Odahu-flow CLI"
+   "odahu-flow-model-trainer", "odahu/odahu-flow", "Trainer helper"
+   "odahu-flow-model-packager", "odahu/odahu-flow", "Packager helper"
+   "odahu-flow-service-catalog", "odahu/odahu-flow", "Swagger for model deployments"
+   "odahu-flow-operator", "odahu/odahu-flow", "Odahu-flow kubernetes orchestrator"
+   "odahu-flow-feedback-collector", "odahu/odahu-flow", "REST API for user feedback service"
+   "odahu-flow-feedback-rq-catcher", "odahu/odahu-flow", "Model deployment request-response catcher"
+   "odahu-flow-mlflow-toolchain", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
+   "odahu-flow-mlflow-toolchain-gpu", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain with NVIDIA GPU"
+   "odahu-flow-mlflow-tracking-server", "odahu/odahu-trainer", "MLflow tracking service"
+   "odahu-flow-trainer-resource-applier", "odahu/odahu-trainer", "Odahu-flow CLI"
+   "odahu-flow-rest-packager", "odahu/odahu-packager", "Odahu-flow REST packager"
+   "odahu-flow-packager-resource-applier", "odahu/odahu-packager", "Odahu-flow CLI"
+   "odahu-flow-jupyterlab", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
 
 Python packages
 -----
 
+- Release versions of Python packages are on PyPi in project `odahu <https://pypi.org/project/odahu/>`_.
+
 .. csv-table::
-   :header: "Name", "Description"
-   :widths: 20, 40
+   :header: "Package name", "Repository", "Description"
+   :widths: 20, 30, 40
 
-   "legion-cli", "Legion CLI tool"
-   "jupyter_legion", "Back-end for JupyterLab plugin"
-   "legion-robot", "Utility functions for E2E tests"
-   "legion-sdk", "SDK library for Legion API (client)"
-
-Python package locations
-~~~~~
-
-- Release versions of Python packages are on PyPi in project `legion <https://pypi.org/project/legion/>`_.
-
-
+   "odahu-flow-cli", "odahu/odahu-flow", "Odahu-flow CLI"
+   "odahu-flow-sdk", "odahu/odahu-flow", "Odahu-flow SDK"
+   "odahu-flow-jupyterlab-plugin", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
+   "odahu-flow-mlflow-trainer", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
+   "odahu-flow-rest-packager", "odahu/odahu-packager", "Odahu-flow REST packager"
+   "odahu-flow-airflow-plugin", "odahu/odahu-airflow-plugin", "Odahu-flow Airflow plugin(operators, hooks and so on)"
 
 NPM packages
 -----
 
+- Release versions of Python packages are on npm in project odahu.
+
 .. csv-table::
-   :header: "Name", "Description"
-   :widths: 20, 40
+   :header: "Package name", "Repository", "Description"
+   :widths: 20, 30, 40
 
-   "jupyter_legion", "JupyterLab plugin for Legion (requires python back-end)"
-
-
-NPM package locations
-~~~~~~
-
-- Release versions of Python packages are on npm in project legion.
+   "odahu-flow-jupyterlab-plugin", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"

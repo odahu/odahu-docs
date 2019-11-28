@@ -1,52 +1,43 @@
-# Legionctl
+# Odahuflowctl
 
-LegionCTL (`legionctl`) is a command line interface for manipulating with models (external deployed, local deployed and building process).
+Odahuflowctl (`odahuflowctl`) is a command-line interface for interacting with Odahu-flow API service.
 
-## Basic
+## Help
 
-To read legionctl help you should use the following command:
-
-```bash
-legionctl --help
-```
-
-for a specific command, for example, inspect:
+To read odahuflowctl help, you should use the following command:
 
 ```bash
-legionctl inspect --help
+odahuflowctl --help
 ```
 
-## Security
-
-You should open edi url in a browser to get a token.
-
-Then you can use it in a legionctl command, for example:
+for a specific command, for example, get list of model deployments:
 
 ```bash
-legionctl inspect --edi <edi-url> --token <your-token>
+odahuflowctl deployment get --help
 ```
 
-Another option save the token in config file. Further you can use legionctl commands without `edi` and
-`token` parameters. For example:
+## Login
 
+There are two authentication types for Odahu CLI.
+
+### Specifying of a token explicitly
+
+You should open an API server URL in a browser to get the login command.
+The command already contains your token.
+Copy and paste provided command into your shell. 
+
+Example of command:
 ```bash
-legionctl login --edi <edi-url> --token <your-token>
-legionctl inspect
+odahuflowctl login --url <api-url> --token <your-token>
 ```
 
-## Model
+### Sign in interactively
 
-To get json web model token for a model, you can use a command:
+This method will use a web browser to sign in. 
+
+Run the login command:
 ```bash
-legionctl generate-token --edi <edi-url> --model-id <model-id> --model-version <model-version>
+odahuflowctl login --url <api-url>
 ```
 
-## Invoke models
-
-You can invoke a model locally or remotely:
-```bash
-legionctl invoke --model-id 'test-summation' --model-version '1.0' --model-server-url 'https://edge-company-a.legion.org' -p a=1
-```
-
-You can pass model parameters as key-value `-p a=1` or json structure `--json {"a": 1}`.
-If you have both kind of parameters that they will be merged. The key-value parameter has a higher priority.
+Odahu CLI will open an IAM server in your default browser. Sign in with your account credentials.

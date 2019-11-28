@@ -2,7 +2,7 @@
 What is a model?
 ================
 
-In terms of Legion, model may be in next stages:
+In terms of Odahu, model may be in next stages:
 
 1. Source code of model, placed in supported VCS (Version Control System)
 

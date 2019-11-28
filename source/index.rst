@@ -24,7 +24,7 @@
    :maxdepth: 1
    :caption: Components
 
-   comp_edi
+   comp_api
    comp_operator
    comp_mlflow_trainer
    comp_model_feedback
@@ -54,7 +54,6 @@
    dev_general
    dev_project_structure
    dev_hints
-   dev_building
    dev_testing
 
 Indices and tables

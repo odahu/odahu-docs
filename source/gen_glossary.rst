@@ -10,7 +10,7 @@ Glossary
 
     Trained Model Binary
         An archive containing a trained ML/AI model (inference code, model weights,
-        etc). Legion defines a format for these binaries. See <ref_model_format.html>
+        etc). Odahu defines a format for these binaries. See <ref_model_format.html>
 
     Trainer
         Application that uses model source code, :term:`Data Bindings <Data Binding>`,
@@ -73,11 +73,11 @@ Glossary
     REST API Packager
         Integration for packing trained models into Docker Image with served via REST API
 
-    EDI
-        API for managing Legion Platform resources for cloud deployed Platform
+    API service
+        API for managing Odahu Platform resources for cloud deployed Platform
 
     Operator
-        A Kubernetes Operator that manages Kubernetes resources (Pods, Services and etc.) for Legion
+        A Kubernetes Operator that manages Kubernetes resources (Pods, Services and etc.) for Odahu
         :term:`Train`, :term:`Package`, and :term:`Deploy` instances.
 
     Prediction
@@ -96,20 +96,20 @@ Glossary
         A service that provides a :term:`Model Feedback API` and gathers input and output
         :term:`prediction requests <Model prediction API>`
 
-    Legion SDK
-        An extensible Python client library for :term:`EDI`, written in Python language. Can be installed from PyPi.
+    Odahu-flow SDK
+        An extensible Python client library for :term:`API`, written in Python language. Can be installed from PyPi.
 
-    Legion CLI
-        Command Line Interface for :term:`EDI`, written in Python. Can be installed from PyPi. It uses the :term:`Legion SDK`.
+    Odahu-flow CLI
+        Command Line Interface for :term:`API`, written in Python. Can be installed from PyPi. It uses the :term:`Odahu-flow SDK`.
 
     Plugin for JupyterLab
-        A legion-specific plugin that provides Legion Platform management controls in JupyterLab.
+        A odahu-specific plugin that provides Odahu Platform management controls in JupyterLab.
 
     Plugin for Jenkins
-        A library for managing Legion Platform resources from Jenkins Pipelines.
+        A library for managing Odahu Platform resources from Jenkins Pipelines.
 
     Plugin for Airflow
-        A library that provides Hooks and Operators for managing Legion Platform resources from Airflow.
+        A library that provides Hooks and Operators for managing Odahu Platform resources from Airflow.
 
     Model Deployment Access Role Name
         Name of scope or role for accessing model deployments.
@@ -124,15 +124,15 @@ Glossary
         :term:`source code <VCS>`, :term:`dataset <Data Binding>` and/or
         :term:`training hyperparameters <Training Hyperparameters>`
 
-    Legion distribution
+    Odahu distribution
         A collection of Docker Images, Python packages, or NPM packages, which are publicly available for
-        installation as a composable Legion Platform.
+        installation as a composable Odahu Platform.
 
-    Legion Helm Chart
-        A YAML definition for Helm that defines a Legion Platform deployed on a Kubernetes cluster.
+    Odahu Helm Chart
+        A YAML definition for Helm that defines a Odahu Platform deployed on a Kubernetes cluster.
 
-    Legion's CRDs
-        Objects that :term:`EDI` creates for actions that require computing resources
+    Odahu-flow's CRDs
+        Objects that :term:`API` creates for actions that require computing resources
         to be stored. For example: :term:`connections <Connection>`, :term:`Trains <Train>`, etc).
 
         These objects are Kubernetes Custom Resources and are managed by :term:`operator`.
