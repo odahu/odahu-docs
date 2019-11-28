@@ -9,7 +9,6 @@ build-docs: build-docs-builder
 
 ## build-docs-builder: Build docker image that can build documentation
 build-docs-builder:
-	echo kek
 	docker build -t legion/docs-builder:latest -f Dockerfile .
 
 ## install-vulnerabilities-checker: Install the vulnerabilities-checker

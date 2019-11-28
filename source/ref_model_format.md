@@ -1,33 +1,33 @@
 # Model Format
 
-The **Legion Model Artifact Format** (LMAF) describes a format to package, store, and transport ML models.
+The **Odahu Model Artifact Format** (OMAF) describes a format to package, store, and transport ML models.
  
 Models can be built in different languages and use different platform libraries. For example: {Python, Scala, R, ...} 
 using {scikit-learn, tensorflow, keras, ...}.
 
-An LMAF **Artifact** is stored as a file-system folder packed into a ZIP file using the Deflate ZIP compression algorithm. 
+An OMAF **Artifact** is stored as a file-system folder packed into a ZIP file using the Deflate ZIP compression algorithm. 
 
 The Artifact contains:
 
-* `legion.model.yaml` a YAML file in the root folder. This file contains meta-information about the type of binary model 
+* `odahuflow.model.yaml` a YAML file in the root folder. This file contains meta-information about the type of binary model 
 and other model related information (e.g. language, import endpoints, dependencies).
 
-* Additional folders and files, depending upon meta-information declared in `legion.model.yaml`.
+* Additional folders and files, depending upon meta-information declared in `odahuflow.model.yaml`.
 
-## legion.model.yaml
+## odahuflow.model.yaml
 
 File structure:
 
 * `binaries` - Language and dependencies that should be used to load model binaries
-* `binaries.type` - Required Legion Model Environments. See section [Legion Model Environments](#legion-model-environments).
-* `binaries.dependencies` - Dependency management system, compatible with the selected Legion Model Environment 
+* `binaries.type` - Required Odahu Model Environments. See section [Odahu Model Environments](#odahu-model-environments).
+* `binaries.dependencies` - Dependency management system, compatible with the selected Odahu Model Environment 
 * `binaries.<additional>` - Model Environment and dependency management system values, for example 'a path to the requirements file'
-* `model` - Location of the model artifact Model artifact format depends on [Legion Model Environment](#legion-model-environments).
+* `model` - Location of the model artifact Model artifact format depends on [Odahu Model Environment](#odahu-model-environments).
 * `model.name` - name of the model, `[a-Z0-9\-]+`
 * `model.version` - version of model. Format is `<Apache Version>-<Additional suffix>`, where `Additional suffix` is a `[a-Z0-9\-\.]+` string.
 * `model.workDir` - working directory to start model from.
 * `model.entrypoint` - name of model artifact (e.g. Python module or Java JAR file).
-* `legionVersion` - LMAF version
+* `odahuflowVersion` - OMAF version
 * `toolchain` - toolchain used for training and preparing the Artifact
 * `toolchain.name` - name of the toolchain
 * `toolchain.version` - version of used toolchain.
@@ -46,21 +46,21 @@ model:
   version: 1.0.0-12333122
   workDir: mlflow/model
   entrypoint: entrypoint
-legionVersion: '1.0'
+odahuflowVersion: '1.0'
 toolchain:
   name: mlflow
   version: 1.0.0
 ```
 
-## Legion Model Environments
+## Odahu Model Environments
 
-Legion supports these model environments:
+Odahu supports these model environments:
 
 * General Python Prediction Interface (GPPI). Can import a trained model as a python module and use a predefined function for prediction. Value for `binaries.type` should be `python`.
 
 * General Java Prediction Interface (GJPI). Can import a trained model as a Java Library and use a predefined interfaces for prediction. Value for `binaries.type` should be `java`.
 
-### Legion's General Python Prediction Interface (GPPI)
+### Odahu's General Python Prediction Interface (GPPI)
 
 #### General Information
 
@@ -95,4 +95,3 @@ Interface functions:
 | predict_on_matrix          | Optional. Make prediction based on a value matrix (tuple of tuples). Accepts names of columns. Returns matrix.       |
 | get_output_json_serializer | Optional. Serialize output, if declared. Otherwise, use default.                                                     |
 | get_info                   | Optional. Return OpenAPI description of input and output types (if possible).                                        |
- 

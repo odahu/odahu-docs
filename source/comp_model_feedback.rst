@@ -7,8 +7,8 @@ Model Feedback
 The mechanism is simple:
 
 1. Ask Deploy for prediction (with or without ``Request-Id`` provided)
-2. Send Feedback to Legion about the prediction (with ``Request-Id`` returned from previous step)
-3. Legion stores the prediction and feedback to a configurable location
+2. Send Feedback to Odahu-flow about the prediction (with ``Request-Id`` returned from previous step)
+3. Odahu-flow stores the prediction and feedback to a configurable location
 
 .. important::
 
@@ -67,15 +67,15 @@ The first file contains meta-information about request and response:
         "request_id": "85252432-8d26-9b5f-bed3-e9ceeafc688c",
         "request_get_args": {},
         "response_status": "200",
-        "request_host": "edge.legion-test.epm.kharlamov.biz",
+        "request_host": "odahu.test.ailifecycle.org",
         "model_endpoint": "default",
         "model_version": "1.1",
         "request_http_method": "POST",
         "request_http_headers": {
             ":scheme": "http",
             "accept": "*/*",
-            "knative-serving-namespace": "legion",
-            ":authority": "edge.legion-test.epm.kharlamov.biz",
+            "knative-serving-namespace": "odahu-flow",
+            ":authority": "edge.flow-test.ailifecycle.org",
             ":path": "/api/model/invoke",
             ":method": "POST",
             "user-agent": "python-requests/2.22.0",
@@ -83,7 +83,7 @@ The first file contains meta-information about request and response:
             "x-request-id": "85252432-8d26-9b5f-bed3-e9ceeafc688c",
             "x-b3-sampled": "1",
             "x-envoy-external-address": "1.1.1.1",
-            "x-forwarded-host": "edge.legion-test.epm.kharlamov.biz",
+            "x-forwarded-host": "edge.flow-test.ailifecycle.org",
             "x-original-uri": "/model/sklearn-income/api/model/invoke",
             "content-type": "application/x-www-form-urlencoded",
             "x-forwarded-port": "443",
@@ -91,7 +91,7 @@ The first file contains meta-information about request and response:
             "knative-serving-revision": "sklearn-income-5jrrp",
             "x-envoy-original-path": "/model/sklearn-income/api/model/invoke",
             "x-real-ip": "1.1.1.1",
-            "x-envoy-decorator-operation": "sklearn-income-5jrrp.legion.svc.cluster.local:80/model/sklearn-income/api*",
+            "x-envoy-decorator-operation": "sklearn-income-5jrrp.flow.svc.cluster.local:80/model/sklearn-income/api*",
             "x-istio-attributes": "==",
             "x-forwarded-for": "1.1.1.1,1.1.1.1",
             "content-length": "257",
@@ -187,7 +187,7 @@ Request and response are persisted to S3, as in a previous case.
 
 In both examples, we have obtained a prediction value and Request-ID.
 We can use these facts to send back Model Feedback about the prediction (precision, area-under-curve, etc).
-Legion will store the Feedback, Request, Response, and Prediction behind one unified interface for later use.
+Odahu-flow will store the Feedback, Request, Response, and Prediction behind one unified interface for later use.
 
 Worked Example - Send Feedback as Payload
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

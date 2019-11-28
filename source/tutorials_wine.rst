@@ -3,9 +3,9 @@
 MLFlow
 ====================
 
-In this tutorial you will learn how to Train, Package and Deploy a model from scratch on Legion. Once deployed, the model serves RESTful requests, and makes a prediction when provided user input.
+In this tutorial you will learn how to Train, Package and Deploy a model from scratch on Odahu. Once deployed, the model serves RESTful requests, and makes a prediction when provided user input.
 
-Legion's :ref:`EDI <edi-server-description>` server performs Train, Package, and Deploy operations for you, using its REST API.
+Odahu's :ref:`API <api-server-description>` server performs Train, Package, and Deploy operations for you, using its REST API.
 
 .. _tutorials_wine-req:
 
@@ -13,10 +13,10 @@ Legion's :ref:`EDI <edi-server-description>` server performs Train, Package, and
 Prerequisites
 ~~~~~~~~~~~~~~~~~~~
 
-- Legion cluster (:ref:`installation <installation-prereqs>`)
+- Odahu cluster (:ref:`installation <installation-prereqs>`)
 - :ref:`MLFlow <mod_dev_using_mlflow-section>` and :term:`REST API Packager` (installed by default)
-- :term:`Legion CLI` or :term:`Plugin for JupyterLab` (installation instructions: :ref:`CLI <legion_cli-install>`, :ref:`Plugin <jupyter_plugin-install>`)
-- JWT token from EDI (:ref:`instructions <edi-server-auth>`)
+- :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab` (installation instructions: :ref:`CLI <odahu_cli-install>`, :ref:`Plugin <jupyter_plugin-install>`)
+- JWT token from API (:ref:`instructions <api-server-auth>`)
 - Google Cloud Storage bucket on Google Compute Platform
 - GitHub repository and an ssh key to connect to it
 
@@ -37,7 +37,7 @@ This tutorial uses a dataset to predict the quality of the wine based on quantit
 like the wine’s *fixed acidity*, *pH*, *residual sugar*, and so on.
 The dataset is from `UCI’s machine learning repository <https://archive.ics.uci.edu/ml/datasets/Wine+Quality>`_.
 
-Code for the tutorial is available on `GitHub <https://github.com/legion-platform/legion-examples/tree/master/mlflow/sklearn/wine>`_.
+Code for the tutorial is available on `GitHub <https://github.com/odahu/odahu-examples/tree/master/mlflow/sklearn/wine>`_.
 
 .. _tutorials_wine-create-project:
 
@@ -49,7 +49,7 @@ Create MLFlow project
    :stub-columns: 1
    :width: 100%
 
-    "Before", "Legion cluster that meets :ref:`prerequisites<tutorials_wine-req>`"
+    "Before", "Odahu cluster that meets :ref:`prerequisites<tutorials_wine-req>`"
     "After", "Model code that predicts wine quality"
 
 Create a new project folder:
@@ -241,10 +241,10 @@ Setup connections
    :stub-columns: 1
    :width: 100%
 
-    "Before", "Legion cluster that meets :ref:`prerequisites<tutorials_wine-req>`"
-    "After", "Legion cluster with :term:`Connections<Connection>`"
+    "Before", "Odahu cluster that meets :ref:`prerequisites<tutorials_wine-req>`"
+    "After", "Odahu cluster with :term:`Connections<Connection>`"
 
-Legion Platform uses the concept of :term:`Connections<Connection>` to manage authorizations to external services and data.
+Odahu Platform uses the concept of :term:`Connections<Connection>` to manage authorizations to external services and data.
 
 This tutorial requires three Connections:
 
@@ -255,52 +255,52 @@ This tutorial requires three Connections:
 Create a :term:`Connection` to GitHub repository
 ---------------------------------------------
 
-Because `legion-examples <https://github.com/legion-platform/legion-examples>`_ repository already contains the required code
+Because `odahu-examples <https://github.com/odahu/odahu-examples>`_ repository already contains the required code
 we will just use this repository. But feel free to create and use a new repository if you want.
 
-Legion is REST-powered, and so we encode the REST "payloads" in this tutorial in YAML files. Create a directory where payloads files will be staged:
+Odahu is REST-powered, and so we encode the REST "payloads" in this tutorial in YAML files. Create a directory where payloads files will be staged:
 
 .. code-block:: console
 
-    $ mkdir ./legion
+    $ mkdir ./odahu-flow
 
 Create payload:
 
 .. code-block:: console
 
-    $ touch ./legion/vcs_connection.legion.yaml
+    $ touch ./odahu-flow/vcs_connection.odahu.yaml
 
 Paste code into the created file:
 
 .. code-block:: yaml
-   :caption: vcs_connection.legion.yaml
+   :caption: vcs_connection.odahu.yaml
    :name: VCS Connection
 
     kind: Connection
-    id: legion-examples
+    id: odahu-flow-examples
     spec:
       type: git
-      uri: git@github.com:legion-platform/legion-examples.git
+      uri: git@github.com:odahu/odahu-examples.git
       reference: origin/master
       keySecret: <paste here your key github ssh key>
-      description: Git repository with legion-examples
-      webUILink: https://github.com/legion-platform/legion-examples
+      description: Git repository with odahu-flow-examples
+      webUILink: https://github.com/odahu/odahu-examples
 
 .. note::
 
    Read more about `GitHub ssh keys <https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh>`_
 
-Create a Connection using the :term:`Legion CLI`:
+Create a Connection using the :term:`Odahu-flow CLI`:
 
 .. code-block:: console
 
-    $ legionctl conn create -f ./legion/vcs_connection.legion.yaml
+    $ odahuflowctl conn create -f ./odahu-flow/vcs_connection.odahu.yaml
 
 Or create a Connection using :term:`Plugin for JupyterLab`:
 
 1. Open jupyterlab (available by jupyterlab.<your-cluster-base-address>);
 2. Open cloned repo, and then the folder with the project;
-3. Select file ``./legion/vcs_connection.legion.yaml`` and in context menu press ``submit`` button;
+3. Select file ``./odahu-flow/vcs_connection.odahu.yaml`` and in context menu press ``submit`` button;
 
 
 Create :term:`Connection` to wine-quality.csv object storage
@@ -310,12 +310,12 @@ Create payload:
 
 .. code-block:: console
 
-    $ touch ./legion/wine_connection.legion.yaml
+    $ touch ./odahu-flow/wine_connection.odahu.yaml
 
 Paste this code into the file:
 
 .. code-block:: yaml
-   :caption: wine_connection.legion.yaml
+   :caption: wine_connection.odahu.yaml
    :name: Wine connection
 
     kind: Connection
@@ -327,7 +327,7 @@ Paste this code into the file:
       keySecret: <paste key secret here>
       description: Wine dataset
 
-Create a connection using the :term:`Legion CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
+Create a connection using the :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
 
 If wine-quality.csv is not in the GCS bucket yet, use this command:
 
@@ -343,12 +343,12 @@ Create payload:
 
 .. code-block:: console
 
-    $ touch ./legion/docker_connection.legion.yaml
+    $ touch ./odahu-flow/docker_connection.odahu.yaml
 
 Paste this code into the file:
 
 .. code-block:: yaml
-   :caption: docker_connection.legion.yaml
+   :caption: docker_connection.odahu.yaml
    :name: Docker connection
 
     kind: Connection  # type of payload
@@ -361,19 +361,19 @@ Paste this code into the file:
       description: Docker registry for model packaging
 
 
-Create the connection using :term:`Legion CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
+Create the connection using :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
 
 Check that all Connections were created successfully:
 
 .. code-block:: console
 
-    $ legionctl conn get | grep -e id: -e type: -e description
+    $ odahuflowctl conn get | grep -e id: -e type: -e description
 
     - id: docker-ci
         description: Docker repository for model packaging
         type: docker
-    - id: legion-examples
-        description: Git repository with legion-examples
+    - id: odahu-flow-examples
+        description: Git repository with odahu-flow-examples
         type: git
     - id: models-output
         description: Storage for trainined artifacts
@@ -401,12 +401,12 @@ Create payload:
 
 .. code-block:: console
 
-    $ touch ./legion/training.legion.yaml
+    $ touch ./odahu-flow/training.odahu.yaml
 
 Paste code into the file:
 
 .. code-block:: yaml
-   :caption: ./legion/training.legion.yaml
+   :caption: ./odahu-flow/training.odahu.yaml
    :name: ModelTraining
    :linenos:
    :emphasize-lines: 7-14,22
@@ -432,11 +432,11 @@ Paste code into the file:
         requests:
           cpu: 2024m
           memory: 2024Mi
-      vcsName: legion-examples
+      vcsName: odahu-flow-examples
 
 In this file, we:
 
-- line 7: Set Legion toolchain's name to :ref:`mlflow <mod_dev_using_mlflow-section>`
+- line 7: Set Odahu toolchain's name to :ref:`mlflow <mod_dev_using_mlflow-section>`
 - line 8: Reference ``main`` method in ``entry_points`` (which is defined for :ref:`MLproject files <MLproject file>`.
 - line 9: Point ``workDir`` to the MLFlow project directory. (This is the directory that has the :ref:`MLproject file` in it.)
 - line 10: A section defining input data
@@ -445,17 +445,17 @@ In this file, we:
 - lines 13-14: Input hyperparameters, defined in MLProject file, and passed to ``main`` method
 - line 22: ``vcsName`` id of the :ref:`VCS Connection` (created in the previous step)
 
-:term:`Train` using :term:`Legion CLI`:
+:term:`Train` using :term:`Odahu-flow CLI`:
 
 .. code-block:: console
 
-    $ legionctl conn create -f ./legion/training.legion.yaml
+    $ odahuflowctl conn create -f ./odahu-flow/training.odahu.yaml
 
 Check :term:`Train` logs:
 
 .. code-block:: console
 
-    $ legionctl training logs --id wine
+    $ odahuflowctl training logs --id wine
 
 The :term:`Train` process will finish after some time.
 
@@ -463,7 +463,7 @@ To check the status run:
 
 .. code-block:: console
 
-    $ legionctl training get --id wine
+    $ odahuflowctl training get --id wine
 
 When the Train process finishes, the command will output this YAML:
 
@@ -475,17 +475,17 @@ Or `Train` using the :term:`Plugin for JupyterLab`:
 
 1. Open jupyterlab
 2. Open cloned repo, and then the folder with the project
-3. Select file ``./legion/training.legion.yaml`` and in context menu press ``submit`` button
+3. Select file ``./odahu-flow/training.odahu.yaml`` and in context menu press ``submit`` button
 
-You can see model logs using ``Legion cloud mode`` in the left side tab (cloud icon) in Jupyterlab
+You can see model logs using ``Odahu cloud mode`` in the left side tab (cloud icon) in Jupyterlab
 
-1. Open ``Legion cloud mode`` tab
+1. Open ``Odahu cloud mode`` tab
 2. Look for ``TRAINING`` section
 3. Press on the row with `ID=wine`
 4. Press button ``LOGS`` to connect to :term:`Train` logs
 
 After some time, the :term:`Train` process will finish. Train status is updated in column ``status`` of the `TRAINING` section
-in the ``Legion cloud mode`` tab. If the model training finishes with success, you will see `status=succeeded`.
+in the ``Odahu cloud mode`` tab. If the model training finishes with success, you will see `status=succeeded`.
 
 Then open :term:`Train` again by pressing the appropriate row. Look at the `Results` section. You should see:
 
@@ -493,7 +493,7 @@ Then open :term:`Train` again by pressing the appropriate row. Look at the `Resu
 
 
 ``artifactName`` is the filename of the trained model. This model is in :term:`GPPI<General Python Prediction Interface>` format.
-We can download it from storage defined in the ``models-output`` Connection.  (This connection is created during Legion Platform installation, so we were not required to create this Connection as part of this tutorial.)
+We can download it from storage defined in the ``models-output`` Connection.  (This connection is created during Odahu Platform installation, so we were not required to create this Connection as part of this tutorial.)
 
 
 .. _tutorials_wine-pack:
@@ -513,12 +513,12 @@ Create payload:
 
 .. code-block:: console
 
-    $ touch ./legion/packaging.legion.yaml
+    $ touch ./odahu-flow/packaging.odahu.yaml
 
 Paste code into the file:
 
 .. code-block:: yaml
-   :caption: ./legion/packaging.legion.yaml
+   :caption: ./odahu-flow/packaging.odahu.yaml
    :name: ModelPackaging
    :linenos:
    :emphasize-lines: 4, 6-8
@@ -539,17 +539,17 @@ In this file, we:
 - line 7: Specify the docker command
 - line 8: id of the :term:`REST API Packager`
 
-Create a :term:`Package` using :term:`Legion CLI`:
+Create a :term:`Package` using :term:`Odahu-flow CLI`:
 
 .. code-block:: console
 
-    $ legionctl conn create -f ./legion/packaging.legion.yaml
+    $ odahuflowctl conn create -f ./odahu-flow/packaging.odahu.yaml
 
 Check the :term:`Package` logs:
 
 .. code-block:: console
 
-    $ legionctl packaging logs --id wine
+    $ odahuflowctl packaging logs --id wine
 
 After some time, the :term:`Package` process will finish.
 
@@ -557,7 +557,7 @@ To check the status, run:
 
 .. code-block:: console
 
-    $ legionctl packaging get --id wine
+    $ odahuflowctl packaging get --id wine
 
 You will see YAML with updated :term:`Package` resource. Look at the status section. You can see:
 
@@ -567,16 +567,16 @@ Or run Package using the :term:`Plugin for JupyterLab`:
 
 1. Open jupyterlab
 2. Open the repository that has the source code, and navigate to the folder with the MLProject file
-3. Select file ``./legion/packaging.legion.yaml`` and in the context menu press the ``submit`` button
+3. Select file ``./odahu-flow/packaging.odahu.yaml`` and in the context menu press the ``submit`` button
 
-To view Package logs, use ``Legion cloud mode`` in the side tab of your Jupyterlab
+To view Package logs, use ``Odahu cloud mode`` in the side tab of your Jupyterlab
 
-1. Open ``Legion cloud mode`` tab
+1. Open ``Odahu cloud mode`` tab
 2. Look for ``PACKAGING`` section
 3. Click on the row with `ID=wine`
 4. Click the button for ``LOGS`` and view the ``Packaging`` logs
 
-After some time, the :term:`Package` process will finish. The status of training is updated in column ``status`` of the `PACKAGING` section in the ``Legion cloud mode`` tab. You should see `status=succeeded`.
+After some time, the :term:`Package` process will finish. The status of training is updated in column ``status`` of the `PACKAGING` section in the ``Odahu cloud mode`` tab. You should see `status=succeeded`.
 
 Then open PACKAGING again by pressing the appropriate row. Look at the `Results` section. You should see:
 
@@ -593,19 +593,19 @@ Deploy the model
    :width: 100%
 
     "Before",  "Model is packaged as image in the Docker registry"
-    "After", "Model is served via REST API from the Legion cluster"
+    "After", "Model is served via REST API from the Odahu cluster"
 
 Create payload:
 
 .. code-block:: console
 
-    $ touch ./legion/deployment.legion.yaml
+    $ touch ./odahu-flow/deployment.odahu.yaml
 
 
 Paste code into the file:
 
 .. code-block:: yaml
-   :caption: ./legion/deployment.legion.yaml
+   :caption: ./odahu-flow/deployment.odahu.yaml
    :name: ModelDeployment
    :linenos:
    :emphasize-lines: 4, 6-8
@@ -622,11 +622,11 @@ In this file, we:
 - line 4: Set the ``image`` that was created in the Package step
 - line 6: Set the id of the :term:`REST API Packager`
 
-Create a :term:`Deploy` using the :term:`Legion CLI`:
+Create a :term:`Deploy` using the :term:`Odahu-flow CLI`:
 
 .. code-block:: console
 
-    $ legionctl conn create -f ./legion/deployment.legion.yaml
+    $ odahuflowctl conn create -f ./odahu-flow/deployment.odahu.yaml
 
 After some time, the :term:`Deploy` process will finish.
 
@@ -634,21 +634,21 @@ To check its status, run:
 
 .. code-block:: console
 
-    $ legionctl deployment get --id wine
+    $ odahuflowctl deployment get --id wine
 
 Or create a `Deploy` using the :term:`Plugin for JupyterLab`:
 
 1. Open jupyterlab
 2. Open the cloned repo, and then the folder with the MLProject file
-3. Select file ``./legion/deployment.legion.yaml``. In context menu press the ``submit`` button
+3. Select file ``./odahu-flow/deployment.odahu.yaml``. In context menu press the ``submit`` button
 
-You can see Deploy logs using the ``Legion cloud mode`` side tab in your Jupyterlab
+You can see Deploy logs using the ``Odahu cloud mode`` side tab in your Jupyterlab
 
-1. Open the ``Legion cloud mode`` tab
+1. Open the ``Odahu cloud mode`` tab
 2. Look for the ``DEPLOYMENT`` section
 3. Click the row with `ID=wine`
 
-After some time, the :term:`Deploy` process will finish. The status of Deploy is updated in column ``status`` of the `DEPLOYMENT` section in the ``Legion cloud mode`` tab. You should see `status=Ready`.
+After some time, the :term:`Deploy` process will finish. The status of Deploy is updated in column ``status`` of the `DEPLOYMENT` section in the ``Odahu cloud mode`` tab. You should see `status=Ready`.
 
 .. _tutorials_wine-use:
 
@@ -664,23 +664,23 @@ Use the deployed model
 
 After the model is deployed, you can check its API in Swagger:
 
-Open ``<your-legion-platform-host>/swagger/index.html`` and look and the endpoints:
+Open ``<your-odahu-platform-host>/swagger/index.html`` and look and the endpoints:
 
 1. ``GET /model/wine/api/model/info`` – OpenAPI model specification;
 2. ``POST /model/wine/api/model/invoke`` – Endpoint to do predictions;
 
-But you can also do predictions using the :term:`Legion CLI`.
+But you can also do predictions using the :term:`Odahu-flow CLI`.
 
 Create a payload file:
 
 .. code-block:: console
 
-    $ touch ./legion/r.json
+    $ touch ./odahu-flow/r.json
 
 Add payload for ``/model/wine/api/model/invoke`` according to the OpenAPI schema. In this payload we provide values for model input variables:
 
 .. code-block:: json
-   :caption: ./legion/r.json
+   :caption: ./odahu-flow/r.json
    :name: Model invoke payload
 
    {
@@ -719,10 +719,10 @@ Invoke the model to make a prediction:
 
 .. code-block:: console
 
-    $ legionctl model invoke --mr wine --json-file r.json
+    $ odahuflowctl model invoke --mr wine --json-file r.json
 
 .. code-block:: json
-   :caption: ./legion/r.json
+   :caption: ./odahu-flow/r.json
    :name: Model invoke output
 
    {"prediction": [6.0], "columns": ["quality"]}

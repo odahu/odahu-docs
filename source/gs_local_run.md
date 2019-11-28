@@ -1,6 +1,6 @@
 # Local run (local model execution)
 
-In order to run model in environment that is similar to train and execution environments Legion Platform provides you `legionctl create-sandbox` command that can create docker container with preinstalled requirements.
+In order to run model in environment that is similar to train and execution environments Odahu Platform provides you `odahuflowctl create-sandbox` command that can create docker container with preinstalled requirements.
 
 ## Prerequirements
 * Linux based system with bash (at least version 4)
@@ -8,29 +8,29 @@ In order to run model in environment that is similar to train and execution envi
 * Python 3.6
 
 ## How to run?
-1. Firstly, you have to install `legion` package from PyPi (you may do this in the dedicated environment, created by pipenv, for example).
+1. Firstly, you have to install `odahu-flow-cli` package from PyPi (you may do this in the dedicated environment, created by pipenv, for example).
 
 ```bash
-pip install --user legion
+pip install --user odahu-flow-cli
 ```
-2. Then, you have to run `legionctl create-sandbox` command that will create `legion-activate.sh` script **in the your current directory**.
+2. Then, you have to run `odahuflowctl create-sandbox` command that will create `odahu-flow-activate.sh` script **in the your current directory**.
 
 ```bash
-legionctl create-sandbox
+odahuflowctl create-sandbox
 ```
-You may override default parameters using CLI arguments or Legion application configuration (see **configuration** section).
+You may override default parameters using CLI arguments or Odahu application configuration (see **configuration** section).
 
-* `--image` - docker image (named Legion Toolchain) from which container will be started. Default value comes from `legion.config.SANDBOX_PYTHON_TOOLCHAIN_IMAGE`
-* `--force-recreate` - recreate `legion-activate.sh` if it exists.
+* `--image` - docker image (named Odahu Toolchain) from which container will be started. Default value comes from `odahuflow.config.SANDBOX_PYTHON_TOOLCHAIN_IMAGE`
+* `--force-recreate` - recreate `odahu-flow-activate.sh` if it exists.
 
-Image should be compatible with Legion Platform. By default Legion Platform provides **legion/python-toolchain** public image.
+Image should be compatible with Odahu Platform. By default Odahu Platform provides **odahu/python-toolchain** public image.
 
-Example of value: `docker-registry-host:900/legion/python-toolchain:1.0.0`
+Example of value: `docker-registry-host:900/odahu/python-toolchain:1.0.0`
 
-3. Activate Legion environment (go inside docker container)
+3. Activate Odahu environment (go inside docker container)
 
 ```bash
-./legion-activate.sh
+./odahu-flow-activate.sh
 ```
 
 Execution of this command starts temporarly docker container (will be removed on exit) with mounting actual working directory to `/work-directory` path inside container.
@@ -46,25 +46,7 @@ Bootup configuration:
 * PTVSD wait-for-attach: is not configured (you may configure it using PTVSD_WAIT_ATTACH)
 ```
 
-Block above says that ports 56388, 56387 have been mapped from your host to container, that means that traffic from `localhost:56388` will be routed to container's `56388` port. This ports choose at each `legion-activate.sh` execution.
-
-4. Run your training scripts
-
-Inside container's shell (bash) you may run your python code (using `python3` command), run your notebooks (using `jupyter nbconver --execute` command), run Jupyter notebook server (that will be accessible from your machine) or run other commands.
-
-Your code may use `legion` python package to generate Legion Platform model binaries using `legion.model` API.
-
-At the end of your pipeline you have to export and save your models (using `legion.model.export(....)` and `legion.model.save()` commands)
-
-5. Build model images
-
-```bash
-legionctl build
-```
-
-To build model images you have to run command above. It will self-capture current container with all installed dependecies, add additional packages (as a nginx webserver) and persist it on your machine's docker engine as a new image.
-
-Name of image will be printed in the console.
+Block above says that ports 56388, 56387 have been mapped from your host to container, that means that traffic from `localhost:56388` will be routed to container's `56388` port. This ports choose at each `odahu-flow-activate.sh` execution.
 
 ## How to use with Jupyter Notebook?
 You are free to run jupyter notebook (that is installed by default) inside development container.
@@ -86,11 +68,11 @@ PyDevd debugging works in a **client (in your code) - server (in IDE)** way thro
 
 To start debugging you have to:
 1. Start debugging server in your IDE.
-2. Run `legion-activate.sh` with environment variables `PYDEVD_HOST` and `PYDEVD_PORT`.
+2. Run `odahu-flow-activate.sh` with environment variables `PYDEVD_HOST` and `PYDEVD_PORT`.
 
 Example:
 ```bash
-PYDEVD_HOST=127.0.0.1 PYDEVD_PORT=8090 ./legion-activate.sh
+PYDEVD_HOST=127.0.0.1 PYDEVD_PORT=8090 ./odahu-flow-activate.sh
 ```
 
 ### How to configure debugging using PyDevd in PyCharm
@@ -101,11 +83,11 @@ You may use instructions from this link [https://www.jetbrains.com/help/pycharm/
 
 To start debugging you have to:
 1. Configure attaching in your IDE, choose port (for example 8000)
-2. Run `legion-activate.sh` (`PTVSD_PORT` and `PTVSD_WAIT_ATTACH` are optional, default `PTVSD_WAIT_ATTACH=0`).
+2. Run `odahu-flow-activate.sh` (`PTVSD_PORT` and `PTVSD_WAIT_ATTACH` are optional, default `PTVSD_WAIT_ATTACH=0`).
 
 Example:
 ```bash
-PTVSD_WAIT_ATTACH=1 ./legion-activate.sh
+PTVSD_WAIT_ATTACH=1 ./odahu-flow-activate.sh
 ```
 
 ### How to configure debugging using ptvsd in VsCode
@@ -128,7 +110,7 @@ PTVSD_WAIT_ATTACH=1 ./legion-activate.sh
     "redirectOutput": false
 },
 ```
-4. Run `./legion-activate.sh` with `PTVSD_*` environment variables.
+4. Run `./odahu-flow-activate.sh` with `PTVSD_*` environment variables.
 5. Run debugging configuration
 
 ## Example of usage
@@ -136,33 +118,15 @@ PTVSD_WAIT_ATTACH=1 ./legion-activate.sh
 # Go to project directory
 host> cd /my-ml-project
 
-# Install legion CLI tools and python package
-host> sudo pip3 install legion
+# Install odahuflow CLI tools and python package
+host> sudo pip3 install odahu-flow-cli
 
 # Create sandbox
-host> legionctl create-sandbox
+host> odahuflowctl create-sandbox
 
 # Go inside sandbox
-host> ./legion-activate.sh
+host> ./odahu-flow-activate.sh
 
-# Run Jupyter notebook server
-sandbox> jupyter notebook
-
-# ... do actions inside Jupyter web console
-# ... execute legion.model.save() inside Jupyter web console
-
-# Create model's image
-sandbox> legionctl build
-
-# Deploy model locally: legionctl deploy <builded-model-image> --local
-# For example
-sandbox or host> legionctl deploy model-summation:latest --local
-
-# Invoke model: legionctl invoke --model-id <model-id> --model-version <model-version> -p <parameters> --local
-# For example
-sandbox or host> legionctl invoke --model-id test-summation --model -version '2.0' -p a=1 -p b=2 --local
-
-# Undeploy your model: legionctl undeploy <model-id> --model-version <model-version> --local
-# For example
-sandbox or host> legionctl undeploy test-summation --model-version '2.0' --local
+# Run Jupyterlab server
+sandbox> jupyter lab
 ```

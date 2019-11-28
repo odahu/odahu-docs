@@ -2,7 +2,7 @@
 
 ## Pre requirements
 
-To participate in developing of Legion project you have to meet these requirements:
+To participate in developing of Odahu project you have to meet these requirements:
 * Linux/macOS operating systems (due to tools used for development)
 * Python:
     * [Python v3.6](https://www.python.org/downloads/release/python-360/)
@@ -28,7 +28,7 @@ To participate in developing of Legion project you have to meet these requiremen
 * Python:
     * [Mlflow](https://www.mlflow.org/docs/latest/index.html)
     * [Robotframework Guide](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html)
-    * [Legion Airflow Plugins Development](https://airflow.apache.org/plugins.html)
+    * [Odahu Airflow Plugins Development](https://airflow.apache.org/plugins.html)
 * Golang:
     * [Kubebuilder](https://book.kubebuilder.io/)
 * Jupiterlab plugin:

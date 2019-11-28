@@ -1,4 +1,4 @@
 
 ================================
-How To: Authorize in EDI server
+How To: Authorize in API server
 ================================

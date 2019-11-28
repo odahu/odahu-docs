@@ -1,4 +1,4 @@
-# Example Legion HELM configuration
+# Example Odahu HELM configuration
 
 .. todo::
     

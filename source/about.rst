@@ -1,12 +1,12 @@
 =====
-About Legion
+About Odahu
 =====
 
-.. figure:: ../images/legion-logo-h.png
+.. figure:: ../images/odahu-logo-h.png
    :scale: 50 %
-   :alt: Legion Platform logo
+   :alt: Odahu Platform logo
 
-The Legion project automates ML and AI product life cycles in enterprise systems.
+The Odahu project automates ML and AI product life cycles in enterprise systems.
 
 **Any Cloud**
   - K8s-native, supporting: EKS, AKS, GKE
@@ -16,7 +16,7 @@ The Legion project automates ML and AI product life cycles in enterprise systems
   - Multi-model composition via MLFlow
 **Toolable**
   - ML phases are pluggable: transform, train, package, deploy
-  - CLI for Legion components
+  - CLI for Odahu components
   - Extensible via SDK and REST APIs
   - IDE, Workflow and CICD Engine automation via plugins
 **Secure**
@@ -24,5 +24,5 @@ The Legion project automates ML and AI product life cycles in enterprise systems
   - Strong encryption via Istio
   - Credential and security key managers via Vault
 
-Legion scales from small to very large. It is free and open-source via the Apache2 license.
+Odahu scales from small to very large. It is free and open-source via the Apache2 license.
 

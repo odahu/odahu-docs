@@ -3,25 +3,25 @@
 Airflow
 ######################
 
-Legion provides a set of custom operators that allow you to interact with a Legion cluster using `Apache Airflow <https://airflow.apache.org/>`_
+Odahu-flow provides a set of custom operators that allow you to interact with a Odahu cluster using `Apache Airflow <https://airflow.apache.org/>`_
 
 
 ***********************
 Connections
 ***********************
 
-The Airflow plugin should be authorized by Legion. Authorization is implemented using regular `Airflow Connections <https://airflow.apache.org/concepts.html#connections>`_
+The Airflow plugin should be authorized by Odahu. Authorization is implemented using regular `Airflow Connections <https://airflow.apache.org/concepts.html#connections>`_
 
-All custom legion operators accept `edi_connection_id` as a parameter that refers to `Legion Connection`
+All custom Odahu-flow operators accept `api_connection_id` as a parameter that refers to `Odahu-flow Connection`
 
-Legion Connection
+Odahu-flow Connection
 ================
-The Legion connection provides access to a Legion cluster for Legion custom operators.
+The Odahu connection provides access to a Odahu cluster for Odahu custom operators.
 
 Configuring the Connection
 --------------------------
 Host (required)
-    The host to connect to. Usually available at: `edi.<cluster-base-url>`
+    The host to connect to. Usually available at: `odahu.<cluster-base-url>`
 
 Type (required)
     `HTTP`
@@ -36,8 +36,8 @@ Password (required)
     Specify the password to connect.
 
 Extra (optional)
-    Specify the extra parameters (as json dictionary) that can be used in Legion
-    connection. Because Legion uses OpenID authorization, additional OpenID/OAuth 2.0 parameters may be supplied here.
+    Specify the extra parameters (as json dictionary) that can be used in Odahu
+    connection. Because Odahu uses OpenID authorization, additional OpenID/OAuth 2.0 parameters may be supplied here.
 
     The following parameters are supported and must be defined:
 
@@ -62,34 +62,34 @@ Extra (optional)
 Custom operators
 ***********************
 
-This chapter describes the custom operators provided by Legion.
+This chapter describes the custom operators provided by Odahu.
 
 
 Train, Pack, Deploy operators
 ================================
 
-.. class:: TrainingOperator(training=None, edi_connection_id=None, *args, **kwargs)
+.. class:: TrainingOperator(training=None, api_connection_id=None, *args, **kwargs)
 
     The operator that runs :term:`Train` phase
 
     Use `args` and `kwargs` to override other operator parameters
 
-    :param legion.sdk.models.ModelTraining training: describes the :term:`Train` phase
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
+    :param odahuflow.sdk.models.ModelTraining training: describes the :term:`Train` phase
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
 
 
-.. class:: TrainingSensor(training_id=None, edi_connection_id=None, *args, **kwargs)
+.. class:: TrainingSensor(training_id=None, api_connection_id=None, *args, **kwargs)
 
     The operator that waits for :term:`Train` phase is finished
 
     Use `args` and `kwargs` to override other operator parameters
 
     :param str training_id: `Train` id waits for
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
 
 
 .. class:: PackagingOperator(packaging=None, \
-                             edi_connection_id=None, \
+                             api_connection_id=None, \
                              trained_task_id: str = "", \
                              *args, **kwargs)
 
@@ -97,40 +97,40 @@ Train, Pack, Deploy operators
 
     Use `args` and `kwargs` to override other operator parameters
 
-    :param legion.sdk.models.ModelPackaging packaging: describes the :term:`Package` phase
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
+    :param odahuflow.sdk.models.ModelPackaging packaging: describes the :term:`Package` phase
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
     :param str trained_task_id: finished task id of :ref:`TrainingSensor`
 
 
-.. class:: PackagingSensor(training_id=None, edi_connection_id=None, *args, **kwargs)
+.. class:: PackagingSensor(training_id=None, api_connection_id=None, *args, **kwargs)
 
     The operator that waits for :term:`Package` phase is finished
 
     Use `args` and `kwargs` to override other operator parameters
 
     :param str packaging_id: `Package` id waits for
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
 
 
-.. class:: DeploymentOperator(deployment=None, edi_connection_id=None, *args, **kwargs)
+.. class:: DeploymentOperator(deployment=None, api_connection_id=None, *args, **kwargs)
 
     The operator that runs :term:`Deploy` phase
 
     Use `args` and `kwargs` to override other operator parameters
 
-    :param legion.sdk.models.ModelDeployment packaging: describes the :term:`Deploy` phase
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
+    :param odahuflow.sdk.models.ModelDeployment packaging: describes the :term:`Deploy` phase
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
     :param str packaging_task_id: finished task id of :ref:`PackagingSensor`
 
 
-.. class:: DeploymentSensor(training_id=None, edi_connection_id=None, *args, **kwargs)
+.. class:: DeploymentSensor(training_id=None, api_connection_id=None, *args, **kwargs)
 
     The operator that waits for :term:`Deploy` phase is finished
 
     Use `args` and `kwargs` to override other operator parameters
 
     :param str deployment_id: `Deploy` id waits for
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
 
 
 Model usage operators
@@ -140,7 +140,7 @@ These operators are used to interact with deployed models.
 
 .. class:: ModelInfoRequestOperator(self, \
                                     model_deployment_name: str, \
-                                    edi_connection_id: str, \
+                                    api_connection_id: str, \
                                     model_connection_id: str, \
                                     md_role_name: str = "", \
                                     *args, **kwargs)
@@ -150,14 +150,14 @@ These operators are used to interact with deployed models.
     Use `args` and `kwargs` to override other operator parameters
 
     :param str model_deployment_name: Model deployment name
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
-    :param str model_connection_id: id of Legion :term:`Connection` for deployed model access
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
+    :param str model_connection_id: id of Odahu :term:`Connection` for deployed model access
     :param str md_role_name: Role name
 
 
 .. class:: ModelPredictRequestOperator(self, \
                                        model_deployment_name: str, \
-                                       edi_connection_id: str, \
+                                       api_connection_id: str, \
                                        model_connection_id: str, \
                                        request_body: typing.Any, \
                                        md_role_name: str = "" , \
@@ -168,8 +168,8 @@ These operators are used to interact with deployed models.
     Use `args` and `kwargs` to override other operator parameters
 
     :param str model_deployment_name: <paste>
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
-    :param str model_connection_id: id of Legion :term:`Connection` for deployed model access
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
+    :param str model_connection_id: id of Odahu :term:`Connection` for deployed model access
     :param dict request_body: JSON Body with model parameters
     :param str md_role_name: Role name
 
@@ -177,27 +177,27 @@ These operators are used to interact with deployed models.
 Helper operators
 ================================
 
-These operators are helpers to simplify using legion.
+These operators are helpers to simplify using Odahu-flow.
 
-.. class:: GcpConnectionToLegionConnectionOperator(self, \
-                                                   edi_connection_id: str, \
+.. class:: GcpConnectionToOdahuConnectionOperator(self, \
+                                                   api_connection_id: str, \
                                                    google_cloud_storage_conn_id: str, \
                                                    conn_template: typing.Any, \
                                                    *args, **kwargs)
 
-    Create Legion Connection using GCP Airflow Connection
+    Create Odahu-flow Connection using GCP Airflow Connection
 
     Use `args` and `kwargs` to override other operator parameters
 
-    :param str edi_connection_id: conn_id of :ref:`int_airflow:Legion Connection`
+    :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
     :param str google_cloud_storage_conn_id: conn_id to Gcp Connection
-    :param legion.sdk.models.connection.Connection conn_template: Legion Connection template
+    :param odahuflow.sdk.models.connection.Connection conn_template: Odahu-flow Connection template
 
 
 DAG example
 ================================
 
-The example of the DAG that uses custom legion operators is shown below. Four DAGs are described.
+The example of the DAG that uses custom Odahu-flow operators is shown below. Four DAGs are described.
 
 
 .. code-block:: python
@@ -211,15 +211,15 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
     from airflow.contrib.operators.gcs_to_gcs import GoogleCloudStorageToGoogleCloudStorageOperator
     from airflow.models import Variable
     from airflow.operators.bash_operator import BashOperator
-    from legion.sdk.models import ModelTraining, ModelTrainingSpec, ModelIdentity, ResourceRequirements, ResourceList, \
+    from odahuflow.sdk.models import ModelTraining, ModelTrainingSpec, ModelIdentity, ResourceRequirements, ResourceList, \
         ModelPackaging, ModelPackagingSpec, Target, ModelDeployment, ModelDeploymentSpec, Connection, ConnectionSpec, \
         DataBindingDir
 
-    from legion.airflow.connection import GcpConnectionToLegionConnectionOperator
-    from legion.airflow.deployment import DeploymentOperator, DeploymentSensor
-    from legion.airflow.model import ModelPredictRequestOperator, ModelInfoRequestOperator
-    from legion.airflow.packaging import PackagingOperator, PackagingSensor
-    from legion.airflow.training import TrainingOperator, TrainingSensor
+    from odahuflow.airflow.connection import GcpConnectionToOdahuConnectionOperator
+    from odahuflow.airflow.deployment import DeploymentOperator, DeploymentSensor
+    from odahuflow.airflow.model import ModelPredictRequestOperator, ModelInfoRequestOperator
+    from odahuflow.airflow.packaging import PackagingOperator, PackagingSensor
+    from odahuflow.airflow.training import TrainingOperator, TrainingSensor
 
     default_args = {
         'owner': 'airflow',
@@ -230,8 +230,8 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
         'end_date': datetime(2099, 12, 31)
     }
 
-    edi_connection_id = "legion_edi"
-    model_connection_id = "legion_model"
+    api_connection_id = "odahuflow_api"
+    model_connection_id = "odahuflow_model"
 
     gcp_project = Variable.get("GCP_PROJECT")
     wine_bucket = Variable.get("WINE_BUCKET")
@@ -276,7 +276,7 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
                     memory="2024Mi"
                 )
             ),
-            vcs_name="legion-examples"
+            vcs_name="odahu-flow-examples"
         ),
     )
 
@@ -326,17 +326,17 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
             bash_command='echo "imagine that we transform a data"',
             default_args=default_args
         )
-        legion_conn = GcpConnectionToLegionConnectionOperator(
-            task_id='legion_connection_creation',
+        odahuflow_conn = GcpConnectionToOdahuConnectionOperator(
+            task_id='odahuflow_connection_creation',
             google_cloud_storage_conn_id='wine_input',
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             conn_template=wine,
             default_args=default_args
         )
 
         train = TrainingOperator(
             task_id="training",
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             training=training,
             default_args=default_args
         )
@@ -344,13 +344,13 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
         wait_for_train = TrainingSensor(
             task_id='wait_for_training',
             training_id=training_id,
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             default_args=default_args
         )
 
         pack = PackagingOperator(
             task_id="packaging",
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             packaging=packaging,
             trained_task_id="wait_for_training",
             default_args=default_args
@@ -359,13 +359,13 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
         wait_for_pack = PackagingSensor(
             task_id='wait_for_packaging',
             packaging_id=packaging_id,
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             default_args=default_args
         )
 
         dep = DeploymentOperator(
             task_id="deployment",
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             deployment=deployment,
             packaging_task_id="wait_for_packaging",
             default_args=default_args
@@ -374,14 +374,14 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
         wait_for_dep = DeploymentSensor(
             task_id='wait_for_deployment',
             deployment_id=deployment_id,
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             default_args=default_args
         )
 
         model_predict_request = ModelPredictRequestOperator(
             task_id="model_predict_request",
             model_deployment_name=deployment_id,
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             model_connection_id=model_connection_id,
             request_body=model_example_request,
             default_args=default_args
@@ -390,12 +390,12 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
         model_info_request = ModelInfoRequestOperator(
             task_id='model_info_request',
             model_deployment_name=deployment_id,
-            edi_connection_id=edi_connection_id,
+            api_connection_id=api_connection_id,
             model_connection_id=model_connection_id,
             default_args=default_args
         )
 
-        data_extraction >> data_transformation >> legion_conn >> train
+        data_extraction >> data_transformation >> odahuflow_conn >> train
         train >> wait_for_train >> pack >> wait_for_pack >> dep >> wait_for_dep
         wait_for_dep >> model_info_request
         wait_for_dep >> model_predict_request
@@ -403,7 +403,7 @@ The example of the DAG that uses custom legion operators is shown below. Four DA
 
 In this file, we create four dags:
 
-- DAG on line 190 extract and transform data, create legion connection and run :term:`Train`
+- DAG on line 190 extract and transform data, create Odahu-flow connection and run :term:`Train`
 - DAG on line 191 sequentially run phases :term:`Train`, :term:`Package`, :term:`Deploy`
 - DAG on line 192 wait for model deploy and then extract schema of model predict API
 - DAG on line 193 wait for model deploy and then invoke model prediction API
