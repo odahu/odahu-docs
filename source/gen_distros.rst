@@ -1,9 +1,9 @@
-=====
+=============
 Distributions
-=====
+=============
 
 HELM charts
-----
+-----------
 
 - Release and pre-release :term:`Helm charts <Odahu HELM Chart>` are in `github <https://github.com/odahu/odahu-helm>`_.
 
@@ -22,7 +22,7 @@ HELM charts
    "odahu-flow-rest-packager", "odahu/odahu-packager", "Odahu-flow REST packager"
 
 Docker Images
-------
+-------------
 
  Release versions of images are on Docker Hub in the `odahu <https://hub.docker.com/u/odahu>`_ team.
 
@@ -49,7 +49,7 @@ Docker Images
    "odahu-flow-jupyterlab", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
 
 Python packages
------
+---------------
 
 - Release versions of Python packages are on PyPi in project `odahu <https://pypi.org/project/odahu/>`_.
 
@@ -65,7 +65,7 @@ Python packages
    "odahu-flow-airflow-plugin", "odahu/odahu-airflow-plugin", "Odahu-flow Airflow plugin(operators, hooks and so on)"
 
 NPM packages
------
+------------
 
 - Release versions of Python packages are on npm in project odahu.
 

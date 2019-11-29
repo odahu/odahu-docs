@@ -1,6 +1,6 @@
-=====
+===========
 About Odahu
-=====
+===========
 
 .. figure:: ../images/odahu-logo-h.png
    :scale: 50 %

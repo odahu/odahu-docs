@@ -29,6 +29,6 @@ Implementation Details
     "Support", "official"
     "Language", "Python 3.6+"
 
-Source code is available on `GitHub https://github.com/odahu/odahu-trainer/tree/develop>`_.
+Source code is available on `GitHub <https://github.com/odahu/odahu-trainer/tree/develop>`_.
 
 Low-level integration details are provided `here <https://github.com/odahu/odahu-trainer/tree/develop>`_.

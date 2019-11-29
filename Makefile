@@ -5,11 +5,11 @@ SHELL := /bin/bash
 
 ## build-docs: Build legion docs
 build-docs: build-docs-builder
-	docker run --rm -v $(PWD):/var/docs  -v $(PWD):/legion-sources --workdir /var/docs legion/docs-builder:latest /generate.sh
+	docker run --rm -v $(PWD):/var/docs --workdir /var/docs odahu/docs-builder:latest /generate.sh
 
 ## build-docs-builder: Build docker image that can build documentation
 build-docs-builder:
-	docker build -t legion/docs-builder:latest -f Dockerfile .
+	docker build -t odahu/docs-builder:latest -f Dockerfile .
 
 ## install-vulnerabilities-checker: Install the vulnerabilities-checker
 install-vulnerabilities-checker:
