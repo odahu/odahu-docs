@@ -2,10 +2,6 @@
 About Odahu
 ===========
 
-.. figure:: ../images/odahu-logo-h.png
-   :scale: 50 %
-   :alt: Odahu Platform logo
-
 The Odahu project automates ML and AI product life cycles in enterprise systems.
 
 **Any Cloud**
