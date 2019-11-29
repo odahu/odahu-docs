@@ -66,12 +66,12 @@ master_doc = 'index'
 # The short X.Y version.
 version = '1.0'
 # The full version, including alpha/beta/rc tags.
-release = '1.2'
+release = '1.0.0-rc27'
 
 # General information about the project.
 project = 'Odahu'
 doc_name = 'Odahu Platform Tutorial'
-doc_out = 'Odahu-docs'
+doc_out = 'odahu-docs'
 author = 'Odahu Team'
 copyright = '2019, %s' % author
 

@@ -1,11 +1,11 @@
 # 1. About
 
-This repository contains MLFlow integration toolchain for [Legion platform](https://github.com/legion-platform/legion).
+This repository contains documentation sources for [ODAHU platform](https://github.com/odahu/odahu-flow).
 
-# 2. What does it do?
+# 2. How to build recent documentation artifacts?
 
-Legion's toolchain for MLFlow is responsible for running process of training MLFlow models. It produces model as ZIP archive in Legion's General Python Prediction Interface.
+Run according `make` job to build docker image and compile html and pdf artifacts:
 
-# 3. Requirements
-
-This toolchain requires MLFlow tracking server to be installed (MLFlow tracking server is bundled in HELM Chart).
+```bash
+$ make build-docs
+```

@@ -253,7 +253,7 @@ This tutorial requires three Connections:
 - A Docker registry, where the trained and packaged model will be stored for later use
 
 Create a :term:`Connection` to GitHub repository
----------------------------------------------
+------------------------------------------------
 
 Because `odahu-examples <https://github.com/odahu/odahu-examples>`_ repository already contains the required code
 we will just use this repository. But feel free to create and use a new repository if you want.
