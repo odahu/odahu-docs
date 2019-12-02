@@ -1,0 +1,67 @@
+on: [push]
+
+jobs:
+  build-docs:
+    name: Build documentation
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout docs source
+      uses: actions/checkout@v1
+
+    - name: Perform security check
+      shell: bash
+      run: |
+        sudo make install-vulnerabilities-checker
+        make check-vulnerabilities
+
+    - name: Build docs in docker container
+      run: make build-docs
+
+    - name: Save built HTML artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: html-files
+        path: out
+
+    - name: Save built PDF artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: pdf-file
+        path: odahu-docs.pdf
+
+  publish-docs:
+    name: Publish to Github Pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    needs: build-docs
+    steps:
+
+    - name: Get built HTML artifacts
+      uses: actions/download-artifact@v1
+      with:
+        name: html-files
+        path: /tmp/html-files
+
+    - name: Checkout gh-pages repo and push HTML files
+      shell: bash
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        GHP_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        GHP_REPO: "git@github.com:odahu/docs.odahu.org.git"
+        GHP_BRANCH: master
+        GHP_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+        GHP_EMAIL: gh-docs@odahu.org
+        GHP_NAME: "odahu-docs Publisher"
+      run: |
+        mkdir -p ~/.ssh
+        eval "$(ssh-agent -a $SSH_AUTH_SOCK -s)"
+        ssh-add - <<< "${GHP_KEY}"
+        git clone $GHP_REPO /tmp/odahu-docs && cd /tmp/odahu-docs
+        git config --global user.email "$GHP_EMAIL" > /dev/null 2>&1
+        git config --global user.name "$GHP_NAME" > /dev/null 2>&1
+        git checkout $GHP_BRANCH
+        find . -path ./.git -prune -o \( \! -path ./CNAME \) -exec rm -rf {} \; 2> /dev/null
+        cp -aR /tmp/html-files/. .
+        git add --all
+        git commit -m "Publishing updated documentation" && git push origin $GHP_BRANCH
