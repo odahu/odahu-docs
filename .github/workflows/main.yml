@@ -47,10 +47,10 @@ jobs:
       shell: bash
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
         GHP_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         GHP_REPO: "git@github.com:odahu/docs.odahu.org.git"
         GHP_BRANCH: master
-        GHP_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
         GHP_EMAIL: gh-docs@odahu.org
         GHP_NAME: "odahu-docs Publisher"
       run: |
@@ -58,10 +58,10 @@ jobs:
         eval "$(ssh-agent -a $SSH_AUTH_SOCK -s)"
         ssh-add - <<< "${GHP_KEY}"
         git clone $GHP_REPO /tmp/odahu-docs && cd /tmp/odahu-docs
-        git config --global user.email "$GHP_EMAIL" > /dev/null 2>&1
-        git config --global user.name "$GHP_NAME" > /dev/null 2>&1
+        git config --global user.email "$GHP_EMAIL" >/dev/null 2>&1
+        git config --global user.name "$GHP_NAME" >/dev/null 2>&1
         git checkout $GHP_BRANCH
-        find . -path ./.git -prune -o \( \! -path ./CNAME \) -exec rm -rf {} \; 2> /dev/null
+        find . -path ./.git -prune -o \( \! -path ./CNAME \) -exec rm -rf {} \; 2>/dev/null || true
         cp -aR /tmp/html-files/. .
         git add --all
         git commit -m "Publishing updated documentation" && git push origin $GHP_BRANCH
