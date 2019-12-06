@@ -43,9 +43,7 @@ Docker Images
    "odahu-flow-mlflow-toolchain", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
    "odahu-flow-mlflow-toolchain-gpu", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain with NVIDIA GPU"
    "odahu-flow-mlflow-tracking-server", "odahu/odahu-trainer", "MLflow tracking service"
-   "odahu-flow-trainer-resource-applier", "odahu/odahu-trainer", "Odahu-flow CLI"
-   "odahu-flow-rest-packager", "odahu/odahu-packager", "Odahu-flow REST packager"
-   "odahu-flow-packager-resource-applier", "odahu/odahu-packager", "Odahu-flow CLI"
+   "odahu-flow-packagers", "odahu/odahu-packager", "Odahu-flow packagers"
    "odahu-flow-jupyterlab", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
 
 Python packages
@@ -60,8 +58,6 @@ Python packages
    "odahu-flow-cli", "odahu/odahu-flow", "Odahu-flow CLI"
    "odahu-flow-sdk", "odahu/odahu-flow", "Odahu-flow SDK"
    "odahu-flow-jupyterlab-plugin", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
-   "odahu-flow-mlflow-trainer", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
-   "odahu-flow-rest-packager", "odahu/odahu-packager", "Odahu-flow REST packager"
    "odahu-flow-airflow-plugin", "odahu/odahu-airflow-plugin", "Odahu-flow Airflow plugin(operators, hooks and so on)"
 
 NPM packages
