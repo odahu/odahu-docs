@@ -45,6 +45,7 @@
    ref_kubernetes
    ref_model_api
    ref_model_format
+   ref_connections
    gen_glossary
 
 .. toctree::

@@ -252,6 +252,8 @@ This tutorial requires three Connections:
 - A Google Cloud Storage folder, where input data is located (wine-quality.csv)
 - A Docker registry, where the trained and packaged model will be stored for later use
 
+You can find more detailed documentation about a connection configuration :ref:`here <ref_connections:Connections>`.
+
 Create a :term:`Connection` to GitHub repository
 ------------------------------------------------
 
