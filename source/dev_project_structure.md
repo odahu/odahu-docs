@@ -18,14 +18,6 @@ Core services of Odahu-flow project.
 * API server
 * Feedback services
 
-## [odahu/odahu-automation](https://github.com/odahu/odahu-automation)
-
-For deploying purposes there are platform-specific repositories that contains platform-specific deploying logic.
-
-* Docker images and helm chart for external services
-* Terraform modules
-* The kickstarter script
-
 ## [odahu/odahu-trainer](https://github.com/odahu/odahu-trainer)
 
 Collection of training extensions:

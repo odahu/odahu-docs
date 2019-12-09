@@ -11,6 +11,4 @@ Odahu is pluggable and can integrate with a variety of metrics monitoring tools,
 Odahu's installation :ref:`Helm chart <installation-helm>` boostraps a `Prometheus <https://prometheus.io/>`_ operator
 to persist metrics and `Grafana <https://grafana.com/>`_ dashboard to display them.
 
-The integration is defined `here <https://github.com/odahu/odahu-automation/tree/develop/helms/odahu-flow-monitoring>`_.
-
 Alternative integrations can be similarly constructed that swap in other monitoring solutions.
