@@ -194,6 +194,92 @@ These operators are helpers to simplify using Odahu-flow.
     :param odahuflow.sdk.models.connection.Connection conn_template: Odahu-flow Connection template
 
 
+****************************
+How to describe operators
+****************************
+
+When you initialize Odahu custom operators such as ``TrainingOperator``, ``PackagingOperator``, or
+``DeploymentOperator`` you should pass odahu resource payload as a parameter.
+
+Actually, this is payload that describes a resource that will be created at Odahu-flow cluster. You should describe
+such payloads using odahuflow.sdk models
+
+.. code-block:: python
+    :caption: Creating training payload
+
+    training = ModelTraining(
+        id=training_id,
+        spec=ModelTrainingSpec(
+            model=ModelIdentity(
+                name="wine",
+                version="1.0"
+            ),
+            toolchain="mlflow",
+            entrypoint="main",
+            work_dir="mlflow/sklearn/wine",
+            hyper_parameters={
+                "alpha": "1.0"
+            },
+            data=[
+                DataBindingDir(
+                    conn_name='wine',
+                    local_path='mlflow/sklearn/wine/wine-quality.csv'
+                ),
+            ],
+            resources=ResourceRequirements(
+                requests=ResourceList(
+                    cpu="2024m",
+                    memory="2024Mi"
+                ),
+                limits=ResourceList(
+                    cpu="2024m",
+                    memory="2024Mi"
+                )
+            ),
+            vcs_name="odahu-flow-examples"
+        ),
+    )
+
+
+But if you did some RnD work with Odahu-flow previously, it's likely that you already have yaml/json files that
+describe the same payloads. You can reuse them to create odahuflow.sdk models automatically
+
+.. code-block:: python
+    :caption: Using plain yaml/json text
+
+    from odahuflow.airflow.resources import resource
+
+    packaging_id, packaging = resource("""
+    id: airlfow-wine
+    kind: ModelPackaging
+    spec:
+      artifactName: "<fill-in>"
+      targets:
+        - connectionName: docker-ci
+          name: docker-push
+      integrationName: docker-rest
+    """)
+
+Or refer to yaml/json files that must be located at Airflow DAGs folder or Airflow Home folder (these folders are
+configured at airflow.cfg file)
+
+.. code-block:: python
+    :caption: Creating training payload
+
+    from odahuflow.airflow.resources import resource
+    training_id, training = resource('training.odahuflow.yaml')
+
+In this file, we refer to file `training.odahuflow.yaml` that is located at airflow dag's folder
+
+For example, if you use `Google Cloud Composer <https://cloud.google.com/composer/>`_ then you can locate your yamls inside DAGs bucket and refer to them by
+relative path:
+
+.. code:: bash
+
+    gsutil cp ~/.training.odahuflow.yaml gs://<your-composer-dags-bucket>/
+
+
+
 DAG example
 ================================
 
