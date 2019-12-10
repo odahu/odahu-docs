@@ -40,11 +40,10 @@
    :maxdepth: 1
    :caption: Reference
 
-   ref_configuration
+   ref_odahuflowctl
    ref_kubernetes
    ref_model_api
    ref_model_format
-   ref_networking
    gen_glossary
 
 .. toctree::
