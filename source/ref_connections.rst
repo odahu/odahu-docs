@@ -313,7 +313,7 @@ This type of connection is used for pulling and pushing of the Odahu packager re
 
 Before usage, make sure that:
 
-    * You have created an ECR repository. `Creating a ECR Repository <https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html>`_.
+    * You have created an ECR repository. `Creating an ECR Repository <https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html>`_.
     * You have created an IAM user that has access to the ECR repository. `Creating an IAM User in Your AWS Account <https://docs.aws.amazon.com/en_us/IAM/latest/UserGuide/id_users_create.html>`_.
     * You have created the IAM keys for the user. `Managing Access Keys for IAM Users <https://docs.aws.amazon.com/en_us/IAM/latest/UserGuide/id_credentials_access-keys.html>`_.
 
