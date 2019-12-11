@@ -11,7 +11,7 @@ General connection structure
 
 All types of connections have the same general structure.
 But different connections require a different set of fields.
-You can find the examples of specific type of connection in the id of the :ref:`Connection types` section.
+You can find the examples of specific type of connection in the id of the :ref:`ref_connections:Connection types` section.
 Below you can find the description of all fields:
 
 .. code-block:: yaml
@@ -229,6 +229,7 @@ The following fields of connection API are required:
 Example of command to encode ssh key:
 
 .. code-block:: bash
+
     cat ~/.ssh/id_rsa | base64 -w0
 
 .. note::

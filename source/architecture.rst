@@ -7,9 +7,9 @@ Subsystems
 
 Odahu subsystems are:
 
-1. :term:`Training`
-2. :term:`Packaging`
-3. :term:`Deployment`
+1. Training
+2. Packaging
+3. Deployment
 
 External integrations
 --------------------------------

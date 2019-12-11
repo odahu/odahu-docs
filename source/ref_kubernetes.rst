@@ -5,7 +5,7 @@ Kubernetes
 Ingress Controller
 ------------------
 
-- Odahu requires a Kubernetes ingress controller to publish web services (such as :term:`API`) to the internet/extranet
+- Odahu requires a Kubernetes ingress controller to publish web services (such as :term:`API service`) to the internet/extranet
 - TLS certificates must:
     - be configured as K8s `Secrets <https://kubernetes.io/docs/concepts/configuration/secret/>`_
     - be provided from a tool like `Certbot <https://certbot.eff.org/>`_ or `Vault <https://www.vaultproject.io/>`_ to generate certificates on-the-fly

@@ -13,9 +13,9 @@ Odahu's :ref:`API <api-server-description>` server performs Train, Package, and 
 Prerequisites
 ~~~~~~~~~~~~~~~~~~~
 
-- Odahu cluster (:ref:`installation <installation-prereqs>`)
+- Odahu cluster
 - :ref:`MLFlow <mod_dev_using_mlflow-section>` and :term:`REST API Packager` (installed by default)
-- :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab` (installation instructions: :ref:`CLI <odahu_cli-install>`, :ref:`Plugin <jupyter_plugin-install>`)
+- :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab` (installation instructions: :ref:`CLI <ref_odahuflowctl:Installation>`, :ref:`Plugin <int_jupyterlab_extension:Installation>`)
 - JWT token from API (:ref:`instructions <api-server-auth>`)
 - Google Cloud Storage bucket on Google Compute Platform
 - GitHub repository and an ssh key to connect to it

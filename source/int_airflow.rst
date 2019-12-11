@@ -99,7 +99,7 @@ Train, Pack, Deploy operators
 
     :param odahuflow.sdk.models.ModelPackaging packaging: describes the :term:`Package` phase
     :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
-    :param str trained_task_id: finished task id of :ref:`TrainingSensor`
+    :param str trained_task_id: finished task id of TrainingSensor
 
 
 .. class:: PackagingSensor(training_id=None, api_connection_id=None, *args, **kwargs)
@@ -120,7 +120,7 @@ Train, Pack, Deploy operators
 
     :param odahuflow.sdk.models.ModelDeployment packaging: describes the :term:`Deploy` phase
     :param str api_connection_id: conn_id of :ref:`int_airflow:Odahu-flow Connection`
-    :param str packaging_task_id: finished task id of :ref:`PackagingSensor`
+    :param str packaging_task_id: finished task id of PackagingSensor
 
 
 .. class:: DeploymentSensor(training_id=None, api_connection_id=None, *args, **kwargs)

@@ -5,7 +5,7 @@ Operator
 **Operator** monitors Odahu-provided Kubernetes (K8s)
 `Custom Resources <https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/>`_.
 This gives Operator the ability to manage Odahu entities using K8s infrastructure (Secrets, Pods, Services, etc).
-The K8s entities that belong to Odahu are referred to as :term:`Odahu's CRDs`.
+The K8s entities that belong to Odahu are referred to as :term:`Odahu-flow's CRDs`.
 
 Operator is a mandatory component in Odahu clusters.
 
