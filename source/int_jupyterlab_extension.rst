@@ -2,7 +2,7 @@
 Jupyterlab extension
 ######################
 
-Odahu-flow provides the JupyterLab extension that allows you to interact with a Odahu cluster from JupyterLab web-based IDEs.
+Odahu-flow provides the JupyterLab extension that allows you to interact with an Odahu cluster from JupyterLab web-based IDEs.
 
 ***********************
 Installation
