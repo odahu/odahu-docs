@@ -37,7 +37,7 @@ Login
 To authorize on an Odahu-flow API service in the Jupyterlab extension, you should perform the following steps:
 
     * Copy and paste the Odahu-flow API service URL.
-    * You should open an API server URL in a browser to get the token. Copy and paste this token in the login form.
+    * Open an API server URL in a browser to get the token. Copy and paste this token in the login form.
 
 ***********************
 Usage
