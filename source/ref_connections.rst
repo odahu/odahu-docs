@@ -102,7 +102,7 @@ For now, Odahu-flow supports the following connections types:
 S3
 --
 
-A S3 connection allows interacts with `s3 API <https://docs.aws.amazon.com/en_us/AmazonS3/latest/dev/Welcome.html>`_.
+An S3 connection allows interactions with `s3 API <https://docs.aws.amazon.com/en_us/AmazonS3/latest/dev/Welcome.html>`_.
 This type of connection is used as storage of:
     * model trained artifacts.
     * input data for ML models.
