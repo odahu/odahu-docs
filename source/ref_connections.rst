@@ -201,7 +201,7 @@ The following fields of connection API are required:
     * ``spec.type`` - It must be equal **azureblob**.
     * ``spec.keySecret`` - Odahu-flow uses the `shared access signatures <https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview>`_ to authorize in Azure.
       The key has the following format: "<primary_blob_endpoint>/<sas_token>".
-    * ``spec.uri`` -  GCS compatible URI, for example <bucket-name>/dir1/dir2/
+    * ``spec.uri`` -  Azure storage compatible URI, for example <bucket-name>/dir1/dir2/
 
 .. code-block:: yaml
     :caption: Example of Connection Blob Storage:
