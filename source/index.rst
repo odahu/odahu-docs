@@ -35,6 +35,7 @@
 
    int_metrics
    int_airflow
+   int_jupyterlab_extension
 
 .. toctree::
    :maxdepth: 1
