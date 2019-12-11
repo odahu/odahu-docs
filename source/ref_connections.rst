@@ -55,7 +55,7 @@ Connections can be managed using the following ways.
 Swagger UI
 ----------
 
-Swagger UI is available at http:://api-service/swagger/index.html URL.
+Swagger UI is available at http://api-service/swagger/index.html URL.
 
 Odahu-flow CLI
 --------------
