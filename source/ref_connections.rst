@@ -193,7 +193,7 @@ Odahu-flow uses the `Blob storage <https://docs.microsoft.com/ru-ru/azure/storag
 Before usage, make sure that:
 
     * You have created a storage account . `Create a storage account <https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli#create-a-storage-account>`_.
-    * You have created a storage container in the storage account . `Create a container <https://docs.microsoft.com/ru-ru/azure/storage/blobs/storage-quickstart-blobs-cli#create-a-container>`_.
+    * You have created a storage container in the storage account . `Create a container <https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli#create-a-container>`_.
     * You have created an SAS token. `Create an account SAS <https://docs.microsoft.com/ru-ru/rest/api/storageservices/create-account-sas>`_.
 
 The following fields of connection API are required:
