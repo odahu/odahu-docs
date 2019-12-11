@@ -277,7 +277,7 @@ The following fields of connection API are required:
     * ``spec.uri`` - docker registry host.
 
 .. warning::
-    Connection URI must not contains an URI schema.
+    Connection URI must not contain an URI schema.
 
 .. code-block:: yaml
     :caption: Example of GCR
