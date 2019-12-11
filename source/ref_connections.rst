@@ -267,7 +267,7 @@ We have been testing the following Docker repositories:
 
 Before usage, make sure that:
 
-    * You have had a username and password.
+    * You have a username and password.
 
 The following fields of connection API are required:
 
