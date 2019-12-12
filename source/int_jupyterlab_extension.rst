@@ -11,6 +11,7 @@ Installation
 To install the extension, perform the following steps:
 
 .. code-block:: bash
+
     pip install odahu-flow-jupyterlab-plugin
     jupyter serverextension enable --sys-prefix --py odahuflow.jupyterlab
     jupyter labextension install odahu-flow-jupyterlab-plugin

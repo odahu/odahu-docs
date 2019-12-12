@@ -97,10 +97,10 @@ Glossary
         :term:`prediction requests <Model prediction API>`
 
     Odahu-flow SDK
-        An extensible Python client library for :term:`API`, written in Python language. Can be installed from PyPi.
+        An extensible Python client library for :term:`API service`, written in Python language. Can be installed from PyPi.
 
     Odahu-flow CLI
-        Command Line Interface for :term:`API`, written in Python. Can be installed from PyPi. It uses the :term:`Odahu-flow SDK`.
+        Command Line Interface for :term:`API service`, written in Python. Can be installed from PyPi. It uses the :term:`Odahu-flow SDK`.
 
     Plugin for JupyterLab
         A odahu-specific plugin that provides Odahu Platform management controls in JupyterLab.
@@ -132,7 +132,7 @@ Glossary
         A YAML definition for Helm that defines a Odahu Platform deployed on a Kubernetes cluster.
 
     Odahu-flow's CRDs
-        Objects that :term:`API` creates for actions that require computing resources
+        Objects that :term:`API service` creates for actions that require computing resources
         to be stored. For example: :term:`connections <Connection>`, :term:`Trains <Train>`, etc).
 
         These objects are Kubernetes Custom Resources and are managed by :term:`operator`.

@@ -4,14 +4,14 @@
 API
 ===
 
-:term:`API` is a service that manages Odahu Platform entities.
+:term:`API service` manages Odahu Platform entities.
 
 - :term:`Connections <Connection>`
 - :term:`Trainings <Train>`
 - :term:`Packaging <Package>`
 - :term:`Deployments <Deploy>`
 
-:term:`API` can provide the following data, when queried:
+:term:`API service` can provide the following data, when queried:
 
 - Model Train and Deploy logs
 - Model :term:`Trainer Metrics`
@@ -20,13 +20,13 @@ API
 API-provided URLs
 --------------------------
 
-All information about URLs that :term:`API` provides can be viewed using the auto-generated, interactive Swagger page. It is located at ``<api-address>/swagger/index.html``.
+All information about URLs that :term:`API service` provides can be viewed using the auto-generated, interactive Swagger page. It is located at ``<api-address>/swagger/index.html``.
 You can read all of the up-to-date documentation and invoke all methods (allowed for your account) right from this web page.
 
 Authentication and authorization
 --------------------------------
 
-:term:`API` analyzes incoming HTTP headers for JWT token, extracts client's scopes from this token and approves / declines incoming requests based on these (provided in JWT) scopes.
+:term:`API service` analyzes incoming HTTP headers for JWT token, extracts client's scopes from this token and approves / declines incoming requests based on these (provided in JWT) scopes.
 
 .. _api-server-auth:
 
@@ -36,7 +36,7 @@ Authentication and authorization
 Implementation details
 ----------------------
 
-:term:`API` is a REST server, written in GoLang. For easy integration, it provides a Swagger endpoint with up-to-date protocol information.
+:term:`API service` is a REST server, written in GoLang. For easy integration, it provides a Swagger endpoint with up-to-date protocol information.
 
 .. csv-table::
    :stub-columns: 1
