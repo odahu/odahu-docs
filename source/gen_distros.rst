@@ -43,9 +43,9 @@ Docker Images
    "odahu-flow-mlflow-toolchain-gpu", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain with NVIDIA GPU"
    "odahu-flow-mlflow-tracking-server", "odahu/odahu-trainer", "MLflow tracking service"
    "odahu-flow-packagers", "odahu/odahu-packager", "Odahu-flow packagers"
-   "base-notebook", "odahu/base-notebook", "Image with Odahu-flow plugin based on `jupyter/base-notebook <https://hub.docker.com/r/jupyter/base-notebook>`_"
-   "datascience-notebook", "odahu/datascience-notebook", "Image with Odahu-flow plugin based on `jupyter/datascience-notebook <https://hub.docker.com/r/jupyter/datascience-notebook>`_"
-   "tensorflow-notebook", "odahu/tensorflow-notebook", "Image with Odahu-flow plugin based on `jupyter/tensorflow-notebook <https://hub.docker.com/r/jupyter/tensorflow-notebook>`_"
+   "base-notebook", "odahu/base-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/base-notebook <https://hub.docker.com/r/jupyter/base-notebook>`_"
+   "datascience-notebook", "odahu/datascience-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/datascience-notebook <https://hub.docker.com/r/jupyter/datascience-notebook>`_"
+   "tensorflow-notebook", "odahu/tensorflow-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/tensorflow-notebook <https://hub.docker.com/r/jupyter/tensorflow-notebook>`_"
 
 Python packages
 ---------------
