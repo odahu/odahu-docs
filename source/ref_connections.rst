@@ -61,15 +61,15 @@ Odahu-flow CLI
 --------------
 
 :ref:`ref_odahuflowctl:Odahuflowctl` supports the connection API.
-You must be :ref:`ref_odahuflowctl:Login` if you want to get access to the API.
+You must be :ref:`login <ref_odahuflowctl:Login>` if you want to get access to the API.
 
-Getting all connections in json format:
+* Getting all connections in json format:
 
 .. code-block:: bash
 
     odahuflowctl conn get --format json
 
-Getting the reference of the connection:
+* Getting the reference of the connection:
 
 .. code-block:: bash
 
@@ -80,6 +80,12 @@ Getting the reference of the connection:
 .. code-block:: bash
 
     odahuflowctl conn create -f conn.yaml
+
+* All connection commands and documentation:
+
+.. code-block:: bash
+
+    odahuflowctl conn --help
 
 JupyterLab
 ----------
@@ -281,13 +287,13 @@ The following fields of connection API are required:
     Connection URI must not contain an URI schema.
 
 .. code-block:: yaml
-    :caption: Example of GCR
-    :name: Connection GCR docker file
+    :caption: Example of GCR Docker connection
+    :name: GCR docker connection file
 
     id: "docker-registry"
     spec:
-        type: ecr
-        uri: gcr.io/project/gke-legion
+        type: docker
+        uri: gcr.io/project/odahuflow
         username: "_json"
         password: '{"type": "service_account", "project_id": "project_id", "private_key_id": "private_key_id", "private_key": "-----BEGIN PRIVATE KEY-----\nprivate_key\n-----END PRIVATE KEY-----\n", "client_email": "test@project_id.iam.gserviceaccount.com", "client_id": "123455678", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test@project_id.iam.gserviceaccount.com"}'
 
@@ -297,7 +303,7 @@ The following fields of connection API are required:
 
     id: "docker-registry"
     spec:
-        type: ecr
+        type: docker
         uri: docker.io/odahu/
         username: "username"
         password: "password"

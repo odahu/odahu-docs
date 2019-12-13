@@ -19,7 +19,7 @@ HELM charts
    "odahu-flow-core", "odahu/odahu-flow", "Core Odahu-flow services"
    "odahu-flow-jupyterlab", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
    "odahu-flow-mlflow", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
-   "odahu-flow-rest-packager", "odahu/odahu-packager", "Odahu-flow REST packager"
+   "odahu-flow-packagers", "odahu/odahu-packager", "Odahu-flow REST packager"
 
 Docker Images
 -------------
