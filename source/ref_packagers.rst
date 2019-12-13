@@ -267,7 +267,7 @@ The model server provides two urls:
 Docker CLI
 ********************************************
 
-The Docker REST packager wraps an ML model into the CLI inside a Docker image.
+The Docker CLI packager wraps an ML model into the CLI inside a Docker image.
 The resulting service can be used for batch prediction.
 
 The packager provides the following list of targets:
