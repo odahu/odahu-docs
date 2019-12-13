@@ -17,7 +17,6 @@ HELM charts
    "odahu-flow-monitoring", "odahu/odahu-automation", "Prometheus, grafana and alertmanager"
    "odahu-flow-tekton", "odahu/odahu-automation", "Custom tekton chart"
    "odahu-flow-core", "odahu/odahu-flow", "Core Odahu-flow services"
-   "odahu-flow-jupyterlab", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
    "odahu-flow-mlflow", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
    "odahu-flow-packagers", "odahu/odahu-packager", "Odahu-flow REST packager"
 
@@ -44,7 +43,9 @@ Docker Images
    "odahu-flow-mlflow-toolchain-gpu", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain with NVIDIA GPU"
    "odahu-flow-mlflow-tracking-server", "odahu/odahu-trainer", "MLflow tracking service"
    "odahu-flow-packagers", "odahu/odahu-packager", "Odahu-flow packagers"
-   "odahu-flow-jupyterlab", "odahu/odahu-flow-jupyterlab-plugin", "Jupyterlab with the Odahu-flow plugin"
+   "base-notebook", "odahu/base-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/base-notebook <https://hub.docker.com/r/jupyter/base-notebook>`_"
+   "datascience-notebook", "odahu/datascience-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/datascience-notebook <https://hub.docker.com/r/jupyter/datascience-notebook>`_"
+   "tensorflow-notebook", "odahu/tensorflow-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/tensorflow-notebook <https://hub.docker.com/r/jupyter/tensorflow-notebook>`_"
 
 Python packages
 ---------------
