@@ -92,7 +92,7 @@ Odahu-flow CLI
 --------------
 
 :ref:`ref_odahuflowctl:Odahuflowctl` supports the Packagers API.
-You must be :ref:`login <ref_odahuflowctl:Login>` if you want to get access to the API.
+You must be :ref:`logged in <ref_odahuflowctl:Login>` if you want to get access to the API.
 
 Getting all packaging in json format:
 
