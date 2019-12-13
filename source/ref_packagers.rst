@@ -75,7 +75,7 @@ You can find the description of all fields below:
 
 .. note::
 
-    You can find a artifactName in the `status.artifactName` field of a model training entity.
+    You can find an artifactName in the `status.artifactName` field of a model training entity.
 
 *********************
 Packagers management
