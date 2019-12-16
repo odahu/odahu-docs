@@ -35,6 +35,6 @@ Technologies
 
 - **Kubernetes** – Any Cloud support
 
-- **HELM** - Odahu as Kubernetes App Deployment
+- **HELM** - as Kubernetes App Deployment
 
 - **FluentD** – log aggregation for feedback loop and cluster logging

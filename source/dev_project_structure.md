@@ -11,8 +11,8 @@
 
 Core services of Odahu-flow project.
 
-* Odahu-flow-cli python package
-* Odahu-flow-sdk python package
+* `odahu-flow-cli` python package
+* `odahu-flow-sdk` python package
 * E2E Odahu tests
 * Training, packaging and deployment operator
 * API server
@@ -38,7 +38,7 @@ An apache airflow plugin for the Odahu Platform.
 
 ## [odahu/odahu-docs](https://github.com/odahu/odahu-docs)
 
-The repository contains Odahu documentation, which is available [here](http://odahu.github.io/).
+The repository contains Odahu documentation, which is available [here](https://docs.odahu.org/).
 
 ## [odahu/odahu-examples](https://github.com/odahu/odahu-examples)
 
