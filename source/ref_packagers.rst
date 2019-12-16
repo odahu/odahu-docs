@@ -66,6 +66,9 @@ You can find the description of all fields below:
         # A packager can interact with a Docker registry, PyPi repository, and so on.
         # You should provide a list of connections for a packager can get access to them.
         targets: []
+        # You can set connection which points to some bucket where the Trained Model Binary is stored
+        # then packager will extract your binary from this connection
+        outputConnection: custom-connection
     # Every packager saves its results into status field.
     # Example of fields: docker image or python packager name.
     status:
