@@ -279,7 +279,7 @@ Paste code into the created file:
    :name: VCS Connection
 
     kind: Connection
-    id: odahu-flow-examples
+    id: odahu-flow-tutorial
     spec:
       type: git
       uri: git@github.com:odahu/odahu-examples.git
@@ -321,10 +321,10 @@ Paste this code into the file:
    :name: Wine connection
 
     kind: Connection
-    id: wine
+    id: wine-tutorial
     spec:
       type: gcs
-      uri: gs://<paste your bucket address here>/data/wine-quality.csv
+      uri: gs://<paste your bucket address here>/data-tutorial/wine-quality.csv
       region: <paste region here>
       keySecret: <paste key secret here>
       description: Wine dataset
@@ -335,7 +335,7 @@ If wine-quality.csv is not in the GCS bucket yet, use this command:
 
 .. code-block:: console
 
-    $ gsutil cp ./data/wine-quality.csv gs://<bucket-name>/data/
+    $ gsutil cp ./data/wine-quality.csv gs://<bucket-name>/data-tutorial/
 
 
 Create a :term:`Connection` to a docker registry
@@ -354,7 +354,7 @@ Paste this code into the file:
    :name: Docker connection
 
     kind: Connection  # type of payload
-    id: docker-ci
+    id: docker-tutorial
     spec:
       type: docker
       uri: <past uri of your registry here>  # uri to docker image registry
@@ -371,11 +371,11 @@ Check that all Connections were created successfully:
 
     $ odahuflowctl conn get | grep -e id: -e type: -e description
 
-    - id: docker-ci
+    - id: docker-tutorial
         description: Docker repository for model packaging
         type: docker
-    - id: odahu-flow-examples
-        description: Git repository with odahu-flow-examples
+    - id: odahu-flow-tutorial
+        description: Git repository with odahu-flow-tutorial
         type: git
     - id: models-output
         description: Storage for trainined artifacts
@@ -414,7 +414,7 @@ Paste code into the file:
    :emphasize-lines: 7-14,22
 
     kind: ModelTraining
-    id: wine
+    id: wine-tutorial
     spec:
       model:
         name: wine
@@ -423,7 +423,7 @@ Paste code into the file:
       entrypoint: main
       workDir: mlflow/sklearn/wine  # MLproject location (in GitHub)
       data:
-        - connName: wine
+        - connName: wine-tutorial
           localPath: mlflow/sklearn/wine/wine-quality.csv # wine-quality.csv file (on GCS)
       hyperParameters:
         alpha: "1.0"
@@ -434,7 +434,7 @@ Paste code into the file:
         requests:
           cpu: 2024m
           memory: 2024Mi
-      vcsName: odahu-flow-examples
+      vcsName: odahu-flow-tutorial
 
 In this file, we:
 
@@ -457,7 +457,7 @@ Check :term:`Train` logs:
 
 .. code-block:: console
 
-    $ odahuflowctl training logs --id wine
+    $ odahuflowctl training logs --id wine-tutorial
 
 The :term:`Train` process will finish after some time.
 
@@ -465,7 +465,7 @@ To check the status run:
 
 .. code-block:: console
 
-    $ odahuflowctl training get --id wine
+    $ odahuflowctl training get --id wine-tutorial
 
 When the Train process finishes, the command will output this YAML:
 
@@ -525,12 +525,12 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 4, 6-8
 
-    id: wine
+    id: wine-tutorial
     kind: ModelPackaging
     spec:
       artifactName: "<fill-in>"  # Use artifact name from Train step
       targets:
-        - connectionName: docker-ci  # Docker registry when output image will be stored
+        - connectionName: docker-tutorial  # Docker registry when output image will be stored
           name: docker-push
       integrationName: docker-rest  # REST API Packager
 
@@ -551,7 +551,7 @@ Check the :term:`Package` logs:
 
 .. code-block:: console
 
-    $ odahuflowctl packaging logs --id wine
+    $ odahuflowctl packaging logs --id wine-tutorial
 
 After some time, the :term:`Package` process will finish.
 
@@ -559,7 +559,7 @@ To check the status, run:
 
 .. code-block:: console
 
-    $ odahuflowctl packaging get --id wine
+    $ odahuflowctl packaging get --id wine-tutorial
 
 You will see YAML with updated :term:`Package` resource. Look at the status section. You can see:
 
@@ -612,12 +612,12 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 4, 6-8
 
-    id: wine
+    id: wine-tutorial
     kind: ModelDeployment
     spec:
       image: "<fill-in>"
       minReplicas: 1
-      ImagePullConnectionID: docker-ci
+      ImagePullConnectionID: docker-tutorial
 
 In this file, we:
 
@@ -628,7 +628,7 @@ Create a :term:`Deploy` using the :term:`Odahu-flow CLI`:
 
 .. code-block:: console
 
-    $ odahuflowctl conn create -f ./odahu-flow/deployment.odahu.yaml
+    $ odahuflowctl deployment create -f ./odahu-flow/deployment.odahu.yaml
 
 After some time, the :term:`Deploy` process will finish.
 
@@ -636,7 +636,7 @@ To check its status, run:
 
 .. code-block:: console
 
-    $ odahuflowctl deployment get --id wine
+    $ odahuflowctl deployment get --id wine-tutorial
 
 Or create a `Deploy` using the :term:`Plugin for JupyterLab`:
 
@@ -668,8 +668,8 @@ After the model is deployed, you can check its API in Swagger:
 
 Open ``<your-odahu-platform-host>/swagger/index.html`` and look and the endpoints:
 
-1. ``GET /model/wine/api/model/info`` – OpenAPI model specification;
-2. ``POST /model/wine/api/model/invoke`` – Endpoint to do predictions;
+1. ``GET /model/wine-tutorial/api/model/info`` – OpenAPI model specification;
+2. ``POST /model/wine-tutorial/api/model/invoke`` – Endpoint to do predictions;
 
 But you can also do predictions using the :term:`Odahu-flow CLI`.
 
@@ -679,7 +679,7 @@ Create a payload file:
 
     $ touch ./odahu-flow/r.json
 
-Add payload for ``/model/wine/api/model/invoke`` according to the OpenAPI schema. In this payload we provide values for model input variables:
+Add payload for ``/model/wine-tutorial/api/model/invoke`` according to the OpenAPI schema. In this payload we provide values for model input variables:
 
 .. code-block:: json
    :caption: ./odahu-flow/r.json
@@ -721,7 +721,7 @@ Invoke the model to make a prediction:
 
 .. code-block:: console
 
-    $ odahuflowctl model invoke --mr wine --json-file r.json
+    $ odahuflowctl model invoke --mr wine-tutorial --json-file r.json
 
 .. code-block:: json
    :caption: ./odahu-flow/r.json
