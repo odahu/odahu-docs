@@ -248,7 +248,7 @@ The first file contains meta-information about request and response:
         "knative-serving-revision": "test-e2e-wine-l4xt7"
       },
       "response_status": "200",
-      "request_host": "odahu.gke-legion-dev01.ailifecycle.org",
+      "request_host": "odahu.example.com",
       "model_name": "test-e2e-wine",
       "request_http_method": "POST",
       "time": "2019-12-17 08:46:40 +0000"
