@@ -151,7 +151,7 @@ Feedback
 The mechanism is simple:
 
 1. Ask Deploy for prediction (with or without ``Request-Id`` provided)
-2. Send Feedback to Odahu-flow about the prediction (with ``Request-Id`` returned from previous step)
+2. Send prediction feedback to Odahu-flow  (with ``Request-Id`` returned from previous step)
 3. Odahu-flow stores the prediction and feedback to a configurable location
 
 .. important::
