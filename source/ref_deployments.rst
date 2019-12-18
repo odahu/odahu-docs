@@ -56,7 +56,7 @@ Odahu-flow CLI
 --------------
 
 :ref:`ref_odahuflowctl:Odahuflowctl` supports the Model Deployment API.
-You must be :ref:`logged in <ref_odahuflowctl:Login>` if you want to get access to the API.
+You must be :ref:`logged in <ref_odahuflowctl:Login>` if you want to access the API.
 
 Getting all model deployments in json format:
 
