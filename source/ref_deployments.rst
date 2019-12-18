@@ -156,7 +156,7 @@ The mechanism is simple:
 
 .. important::
 
-   This flow requires ``feedback`` to be enabled in ``values.yaml`` during Helm chart install
+   This flow requires ``feedback`` to be enabled in ``values.yaml`` during Helm chart installation
 
 Protocol
 --------
