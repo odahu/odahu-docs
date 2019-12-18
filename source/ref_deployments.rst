@@ -239,7 +239,7 @@ The first file contains meta-information about request and response:
         "x-envoy-external-address": "10.44.0.10",
         "x-request-id": "12dcddd5-771d-9fc0-b326-816211cf8172",
         "x-forwarded-proto": "http",
-        ":authority": "odahu.gke-legion-dev01.ailifecycle.org",
+        ":authority": "odahu.example.com",
         "x-b3-traceid": "488abe197a652c2ce80e6b848a4c56e6",
         ":path": "/api/model/invoke",
         "accept-encoding": "gzip, deflate",
