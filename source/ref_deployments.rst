@@ -227,7 +227,7 @@ The first file contains meta-information about request and response:
         "knative-serving-namespace": "odahu-flow-deployment",
         "x-envoy-original-path": "/model/test-e2e-wine/api/model/invoke",
         ":scheme": "http",
-        "x-forwarded-host": "odahu.gke-legion-dev01.ailifecycle.org",
+        "x-forwarded-host": "odahu.example.com",
         "x-original-uri": "/model/test-e2e-wine/api/model/invoke",
         "user-agent": "python-requests/2.22.0",
         "x-forwarded-port": "443",
