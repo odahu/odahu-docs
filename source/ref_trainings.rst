@@ -98,7 +98,7 @@ Data source supports the following types of Odahu-flow connections:
 Let's consider the following example of downloading training data from Google Cloud Storage.
 
 Prerequisites:
-    * The training data set locates in the `wine-training-data` bucket by `wine/11-11-2011/` directory.
+    * The training data set is located in the `wine-training-data` bucket by `wine/11-11-2011/` directory.
     * The ML script expects that the data will be located in `data/` directory relative to the root git directory.
 
 First of all, we should create an :ref:`Odahu-flow GCS connection<ref_connections:Google Cloud Storage>`.
