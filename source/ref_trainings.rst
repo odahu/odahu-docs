@@ -220,7 +220,7 @@ Let's look at how the MLProject file is related to Model Training API.
           data_file: path
         command: "python validate.py {data_file}"
 
-Model Training API only can contain one entry point.
+Model Training API can contain only one entry point.
 You have to add all hyperparameters, which do not have a default value, to a Model Training.
 Next, you can find the Model Trainings for the MLProject file.
 
