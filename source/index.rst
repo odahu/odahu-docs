@@ -12,6 +12,7 @@
    :maxdepth: 1
    :caption: Tutorials
 
+   tutorials_installation
    tutorials_wine
 
 .. toctree::
