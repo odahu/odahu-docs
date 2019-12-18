@@ -155,7 +155,7 @@ Getting the model name of the trainings:
 
     odahuflowctl train get --id tensorflow-cli -o 'jsonpath=[*].spec.model.name'
 
-* Creating of a training from `train.yaml` file:
+* Creating a training from `train.yaml` file:
 
 .. code-block:: bash
 
