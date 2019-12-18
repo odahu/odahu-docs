@@ -127,7 +127,7 @@ Example of a prediction request:
 Grafana Dashboard
 ********************************************
 
-Out of the box, Odahu-flow provides the Grafana Model Deploymet dashboard.
+Out of the box, Odahu-flow provides the Grafana Model Deployment dashboard.
 It contains the charts with following system metrics:
 
     * availability
