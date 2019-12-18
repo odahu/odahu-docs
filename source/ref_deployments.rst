@@ -50,7 +50,7 @@ Model Deployments can be managed using the following ways.
 Swagger UI
 ----------
 
-ModelDeployments are available on the Swagger UI at http://api-service/swagger/index.html URL.
+ModelDeployments are available in the Swagger UI at http://api-service/swagger/index.html URL.
 
 Odahu-flow CLI
 --------------
