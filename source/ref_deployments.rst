@@ -166,7 +166,7 @@ Protocol
 3. User sends Model Feedback as an argument to the feedback endpoint. (Feedback can be arbitrary JSON.)
 5. All Feedback is persisted on external storage and can be used by models during subsequent Trains.
 
-Worked example
+Working example
 ~~~~~~~~~~~~~~
 
 Making a prediction request:
@@ -266,7 +266,7 @@ The second file contains the response body with the same ``Request-Id`` (File na
       "time": "2019-12-17 08:46:40 +0000"
     }
 
-Worked Example - Send Feedback as Payload
+Working Example - Send Feedback as Payload
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Send Model Feedback request:
