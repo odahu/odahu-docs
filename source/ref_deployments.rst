@@ -2,7 +2,7 @@
 Model Deployments
 ######################
 
-Odahu-flow Model Deployment API allows deploy ML models in a Kubernetes cluster.
+Odahu-flow Model Deployment API allows deploy of ML models in a Kubernetes cluster.
 Additionally, it provides the following set of features:
 
     * Feedback loop
