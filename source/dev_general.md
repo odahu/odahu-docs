@@ -27,7 +27,7 @@ To participate in developing of Odahu project you have to meet these requirement
 
 * Python:
     * [Mlflow](https://www.mlflow.org/docs/latest/index.html)
-    * [Robotframework Guide](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html)
+    * [Robot Framework Guide](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html)
     * [Odahu Airflow Plugins Development](https://airflow.apache.org/plugins.html)
 * Golang:
     * [Kubebuilder](https://book.kubebuilder.io/)

@@ -43,6 +43,12 @@ jobs:
         name: html-files
         path: /tmp/html-files
 
+    - name: Get built PDF artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: pdf-file
+        path: /tmp
+
     - name: Checkout gh-pages repo and push HTML files
       shell: bash
       env:
@@ -63,5 +69,6 @@ jobs:
         git checkout $GHP_BRANCH
         find . -path ./.git -prune -o \( \! -path ./CNAME \) -exec rm -rf {} \; 2>/dev/null || true
         cp -aR /tmp/html-files/. .
+        cp /tmp/odahu-docs.pdf .
         git add --all
         git commit -m "Publishing updated documentation" && git push origin $GHP_BRANCH

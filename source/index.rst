@@ -27,7 +27,6 @@
    comp_api
    comp_operator
    comp_mlflow_trainer
-   comp_model_feedback
 
 .. toctree::
    :maxdepth: 2
@@ -42,11 +41,11 @@
    :caption: Reference
 
    ref_odahuflowctl
-   ref_kubernetes
-   ref_model_api
    ref_model_format
    ref_connections
+   ref_trainings
    ref_packagers
+   ref_deployments
    gen_glossary
 
 .. toctree::

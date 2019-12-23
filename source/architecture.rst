@@ -2,39 +2,21 @@
 Architecture
 ============================
 
-Subsystems
---------------------------------
+The following diagram shows the high level architecture of Odahu-flow project.
 
-Odahu subsystems are:
+.. image:: img/architecture.png
 
-1. Training
-2. Packaging
-3. Deployment
+Odahu-flow applications:
 
-External integrations
---------------------------------
-
-These tools and libraries are Odahu clients:
-
-1. :term:`Odahu-flow SDK`
-2. :term:`Odahu-flow CLI`
-3. :term:`Plugin for JupyterLab`
-4. :term:`Plugin for Airflow`
-
-Deployment
---------------------------------
-
-The Odahu Platform can be installed locally or on a Kubernetes cluster.
-
-Technologies
---------------------------------
-
-- **Python Language** - build toolchains, Packagers and Deployers.
-
-- **Go Language** - Odahu Platform orchestration.
-
-- **Kubernetes** – Any Cloud support
-
-- **HELM** - Odahu as Kubernetes App Deployment
-
-- **FluentD** – log aggregation for feedback loop and cluster logging
+    * :ref:`Odahu-flow CLI <ref_odahuflowctl:Odahuflowctl>` is a command-line interface for interacting with Odahu-flow API service.
+    * The Odahu-flow Swagger UI provides swagger interface for Odahu-flow REST API.
+    * :ref:`Odahu-flow Airflow plugin <int_airflow:Airflow>` provides a set of custom operators that allow you to interact with a Odahu cluster using `Apache Airflow <https://airflow.apache.org/>`_
+    * The MLflow Tracking component is an API and UI for logging parameters, code versions, and metrics when running your machine learning code and for later visualizing the results.
+    * :ref:`JupyterLab extension <int_jupyterlab_extension:Jupyterlab extension>` allows you to interact with an Odahu cluster from JupyterLab web-based IDEs.
+    * API service manages Odahu Platform entities: :ref:`Connections <ref_connections:Connections>`, :ref:`Trainings <ref_trainings:Model Trainings>`, :ref:`Packaging <ref_packagers:Model Packagers>`, :ref:`Deployments <ref_deployments:Model Deployments>`.
+    * :ref:`Service catalog <ref_deployments:Service Catalog>` provides a Swagger UI for Model Deployments.
+    * TektonCD is an open source implementation to configure and run CI/CD style pipelines for your Kubernetes application.
+    * Knative Serving builds on Kubernetes and Istio to support deploying and serving of serverless applications and functions.
+    * Odahu-flow Model Training API provides features to manage remote training jobs.
+    * Odahu-flow packagers turn a :term:`Trained Model Binary` artifact into a specific application.
+    * Odahu-flow Model Deployment API allows deploy ML models in a Kubernetes cluster.

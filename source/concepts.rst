@@ -5,6 +5,8 @@ Concepts
 Phases
 --------------------------------
 
+.. image:: img/phases.png
+
 Odahu splits the ML/AI model lifecycle into three phases:
 
 1. :term:`Train`
