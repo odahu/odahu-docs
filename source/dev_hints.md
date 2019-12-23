@@ -9,10 +9,10 @@ Odahu product contains 5 main development parts:
     * Main entrypoints:
       * Odahu-flow sdk - `packages/sdk`
       * Odahu-flow cli - `packages/cli`
-* Odahu-flow Jupiterlab plugin
+* Odahu-flow JupyterLab plugin
     * Workdir is `odahu/jupyterlab-plugin`
     * Executes the `yarn install` command to downloads all Javascripts dependencies.
-    * Executes the `npm run build && jupyter labextension install` command to build the Jupiterlab plugin.
+    * Executes the `npm run build && jupyter labextension install` command to build the JupyterLab plugin.
     * Starts the Jyputerlab server using `jupyter lab` command.
     * Or you can perform all actions above using docker, for example: `make docker-build-jupyterlab && make run-sandbox`
 * Golang services:

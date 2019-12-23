@@ -14,7 +14,7 @@ To participate in developing of Odahu project you have to meet these requirement
     * [Kubebuilder](https://github.com/kubernetes-sigs/kubebuilder)
     * [swag](https://github.com/swaggo/swag)
     * [gotestsum](https://github.com/gotestyourself/gotestsum)
-* Jupiterlab plugin:
+* JupyterLab plugin:
     * [Typescript](https://www.typescriptlang.org/index.html#download-links)
     * [Yarn](https://yarnpkg.com/lang/en/)
 * Infra:
@@ -31,9 +31,9 @@ To participate in developing of Odahu project you have to meet these requirement
     * [Odahu Airflow Plugins Development](https://airflow.apache.org/plugins.html)
 * Golang:
     * [Kubebuilder](https://book.kubebuilder.io/)
-* Jupiterlab plugin:
+* JupyterLab plugin:
     * [Typescript handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html)
     * [React documentation](https://reactjs.org/docs/getting-started.html)
-    * [Jupiterlab plugin Extension Developer Guide](https://jupyterlab.readthedocs.io/en/stable/developer/extension_dev.html)
+    * [JupyterLab plugin Extension Developer Guide](https://jupyterlab.readthedocs.io/en/stable/developer/extension_dev.html)
 * Infra:
     * [Helm](https://helm.sh/docs/using_helm/#quickstart-guide)
