@@ -8,7 +8,7 @@ In particular:
 -  Kubernetes cluster to perform base and accessory ODAHU services in it, as well as models training, packaging and deployment processes.
    To be able to use ODAHU services, minimum version of your Kubernetes cluster must be at least `1.13 <https://v1-13.docs.kubernetes.io/docs/setup/release/notes/>`__.
 -  object storage to store models training artifacts and get input data for models (:ref:`ref_connections:S3`, :ref:`ref_connections:Google Cloud Storage`, :ref:`ref_connections:Azure Blob storage` are supported)
--  :ref:`Docker registry <ref_connections:Docker>` (to store resulting Docker images from :ref:`packagers <ref_packagers:Packagers>`)
+-  :ref:`Docker registry <ref_connections:Docker>` (to store resulting Docker images from :ref:`packagers <ref_packagers:Model Packagers>`)
 
 .. _installation-k8s:
 
@@ -294,6 +294,8 @@ Example:
         client_x509_cert_url: https://www.googleapis.com/robot/v1/metadata/x509/service-account%40my-gcp-project-id-zzzzz.iam.gserviceaccount.com
     EOF
 
+::
+
     $ helm install odahu/odahu-flow-fluentd --name fluentd --namespace fluentd --values ./fluentd_values.yaml
 
 .. _tutorials_installation-odahu-svc:
@@ -363,7 +365,11 @@ Example:
    It should point to LoadBalancer IP got from :ref:`Nginx Ingress section<installation-nginx-ingress>`.
 
 In order to setup ODAHU services along with ready-to-use :term:`connections<Connection>`, you may add according section to
-values YAML in advance:
+values YAML in advance.
+
+Examples:
+
+a) :ref:`Docker registry connection<ref_connections:Docker>` is used to pull/push Odahu packager resulting Docker images to a Docker registry
 
 ::
 
@@ -376,7 +382,12 @@ values YAML in advance:
         type: docker
         uri: docker.io/odahu-models-repo
         webUILink: https://hub.docker.com/r/odahu-models-repo
-    
+
+b) :ref:`Google Cloud Storage connection<ref_connections:Google Cloud Storage>` is used to store model trained artifacts and input data for ML models
+
+::
+
+    connections:
     - id: models-output
       spec:
         description: Object storage for trained artifacts
@@ -431,10 +442,20 @@ Helm chart:
 
     $ helm install odahu/odahu-flow-packagers --name odahu-flow-packagers --namespace odahu-flow
 
-Install `Prometheus operator <https://github.com/coreos/prometheus-operator>`__ (optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Install additional services (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TBD
+In order to provide additional functionality, ODAHU team also developed several Helm charts to install them into Kubernetes cluster.
+These are:
+
+-  `odahu-flow-monitoring <https://github.com/odahu/odahu-infra/tree/develop/helms/odahu-flow-monitoring>`__ - Helm chart providing installation and setup of
+
+   -  `Prometheus operator <https://github.com/coreos/prometheus-operator>`__ - to collect :ref:`various metrics<int_metrics:Metrics>` from models trainings
+   -  `Grafana <https://github.com/grafana/grafana>`__ with set of custom dashboards - to visualize these metrics
+
+- `odahu-flow-k8s-gke-saa <https://github.com/odahu/odahu-infra/tree/develop/helms/odahu-flow-k8s-gke-saa>`__ - Helm chart providing installation and setup of `k8s-gke-service-account-assigner <https://github.com/imduffy15/k8s-gke-service-account-assigner>`__ service.
+
+
 
 Delete ODAHU services
 ---------------------
