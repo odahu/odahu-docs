@@ -127,6 +127,9 @@ html_sidebars = {
     ]
 }
 
+def setup(app):
+    app.add_stylesheet('nav_content_width.css')
+
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
