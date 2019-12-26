@@ -1,5 +1,5 @@
 ######################
-Jupyterlab extension
+JupyterLab extension
 ######################
 
 Odahu-flow provides the JupyterLab extension that allows you to interact with an Odahu cluster from JupyterLab web-based IDEs.

@@ -9,16 +9,11 @@
    gen_security
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Tutorials
 
+   tutorials_installation
    tutorials_wine
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Installation
-
-   inst_cluster_installation
 
 .. toctree::
    :maxdepth: 1

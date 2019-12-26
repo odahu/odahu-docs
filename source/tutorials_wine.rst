@@ -1,6 +1,6 @@
 
 ====================
-MLFlow
+Quickstart
 ====================
 
 In this tutorial you will learn how to Train, Package and Deploy a model from scratch on Odahu. Once deployed, the model serves RESTful requests, and makes a prediction when provided user input.

@@ -1,4 +1,5 @@
 build
+source/.doctrees/
 /out/
 /_static
 /odahu-docs.pdf
