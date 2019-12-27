@@ -11,11 +11,11 @@ HELM charts
    :header: "Helm chart name", "Repository", "Description"
    :widths: 20, 30, 40
 
-   "odahu-flow-fluentd", "odahu/odahu-automation", "Fluentd with gcp, s3 and abs plugins"
-   "odahu-flow-k8s-gke-saa", "odahu/odahu-automation", "GKE role assigner"
-   "odahu-flow-knative", "odahu/odahu-automation", "Custom knative chart"
-   "odahu-flow-monitoring", "odahu/odahu-automation", "Prometheus, grafana and alertmanager"
-   "odahu-flow-tekton", "odahu/odahu-automation", "Custom tekton chart"
+   "odahu-flow-fluentd", "odahu/odahu-infra", "Fluentd with gcp, s3 and abs plugins"
+   "odahu-flow-k8s-gke-saa", "odahu/odahu-infra", "GKE role assigner"
+   "odahu-flow-knative", "odahu/odahu-infra", "Custom knative chart"
+   "odahu-flow-monitoring", "odahu/odahu-infra", "Prometheus, grafana and alertmanager"
+   "odahu-flow-tekton", "odahu/odahu-infra", "Custom tekton chart"
    "odahu-flow-core", "odahu/odahu-flow", "Core Odahu-flow services"
    "odahu-flow-mlflow", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"
    "odahu-flow-packagers", "odahu/odahu-packager", "Odahu-flow REST packager"
@@ -29,8 +29,7 @@ Docker Images
    :header: "Image name", "Repository", "Description"
    :widths: 20, 30, 40
 
-   "odahu-flow-automation", "odahu/odahu-automation", "CI/CD pipeline component (not used by Odahu cluster)"
-   "odahu-flow-fluentd", "odahu/odahu-automation", "Fluentd with gcp, s3 and abs plugins"
+   "odahu-flow-fluentd", "odahu/odahu-infra", "Fluentd with gcp, s3 and abs plugins"
    "odahu-flow-api", "odahu/odahu-flow", "Odahu-flow API service"
    "odahu-flow-model-cli", "odahu/odahu-flow", "Odahu-flow CLI"
    "odahu-flow-model-trainer", "odahu/odahu-flow", "Trainer helper"
@@ -43,9 +42,9 @@ Docker Images
    "odahu-flow-mlflow-toolchain-gpu", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain with NVIDIA GPU"
    "odahu-flow-mlflow-tracking-server", "odahu/odahu-trainer", "MLflow tracking service"
    "odahu-flow-packagers", "odahu/odahu-packager", "Odahu-flow packagers"
-   "base-notebook", "odahu/base-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/base-notebook <https://hub.docker.com/r/jupyter/base-notebook>`_"
-   "datascience-notebook", "odahu/datascience-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/datascience-notebook <https://hub.docker.com/r/jupyter/datascience-notebook>`_"
-   "tensorflow-notebook", "odahu/tensorflow-notebook", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/tensorflow-notebook <https://hub.docker.com/r/jupyter/tensorflow-notebook>`_"
+   "base-notebook", "odahu/odahu-flow-jupyterlab-plugin", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/base-notebook <https://hub.docker.com/r/jupyter/base-notebook>`_"
+   "datascience-notebook", "odahu/odahu-flow-jupyterlab-plugin", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/datascience-notebook <https://hub.docker.com/r/jupyter/datascience-notebook>`_"
+   "tensorflow-notebook", "odahu/odahu-flow-jupyterlab-plugin", "Image with :ref:`int_jupyterlab_extension:JupyterLab extension` based on `jupyter/tensorflow-notebook <https://hub.docker.com/r/jupyter/tensorflow-notebook>`_"
 
 Python packages
 ---------------
