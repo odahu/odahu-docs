@@ -43,3 +43,7 @@ The repository contains Odahu documentation, which is available [here](https://d
 ## [odahu/odahu-examples](https://github.com/odahu/odahu-examples)
 
 Examples of ML models.
+
+# [odahu/odahu-infra](https://github.com/odahu/odahu-infra)
+
+Docker images and deployments script for third-party services.
