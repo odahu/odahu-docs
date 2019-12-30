@@ -30,12 +30,12 @@ Run deploy of a new Kubernetes cluster:
 .. code:: bash
 
     $ gcloud container clusters create <cluster-name> \
-        --cluster-version latest \
+        --cluster-version 1.13 \
         --machine-type=n1-standard-2 \
         --disk-size=100GB \
         --disk-type=pd-ssd \
         --num-nodes 4 \
-        --zone <zone> \
+        --zone <cluster-region> \
         --project <project-id>
 
 .. note::
@@ -47,18 +47,67 @@ Fetch your Kubernetes credentials for kubectl after cluster is successfully depl
 .. code:: bash
 
     $ gcloud container clusters get-credentials <cluster-name> \
-        --zone <zone> \
+        --zone <cluster-region> \
         --project <project-id>
 
 Deploy Kubernetes cluster in Amazon Web Services (`EKS <https://aws.amazon.com/eks/>`__)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TBD.
+**Prerequisites**
+
+-  Resources that are `described in AWS documentation <https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html#w243aac13c17c11b5>`__
+-  AWS S3 bucket (``odahu-flow-test-store`` in examples below) to store models output data
+
+After you've created VPC and a dedicated security group for it along with Amazon EKS service role to apply to your cluster, you can
+create a Kubernetes cluster with following command:
+
+.. code:: bash
+
+    $ aws eks --region <cluster-region> create-cluster \
+        --name <cluster-name> --kubernetes-version 1.13 \
+        --role-arn arn:aws:iam::111122223333:role/eks-service-role-AWSServiceRoleForAmazonEKS-EXAMPLEBKZRQR \
+        --resources-vpc-config subnetIds=subnet-a9189fe2,subnet-50432629,securityGroupIds=sg-f5c54184
+
+Use the AWS CLI ``update-kubeconfig`` command to create or update ``kubeconfig`` for your cluster:
+
+.. code:: bash
+
+    $ aws eks --region <cluster-region> update-kubeconfig --name <cluster-name>
+
 
 Deploy Kubernetes cluster in Microsoft Azure (`AKS <https://docs.microsoft.com/en-us/azure/aks/>`__)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TBD.
+**Prerequisites**
+
+-  `Azure AD Service Principal <https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal>`__ to interact with Azure APIs and create dynamic resources for an AKS cluster
+-  Azure Storage account with Blob container (``odahu-flow-test-store`` in examples below) to store models output data
+
+First, create a resource group in which all created resources will be placed:
+
+.. code:: bash
+
+    $ az group create --location <cluster-region> \
+        --name <resource-group-name>
+
+Run deploy of a new Kubernetes cluster:
+
+.. code:: bash
+
+    $ az aks create --name <cluster-name> \
+        --resource-group <resource-group-name>
+        --node-vm-size Standard_DS2_v2 \
+        --node-osdisk-size 100GB \
+        --node-count 4 \
+        --service-principal <service-principal-appid> \
+        --client-secret <service-principal-password>
+
+Fetch your Kubernetes credentials for kubectl after cluster is successfully deployed:
+
+.. code:: bash
+
+    $ az aks get-credentials --name <cluster-name> \
+        --resource-group <resource-group-name>
 
 
 .. _installation-base-svc:
