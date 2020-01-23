@@ -369,8 +369,7 @@ Check that all Connections were created successfully:
 
 .. code-block:: console
 
-   $ odahuflowctl conn get | grep -e id: -e type: -e description
-   
+
    - id: docker-tutorial
        description: Docker repository for model packaging
        type: docker
@@ -435,6 +434,7 @@ Paste code into the file:
           cpu: 2
           memory: 2Gi
      vcsName: odahu-flow-tutorial
+
 
 In this file, we:
 
