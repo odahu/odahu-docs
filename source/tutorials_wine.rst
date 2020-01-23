@@ -197,13 +197,13 @@ Paste code to the created file:
 
    name: example
    channels:
-   - defaults
+     - defaults
    dependencies:
-   - python=3.6
-   - numpy=1.14.3
-   - pandas=0.22.0
-   - scikit-learn=0.19.1
-   - pip:
+     - python=3.6
+     - numpy=1.14.3
+     - pandas=0.22.0
+     - scikit-learn=0.19.1
+     - pip:
        - mlflow==1.0.0
 
 .. note::
