@@ -429,11 +429,11 @@ Paste code into the file:
        alpha: "1.0"
      resources:
        limits:
-         cpu: 4024m
-         memory: 4024Mi
-       requests:
-         cpu: 2024m
-         memory: 2024Mi
+          cpu: 4
+          memory: 4Gi
+        requests:
+          cpu: 2
+          memory: 2Gi
      vcsName: odahu-flow-tutorial
 
 In this file, we:
@@ -451,7 +451,7 @@ In this file, we:
 
 .. code-block:: console
 
-    $ odahuflowctl conn create -f ./odahu-flow/training.odahu.yaml
+    $ odahuflowctl training create -f ./odahu-flow/training.odahu.yaml
 
 Check :term:`Train` logs:
 
@@ -545,7 +545,7 @@ Create a :term:`Package` using :term:`Odahu-flow CLI`:
 
 .. code-block:: console
 
-    $ odahuflowctl conn create -f ./odahu-flow/packaging.odahu.yaml
+    $ odahuflowctl packaging create -f ./odahu-flow/packaging.odahu.yaml
 
 Check the :term:`Package` logs:
 
