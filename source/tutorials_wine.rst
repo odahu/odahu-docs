@@ -433,7 +433,7 @@ Paste code into the file:
         requests:
           cpu: 2
           memory: 2Gi
-     vcsName: odahu-flow-tutorial
+      vcsName: odahu-flow-tutorial
 
 
 In this file, we:
