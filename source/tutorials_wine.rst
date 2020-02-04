@@ -325,7 +325,7 @@ Paste this code into the file:
    spec:
      type: gcs
      uri: gs://<paste your bucket address here>/data-tutorial/wine-quality.csv
-     project: <paste project name here>
+     region: <paste region here>
      keySecret: <paste key secret here>  # should be enclosed in single quotes
      description: Wine dataset
 
@@ -424,7 +424,7 @@ Paste code into the file:
      workDir: mlflow/sklearn/wine  # MLproject location (in GitHub)
      data:
        - connName: wine-tutorial
-         localPath: data-totorial/wine-quality.csv # wine-quality.csv file (on GCS)
+         localPath: mlflow/sklearn/wine/wine-quality.csv  # wine-quality.csv file
      hyperParameters:
        alpha: "1.0"
      resources:
@@ -443,7 +443,7 @@ In this file, we:
 - line 9: Point ``workDir`` to the MLFlow project directory. (This is the directory that has the :ref:`MLproject file` in it.)
 - line 10: A section defining input data
 - line 11: ``connName`` id of the :ref:`Wine connection` (created in the previous step)
-- line 12: ``localPath`` relative path of the data file
+- line 12: ``localPath`` relative path of the data file at the training (docker) container where data were put
 - lines 13-14: Input hyperparameters, defined in MLProject file, and passed to ``main`` method
 - line 22: ``vcsName`` id of the :ref:`VCS Connection` (created in the previous step)
 
@@ -617,7 +617,7 @@ Paste code into the file:
    spec:
      image: "<fill-in>"
      minReplicas: 1
-     ImagePullConnectionID: docker-tutorial
+     imagePullConnectionID: docker-tutorial
 
 In this file, we:
 
