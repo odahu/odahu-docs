@@ -31,11 +31,22 @@ Configuration
 The extension can be configured though the environment variables.
 
 .. csv-table::
-   :header: "Environment name", "Default", "Description"
-   :widths: 20, 30, 40
+   :header: "Environment name", "Default", "Value example", "Description"
+   :widths: 20, 30, 50, 50
 
-   "DEFAULT_API_ENDPOINT", "", "Default URL to the Odahu-flow API server"
-   "API_AUTH_ENABLED", "true", "Change the value to false if authorization is disabled on the Odahu-flow API server"
+   "DEFAULT_API_ENDPOINT", "", "https://odahu.company.com/", "Default URL to the Odahu-flow API server"
+   "API_AUTH_ENABLED", "true", "true", "Change the value to false if authorization is disabled on the Odahu-flow API server"
+   "ODAHUFLOWCTL_OAUTH_AUTH_URL", "", "https://keycloak.company.org/auth/realms/master/protocol/openid-connect/auth", "Keycloak authorization endpoint"
+   "JUPYTER_REDIRECT_URL", "", "http://localhost:8888", "JupyterLab external URL"
+   "ODAHUFLOWCTL_OAUTH_CLIENT_ID", "", "", "Oauth client ID"
+   "ODAHUFLOWCTL_OAUTH_CLIENT_SECRET", "", "", "Oauth2 client secret"
+
+To enable SSO, you should provide the following options:
+
+    * `ODAHUFLOWCTL_OAUTH_AUTH_URL`
+    * `JUPYTER_REDIRECT_URL`
+    * `ODAHUFLOWCTL_OAUTH_CLIENT_SECRET`
+    * `ODAHUFLOWCTL_OAUTH_CLIENT_ID`
 
 ***********************
 Login
