@@ -2,6 +2,10 @@
 
 Odahuflowctl (`odahuflowctl`) is a command-line interface for interacting with Odahu-flow API service.
 
+## Prerequisites:
+
+-  Python 3.6 or higher
+
 ## Installation
 
 Odahu-flow CLI is available in PyPi repository. You should execute the following command to install `odahuflowctl`:
