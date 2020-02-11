@@ -284,7 +284,7 @@ Paste code into the created file:
       type: git
       uri: git@github.com:odahu/odahu-examples.git
       reference: origin/master
-      keySecret: <paste here your key github ssh key>
+      keySecret: <paste here your key github ssh key>  # should be in the single quotes
       description: Git repository with odahu-flow-examples
       webUILink: https://github.com/odahu/odahu-examples
 
