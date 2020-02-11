@@ -3,7 +3,7 @@ Model Trainings
 ######################
 
 The Odahu-flow Model Training API provides features to manage remote training jobs.
-A primary goal of API creates a :term:`Trained Model Binary` for a :term:`Packager`.
+The primary goal of API is to create a :term:`Trained Model Binary` for a :term:`Packager`.
 The API is pluggable and can be extended for different ML frameworks.
 
 You can find the list of out-of-the-box trainers below:
@@ -18,7 +18,7 @@ General training structure
     :caption: Training API
 
     kind: ModelTraining
-    # Some unique value among all trainings
+    # Some unique value among all trainings. if not, the training with the same name will be overwritten.
     id: wine-12345
     spec:
       model:
@@ -32,19 +32,19 @@ General training structure
         #   Name - spec.model.name
         #   Version - spec.model.version
         #   RandomUUID - a random UUID v4, for example be17d12d-df43-4588-99e7-56a0db3cad77
-        artifactNameTemplate: {{ .Name }}-{{ .Version }}-{{ .RandomUUID }}.zip
+        artifactNameTemplate: {{ .Name }}-{{ .Version }}-{{ .RandomUUID }}.zip  # optional
       # The toolchain parameter is a point of extension for different ML frameworks.
       # For now, we only support the Mlfow toolchain
       toolchain: mlflow
       # Mlflow MLProject file can contains the list of entrypoints. You must choose one of these.
       entrypoint: main
-      # Working directory inside a GIT repository
+      # Working directory inside a training (docker) container, which GIT repository copied in.
       workDir: work/dir
-      # The training data for a ML script. You can find find full description :ref:`here <ref_trainings:Training Data>`.
+      # The training data for a ML script. You can find full description there: https://docs.odahu.org/ref_trainings.html#training-data
       data:
           # You can specify a connection name
         - connName: wine
-          # Local path with file or dir
+          # Path to a file or a dir where data will copy from a bucket.
           localPath: mlflow/wine-quality/
           # Path to the dir or file in a bucket
           # Optional. If it is missing then the path from connection will be used.
@@ -160,6 +160,12 @@ Getting the model name of the trainings:
 .. code-block:: bash
 
     odahuflowctl train create -f train.yaml
+	
+* Reruning a training from `train.yaml` file:
+
+.. code-block:: bash
+
+    odahuflowctl train edit -f train.yaml
 
 * All training commands and documentation:
 
