@@ -35,7 +35,6 @@ In this tutorial, you will learn how to:
 
 This tutorial uses a dataset to predict the quality of the wine based on quantitative features
 like the wine’s *fixed acidity*, *pH*, *residual sugar*, and so on.
-The dataset is from `UCI’s machine learning repository <https://archive.ics.uci.edu/ml/datasets/Wine+Quality>`_.
 
 Code for the tutorial is available on `GitHub <https://github.com/odahu/odahu-examples/tree/master/mlflow/sklearn/wine>`_.
 
@@ -217,7 +216,7 @@ Download the wine data set:
 .. code-block:: console
 
    $ mkdir ./data
-   $ wget https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv -O ./data/wine-quality.csv
+   $ wget https://raw.githubusercontent.com/odahu/odahu-examples/develop/mlflow/sklearn/wine/data/wine-quality.csv -O ./data/wine-quality.csv
 
 After this step the project folder should look like this:
 
