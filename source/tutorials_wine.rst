@@ -71,81 +71,81 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 46,48,59-64,66,69-72
 
-    import os
-    import warnings
-    import sys
-    import argparse
+   import os
+   import warnings
+   import sys
+   import argparse
 
-    import pandas as pd
-    import numpy as np
-    from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-    from sklearn.model_selection import train_test_split
-    from sklearn.linear_model import ElasticNet
+   import pandas as pd
+   import numpy as np
+   from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+   from sklearn.model_selection import train_test_split
+   from sklearn.linear_model import ElasticNet
 
-    import mlflow
-    import mlflow.sklearn
-
-
-    def eval_metrics(actual, pred):
-        rmse = np.sqrt(mean_squared_error(actual, pred))
-        mae = mean_absolute_error(actual, pred)
-        r2 = r2_score(actual, pred)
-        return rmse, mae, r2
+   import mlflow
+   import mlflow.sklearn
 
 
+   def eval_metrics(actual, pred):
+       rmse = np.sqrt(mean_squared_error(actual, pred))
+       mae = mean_absolute_error(actual, pred)
+       r2 = r2_score(actual, pred)
+       return rmse, mae, r2
 
-    if __name__ == "__main__":
-        warnings.filterwarnings("ignore")
-        np.random.seed(40)
 
-        parser = argparse.ArgumentParser()
-        parser.add_argument('--alpha')
-        parser.add_argument('--l1-ratio')
-        args = parser.parse_args()
 
-        # Read the wine-quality csv file (make sure you're running this from the root of MLflow!)
-        wine_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wine-quality.csv")
-        data = pd.read_csv(wine_path)
+   if __name__ == "__main__":
+       warnings.filterwarnings("ignore")
+       np.random.seed(40)
 
-        # Split the data into training and test sets. (0.75, 0.25) split.
-        train, test = train_test_split(data)
+       parser = argparse.ArgumentParser()
+       parser.add_argument('--alpha')
+       parser.add_argument('--l1-ratio')
+       args = parser.parse_args()
 
-        # The predicted column is "quality" which is a scalar from [3, 9]
-        train_x = train.drop(["quality"], axis=1)
-        test_x = test.drop(["quality"], axis=1)
-        train_y = train[["quality"]]
-        test_y = test[["quality"]]
+       # Read the wine-quality csv file (make sure you're running this from the root of MLflow!)
+       wine_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wine-quality.csv")
+       data = pd.read_csv(wine_path)
 
-        alpha = float(args.alpha)
-        l1_ratio = float(args.l1_ratio)
+       # Split the data into training and test sets. (0.75, 0.25) split.
+       train, test = train_test_split(data)
 
-        with mlflow.start_run():
-            lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
-            lr.fit(train_x, train_y)
+       # The predicted column is "quality" which is a scalar from [3, 9]
+       train_x = train.drop(["quality"], axis=1)
+       test_x = test.drop(["quality"], axis=1)
+       train_y = train[["quality"]]
+       test_y = test[["quality"]]
 
-            predicted_qualities = lr.predict(test_x)
+       alpha = float(args.alpha)
+       l1_ratio = float(args.l1_ratio)
 
-            (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+       with mlflow.start_run():
+           lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+           lr.fit(train_x, train_y)
 
-            print("Elasticnet model (alpha=%f, l1_ratio=%f):" % (alpha, l1_ratio))
-            print("  RMSE: %s" % rmse)
-            print("  MAE: %s" % mae)
-            print("  R2: %s" % r2)
+           predicted_qualities = lr.predict(test_x)
 
-            mlflow.log_param("alpha", alpha)
-            mlflow.log_param("l1_ratio", l1_ratio)
-            mlflow.log_metric("rmse", rmse)
-            mlflow.log_metric("r2", r2)
-            mlflow.log_metric("mae", mae)
-            mlflow.set_tag("test", '13')
+           (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
 
-            mlflow.sklearn.log_model(lr, "model")
+           print("Elasticnet model (alpha=%f, l1_ratio=%f):" % (alpha, l1_ratio))
+           print("  RMSE: %s" % rmse)
+           print("  MAE: %s" % mae)
+           print("  R2: %s" % r2)
 
-            # Persist samples (input and output)
-            train_x.head().to_pickle('head_input.pkl')
-            mlflow.log_artifact('head_input.pkl', 'model')
-            train_y.head().to_pickle('head_output.pkl')
-            mlflow.log_artifact('head_output.pkl', 'model')
+           mlflow.log_param("alpha", alpha)
+           mlflow.log_param("l1_ratio", l1_ratio)
+           mlflow.log_metric("rmse", rmse)
+           mlflow.log_metric("r2", r2)
+           mlflow.log_metric("mae", mae)
+           mlflow.set_tag("test", '13')
+
+           mlflow.sklearn.log_model(lr, "model")
+
+           # Persist samples (input and output)
+           train_x.head().to_pickle('head_input.pkl')
+           mlflow.log_artifact('head_input.pkl', 'model')
+           train_y.head().to_pickle('head_output.pkl')
+           mlflow.log_artifact('head_output.pkl', 'model')
 
 In this file, we:
 
@@ -194,16 +194,16 @@ Paste code to the created file:
    :caption: conda.yaml
    :name: Conda environment for current project
 
-    name: example
-    channels:
-    - defaults
-    dependencies:
-    - python=3.6
-    - numpy=1.14.3
-    - pandas=0.22.0
-    - scikit-learn=0.19.1
-    - pip:
-        - mlflow==1.0.0
+   name: example
+   channels:
+     - defaults
+   dependencies:
+     - python=3.6
+     - numpy=1.14.3
+     - pandas=0.22.0
+     - scikit-learn=0.19.1
+     - pip:
+       - mlflow==1.0.0
 
 .. note::
 
@@ -211,7 +211,7 @@ Paste code to the created file:
 
     *Read more about conda environment on the* `official conda docs <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_.
 
-Download the wine data set:
+Make directory "data" and download the wine data set:
 
 .. code-block:: console
 
@@ -277,16 +277,15 @@ Paste code into the created file:
    :caption: vcs_connection.odahu.yaml
    :name: VCS Connection
 
-    kind: Connection
-    id: odahu-flow-tutorial
-    spec:
-      type: git
-      uri: git@github.com:odahu/odahu-examples.git
-      reference: origin/master
-      # keySecret should be in the single quotes
-      keySecret: '<paste here your key github ssh key>'
-      description: Git repository with odahu-flow-examples
-      webUILink: https://github.com/odahu/odahu-examples
+   kind: Connection
+   id: odahu-flow-tutorial
+   spec:
+     type: git
+     uri: git@github.com:odahu/odahu-examples.git
+     reference: origin/master
+     keySecret: <paste here your key github ssh key>
+     description: Git repository with odahu-flow-examples
+     webUILink: https://github.com/odahu/odahu-examples
 
 .. note::
 
@@ -300,8 +299,8 @@ Create a Connection using the :term:`Odahu-flow CLI`:
 
 Or create a Connection using :term:`Plugin for JupyterLab`:
 
-1. Open jupyterlab (available by jupyterlab.<your-cluster-base-address>);
-2. Open cloned repo, and then the folder with the project;
+1. Open jupyterlab (available by <your.cluster.base.address>/jupyterhub);
+2. Navigate to 'File Browser' (folder icon)
 3. Select file ``./odahu-flow/vcs_connection.odahu.yaml`` and in context menu press ``submit`` button;
 
 
@@ -320,15 +319,14 @@ Paste this code into the file:
    :caption: wine_connection.odahu.yaml
    :name: Wine connection
 
-    kind: Connection
-    id: wine-tutorial
-    spec:
-      type: gcs
-      uri: gs://<paste your bucket address here>/data-tutorial/wine-quality.csv
-      region: <paste region here>
-      # keySecret should be in the single quotes
-      keySecret: '<paste key secret here>'
-      description: Wine dataset
+   kind: Connection
+   id: wine-tutorial
+   spec:
+     type: gcs
+     uri: gs://<paste your bucket address here>/data-tutorial/wine-quality.csv
+     region: <paste region here>
+     keySecret: <paste key secret here>  # should be enclosed in single quotes
+     description: Wine dataset
 
 Create a connection using the :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
 
@@ -354,14 +352,14 @@ Paste this code into the file:
    :caption: docker_connection.odahu.yaml
    :name: Docker connection
 
-    kind: Connection  # type of payload
-    id: docker-tutorial
-    spec:
-      type: docker
-      uri: <past uri of your registry here>  # uri to docker image registry
-      username: <paste your username here>
-      password: <paste your password here>
-      description: Docker registry for model packaging
+   kind: Connection  # type of payload
+   id: docker-tutorial
+   spec:
+     type: docker
+     uri: <past uri of your registry here>  # uri to docker image registry
+     username: <paste your username here>
+     password: <paste your password here>
+     description: Docker registry for model packaging
 
 
 Create the connection using :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
@@ -370,20 +368,19 @@ Check that all Connections were created successfully:
 
 .. code-block:: console
 
-    $ odahuflowctl conn get | grep -e id: -e type: -e description
 
-    - id: docker-tutorial
-        description: Docker repository for model packaging
-        type: docker
-    - id: odahu-flow-tutorial
-        description: Git repository with odahu-flow-tutorial
-        type: git
-    - id: models-output
-        description: Storage for trainined artifacts
-        type: gcs
-    - id: wine
-        description: Wine dataset
-        type: gcs
+   - id: docker-tutorial
+       description: Docker repository for model packaging
+       type: docker
+   - id: odahu-flow-tutorial
+       description: Git repository with odahu-flow-tutorial
+       type: git
+   - id: models-output
+       description: Storage for trainined artifacts
+       type: gcs
+   - id: wine
+       description: Wine dataset
+       type: gcs
 
 Congrats! You are now ready to train the model.
 
@@ -414,28 +411,29 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 7-14,22
 
-    kind: ModelTraining
-    id: wine-tutorial
-    spec:
-      model:
-        name: wine
-        version: 1.0
-      toolchain: mlflow  # MLFlow training toolchain integration
-      entrypoint: main
-      workDir: mlflow/sklearn/wine  # MLproject location (in GitHub)
-      data:
-        - connName: wine-tutorial
-          localPath: mlflow/sklearn/wine/wine-quality.csv # wine-quality.csv file (on GCS)
-      hyperParameters:
-        alpha: "1.0"
-      resources:
-        limits:
+   kind: ModelTraining
+   id: wine-tutorial
+   spec:
+     model:
+       name: wine
+       version: 1.0
+     toolchain: mlflow  # MLFlow training toolchain integration
+     entrypoint: main
+     workDir: mlflow/sklearn/wine  # MLproject location (in GitHub)
+     data:
+       - connName: wine-tutorial
+         localPath: mlflow/sklearn/wine/wine-quality.csv  # wine-quality.csv file
+     hyperParameters:
+       alpha: "1.0"
+     resources:
+       limits:
           cpu: 4
           memory: 4Gi
-        requests:
+       requests:
           cpu: 2
           memory: 2Gi
       vcsName: odahu-flow-tutorial
+
 
 In this file, we:
 
@@ -444,7 +442,7 @@ In this file, we:
 - line 9: Point ``workDir`` to the MLFlow project directory. (This is the directory that has the :ref:`MLproject file` in it.)
 - line 10: A section defining input data
 - line 11: ``connName`` id of the :ref:`Wine connection` (created in the previous step)
-- line 12: ``localPath`` relative path of the data file
+- line 12: ``localPath`` relative path of the data file at the training (docker) container where data were put
 - lines 13-14: Input hyperparameters, defined in MLProject file, and passed to ``main`` method
 - line 22: ``vcsName`` id of the :ref:`VCS Connection` (created in the previous step)
 
@@ -526,14 +524,14 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 4, 6-8
 
-    id: wine-tutorial
-    kind: ModelPackaging
-    spec:
-      artifactName: "<fill-in>"  # Use artifact name from Train step
-      targets:
-        - connectionName: docker-tutorial  # Docker registry when output image will be stored
-          name: docker-push
-      integrationName: docker-rest  # REST API Packager
+   id: wine-tutorial
+   kind: ModelPackaging
+   spec:
+     artifactName: "<fill-in>"  # Use artifact name from Train step
+     targets:
+       - connectionName: docker-tutorial  # Docker registry when output image will be stored
+         name: docker-push
+     integrationName: docker-rest  # REST API Packager
 
 In this file, we:
 
@@ -613,12 +611,12 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 4, 6-8
 
-    id: wine-tutorial
-    kind: ModelDeployment
-    spec:
-      image: "<fill-in>"
-      minReplicas: 1
-      ImagePullConnectionID: docker-tutorial
+   id: wine-tutorial
+   kind: ModelDeployment
+   spec:
+     image: "<fill-in>"
+     minReplicas: 1
+     imagePullConnectionID: docker-tutorial
 
 In this file, we:
 
