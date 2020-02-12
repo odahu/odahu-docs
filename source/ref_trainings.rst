@@ -32,7 +32,7 @@ General training structure
         #   Name - spec.model.name
         #   Version - spec.model.version
         #   RandomUUID - a random UUID v4, for example be17d12d-df43-4588-99e7-56a0db3cad77
-        artifactNameTemplate: {{ .Name }}-{{ .Version }}-{{ .RandomUUID }}.zip  # optional
+        artifactNameTemplate: {{ .Name }}-{{ .Version }}-{{ .RandomUUID }}.zip
       # The toolchain parameter is a point of extension for different ML frameworks.
       # For now, we only support the Mlfow toolchain
       toolchain: mlflow
