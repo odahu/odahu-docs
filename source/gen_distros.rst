@@ -49,7 +49,7 @@ Docker Images
 Python packages
 ---------------
 
-- Release versions of Python packages are on PyPi in project `odahu <https://pypi.org/project/odahu/>`_.
+- Release versions of Python packages are on PyPi: `odahu <https://pypi.org/search/?q=odahu>`_.
 
 .. csv-table::
    :header: "Package name", "Repository", "Description"

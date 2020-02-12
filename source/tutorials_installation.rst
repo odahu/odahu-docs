@@ -5,6 +5,7 @@ To install ODAHU services, you need to provide a number of preliminary requireme
 
 In particular:
 
+-  Python 3.6 or higher; to install :ref:`JupyterLab extension <int_jupyterlab_extension:Jupyterlab extension>` or :ref:`ref_odahuflowctl:odahuflowctl` which are interfaces for interacting with Odahu-flow cluster.
 -  Kubernetes cluster to perform base and accessory ODAHU services in it, as well as models training, packaging and deployment processes.
    To be able to use ODAHU services, minimum version of your Kubernetes cluster must be at least `1.13 <https://v1-13.docs.kubernetes.io/docs/setup/release/notes/>`__.
 -  object storage to store models training artifacts and get input data for models (:ref:`ref_connections:S3`, :ref:`ref_connections:Google Cloud Storage`, :ref:`ref_connections:Azure Blob storage` are supported)

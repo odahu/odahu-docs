@@ -8,6 +8,12 @@ Odahu-flow provides the JupyterLab extension that allows you to interact with an
 Installation
 ***********************
 
+**Prerequisites**:
+
+-  Python 3.6 or higher
+-  Jupyterlab GUI
+-  Preferable to use Google Chrome or Mozilla Firefox browsers
+
 To install the extension, perform the following steps:
 
 .. code-block:: bash
