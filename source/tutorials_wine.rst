@@ -284,7 +284,7 @@ Paste code into the created file:
       type: git
       uri: git@github.com:odahu/odahu-examples.git
       reference: origin/master
-	  # keySecret should be in the single quotes
+      # keySecret should be in the single quotes
       keySecret: '<paste here your key github ssh key>'
       description: Git repository with odahu-flow-examples
       webUILink: https://github.com/odahu/odahu-examples
@@ -327,8 +327,8 @@ Paste this code into the file:
       type: gcs
       uri: gs://<paste your bucket address here>/data-tutorial/wine-quality.csv
       region: <paste region here>
-	  # keySecret should be in the single quotes
-      keySecret: <paste key secret here>
+      # keySecret should be in the single quotes
+      keySecret: '<paste key secret here>'
       description: Wine dataset
 
 Create a connection using the :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
