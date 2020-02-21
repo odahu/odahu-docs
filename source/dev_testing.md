@@ -1,15 +1,41 @@
-# Integration Testing
+# Integration+ Testing
 
-Odahu uses the robotframework for an integration testing.
-System/integration tests located in the following directories:
+This page provides information about testing of ODAHU.
+ODAHU uses [Robot Framework](https://robotframework.org/) for an integration, system and end-to-end testings.
+
+All tests are located in the following directories of the [ODAHU project](https://github.com/odahu/odahu-flow):
 * `packages/robot` - a python package with additional Robot libraries. For example: kubernetes, auth_client, feedback, and so on. 
 * `packages/tests/stuff` - artifacts for integration testing. For example: pre-trained ML artifacts, test toolchain integrations, and so on.
 * `packages/tests/e2e` - directory with the RobotFramework tests.
 
-## Running system/integration tests
+## Preparing for testing
+--------------------
 
-We set up robot tests for `gke-odahu-flow-test` cluster in the example below.
-*Do not forget change your cluster url and odahu-flow version.*
+It's expected that you are using POSIX operating system and have install Python 3.6.9+ and pip.
+
+1. [Clone](https://github.com/odahu/odahu-flow) ODAHU project from git repository and proceed to main dir – `odahu-flow`.
+1. [Create](https://docs.python.org/3/library/venv.html) Python virtual environment
+e.g. in the folder `./odahu-flow/virtual_environment` and activate one.
+1. [Install](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst) Robot Framework
+1. Update and/or install **setuptools** and **pip**:
+    ```bash 
+    $ pip install -U setuptools && pip install -U pip
+    ```
+1. Proceed to the `odahu-flow` directory where the _'Makefile'_ is located and run make:
+    ```bash 
+    /odahu-flow$ make install-all 
+    ```
+1. Check that odahuflowctl works:
+    ```bash 
+    /odahu-flow$ odahuflowctl
+    ```
+
+## Running tests
+--------------------
+
+### *We set up robot tests for `gke-odahu-flow-test` cluster in the example below.*
+
+#### * Do not forget change your cluster url and odahu-flow version.
 
 Export cluster secrets from odahu-flow-profiles directory.
 * Clones *internal* odahu-flow-profiles repository. Checkout your or the developer branch.
