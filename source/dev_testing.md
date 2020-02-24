@@ -63,7 +63,7 @@ We set up robot tests for `gke-odahu-flow-test` cluster in the example below.
    # Cloud which will be used
    CLOUD_PROVIDER=gcp
    # Docker registry
-   DOCKER_REGISTRY=gcr.io/or2-msq-epmd-legn-t1iylu/odahu
+   DOCKER_REGISTRY=gcr.io/or2-msq-<myprojectid>-t1iylu/odahu
    # Version of odahu-flow
    ODAHUFLOW_VERSION=1.1.0-rc8
    ```
