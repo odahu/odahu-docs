@@ -1,44 +1,80 @@
-# Integration Testing
+# Integration+ Testing
 
-Odahu uses the robotframework for an integration testing.
-System/integration tests located in the following directories:
-* `packages/robot` - a python package with additional Robot libraries. For example: kubernetes, auth_client, feedback, and so on. 
-* `packages/tests/stuff` - artifacts for integration testing. For example: pre-trained ML artifacts, test toolchain integrations, and so on.
-* `packages/tests/e2e` - directory with the RobotFramework tests.
+This page provides information about testing of ODAHU.
+ODAHU uses [Robot Framework](https://robotframework.org/) for an integration, system and end-to-end testings.
 
-## Running system/integration tests
+All tests are located in the following directories of the [ODAHU project](https://github.com/odahu/odahu-flow):
+* `packages/robot/` - a python package with additional Robot libraries. For example: kubernetes, auth_client, feedback, and so on. 
+* `packages/tests/stuff/` - artifacts for integration testing. For example: pre-trained ML artifacts, test toolchain integrations, and so on.
+* `packages/tests/e2e/` - directory with the RobotFramework tests.
+
+## Preparing for testing
+--------------------
+
+It's expected that you are using POSIX-compliant operating system and have installed Python 3.6.9+ and pip.
+
+1. [Clone](https://github.com/odahu/odahu-flow) ODAHU project from git repository and proceed to main dir – `odahu-flow`.
+1. [Create](https://docs.python.org/3/library/venv.html) Python virtual environment
+e.g. in the folder `./odahu-flow/virtual_environment/` and activate one.
+1. [Install](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst) Robot Framework
+1. Update and/or install **setuptools** and **pip**:
+    ```bash 
+    $ pip install -U setuptools && pip install -U pip
+    ```
+1. Proceed to the `odahu-flow` main directory where the `Makefile` is located and run **make** command:
+    ```bash 
+    /odahu-flow$ make install-all 
+    ```
+1. Check that odahuflowctl works:
+    ```bash 
+    /odahu-flow$ odahuflowctl
+    ```
+
+## Running tests
+--------------------
 
 We set up robot tests for `gke-odahu-flow-test` cluster in the example below.
-*Do not forget change your cluster url and odahu-flow version.*
 
-Export cluster secrets from odahu-flow-profiles directory.
-* Clones *internal* odahu-flow-profiles repository. Checkout your or the developer branch.
-* Build hiera docker image using the `make docker-build-hiera` command in odahu-flow-profiles directory.
-* You can optionally override the following parameters in `.env` file:
-  * `CLUSTER_NAME`
-  * `HIERA_KEYS_DIR`
-  * `SECRET_DIR`
-  * `CLOUD_PROVIDER`
-  * `EXPORT_HIERA_DOCKER_IMAGE`
-  * `ODAHUFLOW_PROFILES_DIR`
-* Executes `make export-hiera` command.
-* Verify that `${SECRET_DIR}/.cluster_profile.json` file was created.
+**NB.** Do not forget change **your cluster url** and **odahu-flow version**.
 
-Updates the `.env` file when you should override a default Makefile option:
-```bash
-# Cluster name
-CLUSTER_NAME=gke-odahu-flow-test
-# Optionnaly, you can provide RobotFramework settings below.
-# Additional robot parameters. For example, you can specify tags or variables.
-ROBOT_OPTIONS=-e disable
-# Robot files
-ROBOT_FILES=**/*.robot
-```
+1. By default put `cluster_profile.json` file in `odahu-flow/.secrets/` folder (by default) or you can specify another default name of file or directory in *'Makefile'* in parameters: `SECRET_DIR` and `CLUSTER_PROFILE`.
+1. You can optionally override the following parameters in `.env` file (which by default are taken from `Makefile`).
+   * `CLUSTER_NAME`
+   * `ROBOT_OPTIONS`
+   * `ROBOT_FILES`
+   * `HIERA_KEYS_DIR`
+   * `SECRET_DIR`
+   * `CLOUD_PROVIDER`
+   * `DOCKER_REGISTRY`
+   * `EXPORT_HIERA_DOCKER_IMAGE`
+   * `ODAHUFLOW_PROFILES_DIR`
+   * `ODAHUFLOW_VERSION`, etc.
+   
+   For that, you should create `.env` file in the main dir of the project (`odahu-flow`).
+1. In our example, we will override the parameters of `Makefile` in `.env` file:
+   ```bash
+   # Cluster name
+   CLUSTER_NAME=gke-odahu-flow-test
+   # Optionally, you can provide RobotFramework settings below.
+   # Additional robot parameters. For example, you can specify tags or variables.
+   ROBOT_OPTIONS=-e disable
+   # Robot files
+   ROBOT_FILES=**/*.robot
+   # Cloud which will be used
+   CLOUD_PROVIDER=gcp
+   # Docker registry
+   DOCKER_REGISTRY=gcr.io/or2-msq-<myprojectid>-t1iylu/odahu
+   # Version of odahu-flow
+   ODAHUFLOW_VERSION=1.1.0-rc8
+   ```
 
-Afterward, you should set up a Odahu cluster for RobotFramework tests using the `make setup-e2e-robot` command.
-You should execute the previous command only once.
+1. Afterwards, you should prepare an Odahu cluster for Robot Framework tests by using the command:
+   ```bash 
+    /odahu-flow$ make setup-e2e-robot
+    ```
+    **NB.** You should execute the previous command only once for a new cluster.
 
-Finally, starts the robot tests:
-```bash
-make e2e-robot
-```
+1. Finally, start the robot tests:
+   ```bash
+   /odahu-flow$ make e2e-robot
+   ```
