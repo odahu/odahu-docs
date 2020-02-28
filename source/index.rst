@@ -7,6 +7,7 @@
    architecture
    gen_distros
    gen_security
+   gen_security_new
 
 .. toctree::
    :maxdepth: 2

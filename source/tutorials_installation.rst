@@ -348,7 +348,67 @@ Example:
 
     $ helm install odahu/odahu-flow-fluentd --name fluentd --namespace fluentd --values ./fluentd_values.yaml
 
+
+.. _opa_installation:
+Install `Open Policy Agent <https://www.openpolicyagent.org/>`__ (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To activate API authentication and authorization using :ref:`Security <gen_security:Security>`
+install OpenPolicyAgent (OPA) helm chart with ODAHU built-in policies.
+
+Create namespace for OPA
+
+.. code:: bash
+
+    $ kubectl create namespace odahu-flow-opa
+
+Install OpenPolicyAgent with `Helm
+chart <https://github.com/odahu/odahu-helm/tree/master/odahu-flow-opa>`__
+provided by ODAHU team:
+
+.. code:: bash
+
+    $ helm install odahu/odahu-flow-opa --name odahu-flow-opa --namespace odahu-flow-opa
+
+You must configure your OpenID provider (to allow envoy JWT token verifying) using next Helm values
+
+.. code-block:: yaml
+    :caption: Parameters to configure OpenID provider
+
+    # authn overrides configuration of envoy.filters.http.jwt_authn http filter
+    authn:
+      # enabled activate envoy authn filter that verify jwt token and pass parsed data
+      # to next filters (particularly to authz)
+      oidcIssuer: ""
+      oidcJwks: ""
+      oidcHost: ""
+      localJwks: ""
+
+For information about `authn` section parameters see
+`docs for envoy authentication filter <https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/filter/http/jwt_authn/v2alpha/config.proto>`_
+
+.. _how-to-customize-opa-policies:
+
+By default chart is delivered with :ref:`built-in policies <gen_security:Built-in policies overview>`
+that implements Role base access system
+and set of pre-defined roles. To customize some of built-in policies files or define new ones use next Helm values
+
+.. code-block:: yaml
+    :caption: Parameters to configure built-in policies
+    :name: Customize-opa-policies
+
+    opa:
+      policies: {}
+      #  policies:
+        #  file1: ".rego policy content encoded as base64"
+        #  file2: ".rego policy content encoded as base64"
+
+.. warning::
+    content of rego files defined in values.yaml should be base64 encoded
+
+
 .. _tutorials_installation-odahu-svc:
+
 
 Install ODAHU
 -------------
@@ -448,6 +508,57 @@ b) :ref:`Google Cloud Storage connection<ref_connections:Google Cloud Storage>` 
         webUILink: https://console.cloud.google.com/storage/browser/odahu-flow-test-store/output?project=my-gcp-project-id-zzzzz
 
 
+If you install :ref:`Open Policy Agent <_opa_installation>` for ODAHU then you will need to configure service accounts
+which will be used by ODAHU core background services such as :term:`<Trainer>` or :term:`<Packager>`.
+
+All service accounts below require `odahu-admin` ODAHU built-in role.
+(see more about built-in roles in :ref:`security docs <gen_security:Pre-defined roles overview>`)
+
+Next values with service account credentials are required :
+
+.. code-block:: yaml
+   :name: Set credentials for core service accounts
+   :caption: values.yaml
+   :linenos:
+
+   config:
+     operator:
+       # OpenId Provider token url
+       oauth_oidc_token_endpoint: https://oauth2.googleapis.com/token
+       # Credentials from OAuth2 client with Client Credentials Grant
+       client_id: client-id
+       client_secret: client-secret
+
+     trainer:
+       # OpenId Provider token url
+       oauth_oidc_token_endpoint: https://oauth2.googleapis.com/token
+       # Credentials from OAuth2 client with Client Credentials Grant
+       client_id: client-id
+       client_secret: client-secret
+
+     packager:
+       # OpenId Provider token url
+       oauth_oidc_token_endpoint: https://oauth2.googleapis.com/token
+       # Credentials from OAuth2 client with Client Credentials Grant
+       client_id: client-id
+       client_secret: client-secret
+
+   # Service account used to upload odahu resources via odahuflowctl
+   resource_uploader_sa:
+     client_id: some-client-id
+     client_secret: client-secret
+
+   # OpenID provider url
+   oauth_oidc_issuer_url: ""
+
+In this file, we:
+
+- lines 2-7: configure service account for :term:`Operator`
+- lines 9-14: configure service account for :term:`Trainer`
+- lines 16-21: configure service account for :term:`Packager`
+- lines 24-29: configure service account Kubernetes Job that install some ODAHU Manifests using ODAHU API
+
+
 Install odahu-flow core services:
 
 .. code:: bash
@@ -475,6 +586,25 @@ Helm chart.
       enabled: true
     EOF
 
+If you install :ref:`Open Policy Agent <_opa_installation>` for ODAHU then you will need to configure service account
+for a Kubernetes Job that install some ODAHU Manifests using ODAHU API. This Service account should have role
+`odahu-admin`.
+
+Next values with service account credentials are required :
+
+.. code-block:: yaml
+   :name: Set credentials for core service account
+   :caption: values.yaml
+   :linenos:
+
+   # Service account used to upload odahu resources via odahuflowctl
+   resource_uploader_sa:
+     client_id: some-client-id
+     client_secret: client-secret
+
+   # OpenID provider url
+   oauth_oidc_issuer_url: ""
+
 Install Helm chart:
 
 .. code:: bash
@@ -484,6 +614,25 @@ Install Helm chart:
 
 Packaging service
 ~~~~~~~~~~~~~~~~~
+
+If you install :ref:`Open Policy Agent <_opa_installation>` for ODAHU then you will need to configure service account
+for a Kubernetes Job that install some ODAHU Manifests using ODAHU API. This Service account should have role
+`odahu-admin`.
+
+Next values with service account credentials are required :
+
+.. code-block:: yaml
+   :name: Set credentials for core service account
+   :caption: values.yaml
+   :linenos:
+
+   # Service account used to upload odahu resources via odahuflowctl
+   resource_uploader_sa:
+     client_id: some-client-id
+     client_secret: client-secret
+
+   # OpenID provider url
+   oauth_oidc_issuer_url: ""
 
 Install `odahu-flow-packagers <https://github.com/odahu/odahu-packager/tree/develop/helms/odahu-flow-packagers>`__
 Helm chart:
