@@ -20,6 +20,10 @@ check-vulnerabilities:
 	./scripts/install-git-secrets-hook.sh install_hooks
 	git secrets --scan -r
 
+## check-broken-urls: Сheck broken urls in documentation
+check-broken-urls:
+	python ./scripts/links_linter.py source md rst --verbose
+
 ## help: Show the help message
 help: Makefile
 	@echo "Choose a command run in "$(PROJECTNAME)":"
