@@ -136,3 +136,12 @@ Glossary
         to be stored. For example: :term:`connections <Connection>`, :term:`Trains <Train>`, etc).
 
         These objects are Kubernetes Custom Resources and are managed by :term:`operator`.
+
+    Identity Provider (idP)
+      A component that provides information about an entity (user or service).
+
+    Policy Enforcement Point (PEP)
+      A component that enforces security policies against each request to API or other protected resources.
+
+    Policy Decision Point (PDP)
+      A component that decides whether the request (action in the system) should be permitted or not.
