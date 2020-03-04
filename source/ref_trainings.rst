@@ -126,6 +126,92 @@ Finally, we provide a data section of Model Training.
           localPath: data/
           remotePath: wine/11-11-2011/
 
+********************************************
+GPU
+********************************************
+
+Odahu-flow supports model training on GPU nodes.
+
+You can find more about GPU deployment configuration in the :ref:`installation guide <tutorials_installation:Kubernetes setup>`.
+
+In order to provision a training container in the GPU node pool,
+you must specify the GPU resource in the model training manifest.
+
+.. code-block:: yaml
+    :caption: Training on GPU
+
+    kind: ModelTraining
+    id: gpu-model
+    spec:
+      resources:
+        limits:
+          cpu: 1
+          memory: 1Gi
+          gpu: 1
+        requests:
+          cpu: 1
+          memory: 1Gi
+
+********************************************
+Model Dependencies Cache
+********************************************
+
+ODAHU Flow downloads your dependencies on every model training launch.
+You can experience the following troubles with this approach:
+    * downloading and installation of some dependencies can take a long time
+    * network errors during downloading dependencies due to network errors
+
+To overcome these and other problems, ODAHU Flow provides a way to specify
+a prebuilt training Docker image with your dependencies.
+
+.. note::
+
+    If you have different versions of a library in your model сonda file and
+    cache container, then the model dependency has a priority.
+    It will be downloaded during model training.
+
+First of all, you have to describe the Dockerfile:
+
+    * Inherit from a release version of odahu-flow-mlflow-toolchain
+    * Optionally, add install dependencies
+    * Add a model conda file
+    * Update the ``odahu_model`` conda environment.
+
+.. code-block:: dockerfile
+    :caption: Example of Dockerfile:
+    :name: Example of Dockerfile
+
+    FROM odahu/odahu-flow-mlflow-toolchain:1.1.0-rc11
+
+    # Optionally
+    # apt-get install -y wget
+
+    ADD conda.yaml ./
+    RUN conda env update -n ${ODAHU_CONDA_ENV_NAME} -f conda.yaml
+
+Build the docker image:
+
+.. code-block:: bash
+
+    docker build -t training-model-cache:1.0.0 .
+
+Push the docker image to a registry:
+
+.. code-block:: bash
+
+    docker push training-model-cache:1.0.0
+
+Specify the image in a model training:
+
+.. code-block:: yaml
+    :caption: Training example
+
+    kind: ModelTraining
+    id: model-12345
+    spec:
+      image: training-model-cache:1.0.0
+      ...
+
 *********************
 Trainings management
 *********************
@@ -169,9 +255,7 @@ Getting the model name of the trainings:
 
 * All training commands and documentation:
 
-.. code-block:: bash
 
-    odahuflowctl train --help
 
 JupyterLab
 ----------

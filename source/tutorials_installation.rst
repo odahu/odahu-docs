@@ -43,6 +43,9 @@ Run deploy of a new Kubernetes cluster:
    Make sure that the disk size on the cluster nodes is sufficient to store images for all services and packaged models.
    We recommend using a disk size of at least 100 GiB.
 
+You can enable the GPU on your Kubernetes cluster, follow the `instructions <https://cloud.google.com/kubernetes-engine/docs/how-to/gpus>`_
+on how to use GPU hardware accelerators in your GKE clusters' nodes.
+
 Fetch your Kubernetes credentials for kubectl after cluster is successfully deployed:
 
 .. code:: bash
@@ -476,6 +479,23 @@ Example:
 
 In order to setup ODAHU services along with ready-to-use :term:`connections<Connection>`, you may add according section to
 values YAML in advance.
+
+To support training on GPU, you should provide the GPU node selectors and tolerations:
+
+Example:
+
+.. code-block:: yaml
+    :caption: Example of Connection GCS:
+
+    config:
+      training:
+        gpu_toleration:
+          Key: dedicated
+          Operator: Equal
+          Value: training-gpu
+          Effect: NO_SCHEDULE
+        gpu_node_selector:
+          mode: odahu-flow-training-gpu
 
 Examples:
 

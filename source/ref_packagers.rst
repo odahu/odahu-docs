@@ -127,6 +127,67 @@ JupyterLab
 Odahu-flow provides the :ref:`int_jupyterlab_extension:JupyterLab extension` for interacting with Packagers API.
 
 ********************************************
+Model Docker Dependencies Cache
+********************************************
+
+ODAHU Flow downloads your dependencies on every docker model packaging launch.
+You can experience the following troubles with this approach:
+    * downloading and installation of some dependencies can take a long time
+    * network errors during downloading dependencies due to network errors
+
+To overcome these and other problems, ODAHU Flow provides a way to specify
+a prebuilt packaging Docker image with your dependencies.
+
+.. note::
+
+    If you have different versions of a library in your model сonda file and
+    cache container, then the model dependency has a priority.
+    It will be downloaded during model packaging.
+
+First of all, you have to describe the Dockerfile:
+
+    * Inherit from a release version of odahu-flow-docker-packager-base
+    * Optionally, add install dependencies
+    * Add a model conda file
+    * Update the ``odahu_model`` conda environment.
+
+.. code-block:: dockerfile
+    :caption: Example of Dockerfile:
+    :name: Example of Dockerfile
+
+    FROM odahu/odahu-flow-docker-packager-base:1.1.0-rc11
+
+    # Optionally
+    # RUN pip install gunicorn[gevent]
+
+    ADD conda.yaml ./
+    RUN conda env update -n ${ODAHU_CONDA_ENV_NAME} -f conda.yaml
+
+Build the docker image:
+
+.. code-block:: bash
+
+    docker build -t packaging-model-cache:1.0.0 .
+
+Push the docker image to a registry:
+
+.. code-block:: bash
+
+    docker push packaging-model-cache:1.0.0
+
+Specify the image in a model packaging:
+
+.. code-block:: yaml
+    :caption: Packaging example
+
+    kind: ModelPackaging
+    id: model-12345
+    spec:
+      arguments:
+        dockerfileBaseImage: packaging-model-cache:1.0.0
+      ...
+
+********************************************
 Docker REST
 ********************************************
 

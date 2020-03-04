@@ -14,6 +14,7 @@
 
    tutorials_installation
    tutorials_wine
+   tutorials_local_wine
 
 .. toctree::
    :maxdepth: 1
