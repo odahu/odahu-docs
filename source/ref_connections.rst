@@ -18,7 +18,13 @@ Below you can find the description of all fields:
     :caption: Connection API
     :name: Connection API file
 
+    kind: Connection
     # Unique value among all connections
+    # Id must:
+    #  * contain at most 63 characters
+    #  * contain only lowercase alphanumeric characters or ‘-’
+    #  * start with an alphanumeric character
+    #  * end with an alphanumeric character
     id: "id-12345"
     spec:
         # Optionally description of a connection
