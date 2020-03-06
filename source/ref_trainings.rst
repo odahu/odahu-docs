@@ -19,6 +19,11 @@ General training structure
 
     kind: ModelTraining
     # Some unique value among all trainings. if not, the training with the same name will be overwritten.
+    # Id must:
+    #  * contain at most 63 characters
+    #  * contain only lowercase alphanumeric characters or ‘-’
+    #  * start with an alphanumeric character
+    #  * end with an alphanumeric character
     id: wine-12345
     spec:
       model:

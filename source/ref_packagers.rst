@@ -42,7 +42,13 @@ You can find the description of all fields below:
     :caption: Packager API
     :name: Packager API file
 
+    kind: ModelPackaging
     # Unique value among all packagers
+    # Id must:
+    #  * contain at most 63 characters
+    #  * contain only lowercase alphanumeric characters or ‘-’
+    #  * start with an alphanumeric character
+    #  * end with an alphanumeric character
     id: "id-12345"
     spec:
         # Type of a packager. Available values: docker-rest, docker-cli.
