@@ -19,6 +19,11 @@ General deployment structure
 
     kind: ModelDeployment
     # Some unique value among all deployments
+    # Id must:
+    #  * contain at most 63 characters
+    #  * contain only lowercase alphanumeric characters or ‘-’
+    #  * start with an alphanumeric character
+    #  * end with an alphanumeric character
     id: wine-12345
     spec:
         # Model image is required value. Change it
