@@ -26,7 +26,7 @@ New Features:
 - Vault:
     ODAHU-Flow has the Connection API that allows managing credentials from Git repositories, cloud storage, docker registries, and so on.
     The default backend for Connection API is Kubernetes.
-    We supported the `Vault <https://www.vaultproject.io/>`_ as a storage backend for the backend for Connection API to manage your credentials securely.
+    We integrated the `Vault <https://www.vaultproject.io/>`_ as a storage backend for the backend for Connection API to manage your credentials securely.
 
 - Helm 3:
     We migrated our Helm charts to the Helm 3 version.
