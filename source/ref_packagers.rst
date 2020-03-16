@@ -132,6 +132,8 @@ JupyterLab
 
 Odahu-flow provides the :ref:`int_jupyterlab_extension:JupyterLab extension` for interacting with Packagers API.
 
+.. _packaging-model-dependencies-cache:
+
 ********************************************
 Model Docker Dependencies Cache
 ********************************************

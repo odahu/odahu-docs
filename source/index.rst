@@ -43,6 +43,7 @@
    ref_packagers
    ref_deployments
    gen_glossary
+   ref_changelog
 
 .. toctree::
    :maxdepth: 1

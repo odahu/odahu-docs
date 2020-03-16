@@ -15,6 +15,7 @@ HELM charts
    "odahu-flow-k8s-gke-saa", "odahu/odahu-infra", "GKE role assigner"
    "odahu-flow-knative", "odahu/odahu-infra", "Custom knative chart"
    "odahu-flow-monitoring", "odahu/odahu-infra", "Prometheus, grafana and alertmanager"
+   "odahu-flow-opa", "odahu/odahu-infra", "Open Policy Agent"
    "odahu-flow-tekton", "odahu/odahu-infra", "Custom tekton chart"
    "odahu-flow-core", "odahu/odahu-flow", "Core Odahu-flow services"
    "odahu-flow-mlflow", "odahu/odahu-trainer", "Odahu-flow mlflow toolchain"

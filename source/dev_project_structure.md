@@ -1,11 +1,11 @@
-# A repository directory structure
+# Repositories
+
+## A repository directory structure
 
 * `containers` - docker files
 * `helms` - core helm chart
 * `packages` - source code of packages and applications.
 * `scripts` - utility scripts for CI/CD process.
-
-# Repositories
 
 ## [odahu/odahu-flow](https://github.com/odahu/odahu-flow)
 
@@ -27,6 +27,7 @@ Collection of training extensions:
 
 Collection of model packagers:
 * docker-rest
+* docker-cli
 
 ## [odahu/odahu-flow-jupyterlab-plugin](https://github.com/odahu/odahu-flow-jupyterlab-plugin)
 
@@ -44,6 +45,6 @@ The repository contains Odahu documentation, which is available [here](https://d
 
 Examples of ML models.
 
-# [odahu/odahu-infra](https://github.com/odahu/odahu-infra)
+## [odahu/odahu-infra](https://github.com/odahu/odahu-infra)
 
 Docker images and deployments script for third-party services.

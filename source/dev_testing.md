@@ -1,4 +1,4 @@
-# Integration+ Testing
+# Integration Testing
 
 This page provides information about testing of ODAHU.
 ODAHU uses [Robot Framework](https://robotframework.org/) for an integration, system and end-to-end testings.

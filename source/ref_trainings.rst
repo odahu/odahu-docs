@@ -157,6 +157,8 @@ you must specify the GPU resource in the model training manifest.
           cpu: 1
           memory: 1Gi
 
+.. _training-model-dependencies-cache:
+
 ********************************************
 Model Dependencies Cache
 ********************************************
