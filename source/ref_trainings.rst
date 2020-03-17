@@ -264,7 +264,7 @@ Getting the model name of the trainings:
 
 .. code-block:: bash
 
-    odahuflowctl train edit -f train.yaml
+    odahuflowctl train --help
 
 We also have local training:
 
