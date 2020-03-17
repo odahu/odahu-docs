@@ -137,7 +137,9 @@ and can run packaging locally:
 
 .. code-block:: bash
 
-    odahuflowctl local pack run --help
+    odahuflowctl local pack run --id [Model packaging ID] -d [Path to an Odahu manifest file]
+
+more information you can find at :ref:`Local Quickstart <tutorials_local_wine:tutorial:id2>`
 
 JupyterLab
 ----------
