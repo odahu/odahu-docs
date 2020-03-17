@@ -266,7 +266,7 @@ Getting the model name of the trainings:
 
     odahuflowctl train --help
 
-We also have local training:s
+We also have local training:
 
 .. code-block:: bash
 
