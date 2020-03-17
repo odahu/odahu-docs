@@ -10,9 +10,12 @@ a machine learning model locally by leveraging ODAHUFlow's main components.
 Prerequisites
 ~~~~~~~~~~~~~~~~~~~
 
-- :term:`Odahu-flow CLI`
+- Linux based system with bash (at least version 4)
+- Python 3.6 or later
+- Docker engine (at least version 17.0) with access from current user (`docker ps` should executes without errors)
 - git
 - wget
+- :term:`Odahu-flow CLI`
 
 ~~~~~~~~~~~~~~~~~~~
 Tutorial

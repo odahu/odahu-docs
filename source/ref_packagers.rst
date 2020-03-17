@@ -121,11 +121,23 @@ Getting the arguments of the packagers:
 
     odahuflowctl pack create -f pack.yaml
 
-* All packager commands and documentation:
+* All commands and documentation for packager at Odahu cluster:
 
 .. code-block:: bash
 
     odahuflowctl pack --help
+
+We also have local packager:
+
+.. code-block:: bash
+
+    odahuflowctl local pack --help
+
+and can run packaging locally:
+
+.. code-block:: bash
+
+    odahuflowctl local pack run --help
 
 JupyterLab
 ----------

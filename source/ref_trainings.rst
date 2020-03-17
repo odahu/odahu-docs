@@ -262,6 +262,22 @@ Getting the model name of the trainings:
 
 * All training commands and documentation:
 
+.. code-block:: bash
+
+    odahuflowctl train edit -f train.yaml
+
+We also have local training:
+
+.. code-block:: bash
+
+    odahuflowctl local train --help
+
+and can run trainings locally:
+
+.. code-block:: bash
+
+    odahuflowctl local train run --help
+
 
 
 JupyterLab
