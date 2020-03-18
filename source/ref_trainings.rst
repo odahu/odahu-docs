@@ -262,7 +262,23 @@ Getting the model name of the trainings:
 
 * All training commands and documentation:
 
+.. code-block:: bash
 
+    odahuflowctl train --help
+
+We also have local training:
+
+.. code-block:: bash
+
+    odahuflowctl local train --help
+
+and can run trainings locally:
+
+.. code-block:: bash
+
+    odahuflowctl local train run --id [Model training ID] -d [Path to Odahu manifest files]
+
+more information you can find at :ref:`Local Quickstart <tutorials_local_wine:id1>`
 
 JupyterLab
 ----------
