@@ -86,7 +86,13 @@ let's review the API request lifecycle and describe what is happened for each HT
    1. Envoy verifies JWT token in `Authorization Request Header Field`_  using `JSON Web Token (JWT) Authentication`_ filter
    2. Envoy makes a query to OpenPolicyAgent_ as PDP_ using `External Authorization`_ filter passing parsed JWT token from the previous step
 
-4. If request if permitted by OpenPolicyAgent_ it is sent to upstream (ODAHU API)
+4. If a request is permitted by OpenPolicyAgent_, it is sent to upstream (ODAHU API)
+
+
+UML sequence diagram of successful API request described above is shown on image:
+
+.. uml:: uml/odahu_security_sequence.puml
+   :scale: 70 %
 
 
 ***********************

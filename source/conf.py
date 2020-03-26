@@ -41,8 +41,11 @@ extensions = [
     'recommonmark',
     'sphinx_markdown_tables',
     'rst2pdf.pdfbuilder',
-    'sphinx.ext.autosectionlabel'
+    'sphinx.ext.autosectionlabel',
+    'sphinxcontrib.plantuml'
 ]
+
+plantuml = 'java -jar /plantuml.jar'
 
 autosectionlabel_prefix_document = True
 
