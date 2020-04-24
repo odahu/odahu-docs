@@ -157,6 +157,11 @@ you must specify the GPU resource in the model training manifest.
           cpu: 1
           memory: 1Gi
 
+NVIDIA libraries will be mount by ODAHU to the training container.
+But if you want to use a CUDA library, you should install it manually.
+
+For example, you can add the following dependencies to a conda file: cudatoolkit-dev and cudatoolkit.
+
 .. _training-model-dependencies-cache:
 
 ********************************************
