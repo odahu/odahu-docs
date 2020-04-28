@@ -434,6 +434,12 @@ Create namespaces for ODAHU training, packaging and deployment.
         kubectl create namespace odahu-flow-${i} &&\
         kubectl label namespace odahu-flow-${i} project=odahu-flow; done
 
+To provision pods in the deployment namespace according to node selectors and toleration from the config you need to label the namespace so the model deployment webhook use it as a target
+
+.. code:: bash
+
+    $ kubectl label namespace odahu-flow-deployment modeldeployment-webhook=enabled
+
 Deployment namespace should be also labeled for Istio injection.
 
 .. code:: bash
