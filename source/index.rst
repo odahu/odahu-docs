@@ -17,6 +17,12 @@
    tutorials_local_wine
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Tasks
+
+   tasks_call_models
+
+.. toctree::
    :maxdepth: 1
    :caption: Components
 
