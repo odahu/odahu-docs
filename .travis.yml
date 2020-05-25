@@ -37,5 +37,5 @@ jobs:
         email: gh-docs@odahu.org
         name: "odahu-docs Publisher"
         on:
-          branch = feat/travis
+          branch: feat/travis
 
