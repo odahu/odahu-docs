@@ -30,7 +30,7 @@ jobs:
     ###################
     ### Upload docs ###
     ###################
-    - stage: push
+    - stage: deploy
       provider: pages
       skip_cleanup: true
       github_token: $TRAVIS_GITHUB_SECRET
@@ -41,5 +41,6 @@ jobs:
       email: gh-docs@odahu.org
       name: "odahu-docs Publisher"
       if: |
+        (branch = develop AND type = push) OR  \
         branch = feat/travis
 
