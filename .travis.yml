@@ -42,5 +42,5 @@ jobs:
       name: "odahu-docs Publisher"
       if: |
         (branch = develop AND type = push) OR \
-        (branch = "feat/travis" AND branch = pull_request)
+        (head_branch = "feat/travis" AND branch = pull_request)
 
