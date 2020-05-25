@@ -41,6 +41,5 @@ jobs:
       email: gh-docs@odahu.org
       name: "odahu-docs Publisher"
       if: |
-        (branch = develop AND type = push) OR  \
-        (head_branch = "feat/travis" AND branch = pull_request)
+        branch = feat/travis
 
