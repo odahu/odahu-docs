@@ -26,7 +26,7 @@ jobs:
       language: minimal
       script:
         - make build-docs
-        - cp ./odahu-docs.pdf ./out/odahu-docs.pdf
+        - sudo cp ./odahu-docs.pdf ./out/odahu-docs.pdf
     ###################
     ### Upload docs ###
     ###################
