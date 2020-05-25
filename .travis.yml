@@ -40,6 +40,7 @@ jobs:
       target_branch: dh_pages
       email: gh-docs@odahu.org
       name: "odahu-docs Publisher"
-      on:
-        branch: feat/travis
+      if: |
+        (branch = develop AND type = push) OR \
+        (branch = pull_request AND branch = "feat/travis")
 
