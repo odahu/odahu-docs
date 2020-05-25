@@ -26,17 +26,16 @@ jobs:
       language: minimal
       script:
         - make build-docs
-        - cp /tmp/odahu-docs.pdf /tmp/html-files/odahu-docs.pdf
+        - cp ./odahu-docs.pdf ./out/odahu-docs.pdf
     ###################
     ### Upload docs ###
     ###################
-    - stage: build
-      language: minimal
+    - stage: push
       provider: pages
       skip_cleanup: true
       github_token: $TRAVIS_GITHUB_SECRET
       keep_history: true
-      local_dir: /tmp/html-files
+      local_dir: out
       repo: odahu/docs.odahu.org
       target_branch: dh_pages
       email: gh-docs@odahu.org
