@@ -35,6 +35,7 @@ jobs:
         repo: odahu/docs.odahu.org
         target_branch: dh_pages
         email: gh-docs@odahu.org
+        fqdn: docs.odahu.org
         name: "odahu-docs Publisher"
         on:
           branch: feat/travis
