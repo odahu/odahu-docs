@@ -11,7 +11,7 @@ All tests are located in the following directories of the [ODAHU project](https:
 ## Preparing for testing
 --------------------
 
-It's expected that you are using POSIX-compliant operating system and have installed Python 3.6.9+ and pip.
+It's expected that you are using Unix-like operating system and have installed Python 3.6.9+ and pip.
 
 1. [Clone](https://github.com/odahu/odahu-flow) ODAHU project from git repository and proceed to main dir – `odahu-flow`.
 1. [Create](https://docs.python.org/3/library/venv.html) Python virtual environment
