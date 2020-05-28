@@ -17,9 +17,9 @@ It's expected that you are using POSIX-compliant operating system and have insta
 1. [Create](https://docs.python.org/3/library/venv.html) Python virtual environment
 e.g. in the folder `./odahu-flow/virtual_environment/` and activate one.
 1. [Install](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst) Robot Framework
-1. Update and/or install **setuptools** and **pip**:
+1. Update and/or install **pip** and **setuptools**:
     ```bash 
-    $ pip install -U setuptools && pip install -U pip
+    $ pip install -U pip setuptools
     ```
 1. Proceed to the `odahu-flow` main directory where the `Makefile` is located and run **make** command:
     ```bash 
@@ -28,6 +28,10 @@ e.g. in the folder `./odahu-flow/virtual_environment/` and activate one.
 1. Check that odahuflowctl works:
     ```bash 
     /odahu-flow$ odahuflowctl
+    ```
+1. Also, you should have installed jq and rclone packages. if not:
+    ```bash 
+   $ sudo apt-get install jq rclone
     ```
 
 ## Running tests
