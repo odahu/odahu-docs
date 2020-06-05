@@ -29,10 +29,7 @@ e.g. in the folder `./odahu-flow/virtual_environment/` and activate one.
     ```bash 
     /odahu-flow$ odahuflowctl
     ```
-1. Also, you should have installed jq and rclone packages. if not:
-    ```bash 
-   $ sudo apt-get install jq rclone
-    ```
+1. Also, you should have installed [jq](https://stedolan.github.io/jq/) and [rclone](https://rclone.org/downloads/) packages.
 
 ## Running tests
 --------------------
