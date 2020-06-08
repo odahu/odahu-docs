@@ -11,15 +11,15 @@ All tests are located in the following directories of the [ODAHU project](https:
 ## Preparing for testing
 --------------------
 
-It's expected that you are using POSIX-compliant operating system and have installed Python 3.6.9+ and pip.
+It's expected that you are using Unix-like operating system and have installed Python 3.6.9+ and pip.
 
 1. [Clone](https://github.com/odahu/odahu-flow) ODAHU project from git repository and proceed to main dir – `odahu-flow`.
 1. [Create](https://docs.python.org/3/library/venv.html) Python virtual environment
 e.g. in the folder `./odahu-flow/virtual_environment/` and activate one.
 1. [Install](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst) Robot Framework
-1. Update and/or install **setuptools** and **pip**:
+1. Update and/or install **pip** and **setuptools**:
     ```bash 
-    $ pip install -U setuptools && pip install -U pip
+    $ pip install -U pip setuptools
     ```
 1. Proceed to the `odahu-flow` main directory where the `Makefile` is located and run **make** command:
     ```bash 
@@ -29,6 +29,7 @@ e.g. in the folder `./odahu-flow/virtual_environment/` and activate one.
     ```bash 
     /odahu-flow$ odahuflowctl
     ```
+1. Also, you should have installed [jq](https://stedolan.github.io/jq/) and [rclone](https://rclone.org/downloads/) packages.
 
 ## Running tests
 --------------------
