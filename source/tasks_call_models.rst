@@ -50,7 +50,7 @@ Configure next values in the config
   # Build model client and invoke models
   client = ModelClient(
       calculate_url(config.API_URL, model_deployment=MODEL_DEPLOYMENT_NAME),
-      remote_api._token
+      remote_api.authenticator.token
   )
 
   # Get swagger specification of model service
