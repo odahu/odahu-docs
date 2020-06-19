@@ -1,26 +1,24 @@
 Changelog
 =========
 
-Odahu 1.2.0, 23 June 2020
+Odahu 1.2.0, 26 June 2020
 --------------------------
 
 New Features:
 """"""""""""
 
 - Core:
-    * Knative updated to latest version that makes it possible to deploy model services to different node pools.
-    * Go dependencies was globally updated to migrate from GOPATH to go modules.
-
-- PostgreSQL backend:
-    Now you can use PostgreSQL as database backend when deploying ODAHU. You can find additional documentation :ref:`here <gen_database:Postgres>`.
+    * Knative updated to latest version that makes it possible to deploy model services to different node pools (`#123 <https://github.com/odahu/odahu-flow/issues/123>`_).
+    * Go dependencies was globally updated to migrate from GOPATH to go modules (`#32 <https://github.com/odahu/odahu-flow/issues/32>`_).
+    * PostgreSQL as database backend. Now you can use PostgreSQL as database backend when deploying ODAHU. You can find additional documentation :ref:`here <gen_database:Postgres>` (`#175 <https://github.com/odahu/odahu-flow/issues/175>`_).
 
 - ODAHU CLI:
-    * Add option `--ignore-if-exist` for entities creation.
-    * Commands & options descriptions updated.
+    * Add option `--ignore-if-exist` for entities creation (`#199 <https://github.com/odahu/odahu-flow/issues/199>`_).
+    * Commands & options descriptions updated (`#160 <https://github.com/odahu/odahu-flow/issues/160>`_, `#197 <https://github.com/odahu/odahu-flow/issues/197>`_, `#209 <https://github.com/odahu/odahu-flow/issues/209>`_).
 
 - ODAHU UI:
-    * Become open source and now available at `odahu github <https://github.com/odahu/odahu-ui/>`_
-    * Kibana support added for training and packaging log views.
+    * Become open source and now available at separate `github repo <https://github.com/odahu/odahu-ui/>`_
+    * Kibana support added for training and packaging log views. 
     * Add `logout` button.
     * Add Default Reference for git connection during Training creation.
     * Support the configuration default values in the UI.
@@ -32,18 +30,17 @@ Bug Fixes:
 """"""""""""
 
 - Core:
-    * Training now will fail if wrong data path or unexisted storage bucket name is provided.
-    * Training log streaming is now working on log view when using native log viewer.
-    * ODAHU pods now redeploying during helm chart upgrade.
-    * ODAHU docker connection now can be created with blank username & password to install from docker public repo.
+    * Training now will fail if wrong data path or unexisted storage bucket name is provided (`#229 <https://github.com/odahu/odahu-flow/issues/229>`_).
+    * Training log streaming is now working on log view when using native log viewer (`#229 <https://github.com/odahu/odahu-flow/issues/229>`_).
+    * ODAHU pods now redeploying during helm chart upgrade (`#111 <https://github.com/odahu/odahu-flow/issues/111>`_).
+    * ODAHU docker connection now can be created with blank username & password to install from docker public repo (`#184 <https://github.com/odahu/odahu-flow/issues/184>`_).
 
 - ODAHU CLI:
-    * Return training artifacts list sorted by name.
-    * Correct default values for resources of train (pack).
-    * Don't output logs for bulk command.
-    * Fix `local pack cleanup-containers` command.
-    * Return correct message if entity not found.
-    * Return correct message if no options provided.
+    * Return training artifacts list sorted by name (`#165 <https://github.com/odahu/odahu-flow/issues/165>`_).
+    * Don't output logs for bulk command (`#200 <https://github.com/odahu/odahu-flow/issues/200>`_).
+    * Fix `local pack cleanup-containers` command (`#204 <https://github.com/odahu/odahu-flow/issues/204>`_).
+    * Return correct message if entity not found (`#210 <https://github.com/odahu/odahu-flow/issues/210>`_).
+    * Return correct message if no options provided (`#211 <https://github.com/odahu/odahu-flow/issues/211>`_).
 
 - ODAHU UI:
     * Fix description of replicas of Model Deployment.
