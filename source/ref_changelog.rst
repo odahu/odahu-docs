@@ -16,8 +16,7 @@ New Features:
 
 - ODAHU CLI:
     * Add option `--ignore-if-exist` for entities creation.
-    * Add output format options (yaml, json, table, jsonpath).
-    * Descriptions updated.
+    * Commands & options descriptions updated.
 
 - ODAHU UI:
     * Become open source and now available at `odahu github <https://github.com/odahu/odahu-ui/>`_
