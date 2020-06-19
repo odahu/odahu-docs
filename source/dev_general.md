@@ -18,8 +18,8 @@ To participate in developing of Odahu project you have to meet these requirement
     * [Typescript](https://www.typescriptlang.org/index.html#download-links)
     * [Yarn](https://yarnpkg.com/lang/en/)
 * Infra:
-    * [HELM v2.14.0](https://github.com/helm/helm/releases/tag/v2.14.0)
-    * [Kubectl v1.13.2](https://github.com/kubernetes/kubernetes/releases/tag/v1.13.2)
+    * [HELM v3.1.2](https://github.com/helm/helm/releases/tag/v3.1.2)
+    * [Kubectl v1.16.2](https://github.com/kubernetes/kubernetes/releases/tag/v1.16.2)
     * [Docker v17+](https://docs.docker.com/install/)
     * [Swagger codegen 2.4.7](https://github.com/swagger-api/swagger-codegen/releases)
 

@@ -1,6 +1,57 @@
 Changelog
 =========
 
+Odahu 1.2.0, 23 June 2020
+--------------------------
+
+New Features:
+""""""""""""
+
+- Core:
+    * Knative updated to latest version that makes it possible to deploy model services to different node pools.
+    * Go dependencies was globally updated to migrate from GOPATH to go modules.
+
+- PostgreSQL backend:
+    Now you can use PostgreSQL as database backend when deploying ODAHU. You can find additional documentation :ref:`here <gen_database:Postgres>`.
+
+- ODAHU CLI:
+    * Add option `--ignore-if-exist` for entities creation.
+    * Add output format options (yaml, json, table, jsonpath).
+    * Descriptions updated.
+
+- ODAHU UI:
+    * Become open source and now available at `odahu github <https://github.com/odahu/odahu-ui/>`_
+    * Kibana support added for training and packaging log views.
+    * Add `logout` button.
+    * Add Default Reference for git connection during Training creation.
+    * Support the configuration default values in the UI.
+    * Show component versions on the UI.
+    * Add training name input validation.
+    * Show username in docker connection.
+
+Bug Fixes:
+""""""""""""
+
+- Core:
+    * Training now will fail if wrong data path or unexisted storage bucket name is provided.
+    * Training log streaming is now working on log view when using native log viewer.
+    * ODAHU pods now redeploying during helm chart upgrade.
+    * ODAHU docker connection now can be created with blank username & password to install from docker public repo.
+
+- ODAHU CLI:
+    * Return training artifacts list sorted by name.
+    * Correct default values for resources of train (pack).
+    * Don't output logs for bulk command.
+    * Fix `local pack cleanup-containers` command.
+    * Return correct message if entity not found.
+    * Return correct message if no options provided.
+
+- ODAHU UI:
+    * Fix description of replicas of Model Deployment.
+    * Trim spaces for input values.
+    * Fix incorrect selection of VCS connection.
+    * Close 'ODAHU components' menu after opening link in it.
+
 Odahu 1.1.0, 16 March 2020
 --------------------------
 
