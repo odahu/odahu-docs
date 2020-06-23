@@ -8,7 +8,7 @@ To participate in developing of Odahu project you have to meet these requirement
     * [Python v3.6](https://www.python.org/downloads/release/python-360/)
     * [Pipenv](https://github.com/pypa/pipenv)
 * Golang:
-    * [Golang v1.12](https://blog.golang.org/go1.12)
+    * [Golang v1.14](https://blog.golang.org/go1.14)
     * [Dep](https://github.com/golang/dep)
     * [golangci-lint](https://github.com/golangci/golangci-lint)
     * [Kubebuilder](https://github.com/kubernetes-sigs/kubebuilder)

@@ -32,7 +32,7 @@ Odahu product contains 5 main development parts:
 
 * `Python`. Update dependencies in a `Pipfile`. Execute `make update-python-deps` command.
 
-* `Golang`. Update dependencies in a `Gopkg.toml`. Execute `dep ensure` command in `packages/operator` directory.
+* `Golang`. Update dependencies in a `go.mod`. Execute `go build ./...` command in `packages/operator` directory.
 
 * `Typescript`. Odahu-flow uses the `yarn` to manipulate the typescript dependencies. 
 
