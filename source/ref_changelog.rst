@@ -31,7 +31,7 @@ Bug Fixes:
 
 - Core:
     * Training now will fail if wrong data path or unexisted storage bucket name is provided (`#229 <https://github.com/odahu/odahu-flow/issues/229>`_).
-    * Training log streaming is now working on log view when using native log viewer (`#229 <https://github.com/odahu/odahu-flow/issues/229>`_).
+    * Training log streaming is now working on log view when using native log viewer (`#234 <https://github.com/odahu/odahu-flow/issues/234>`_).
     * ODAHU pods now redeploying during helm chart upgrade (`#111 <https://github.com/odahu/odahu-flow/issues/111>`_).
     * ODAHU docker connection now can be created with blank username & password to install from docker public repo (`#184 <https://github.com/odahu/odahu-flow/issues/184>`_).
 
