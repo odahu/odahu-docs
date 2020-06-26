@@ -7,18 +7,18 @@ Odahu 1.2.0, 26 June 2020
 Features (ODAHU-flow):
 """"""""""""
 
-- PostgreSQL as database backend (`#175 <https://github.com/odahu/odahu-flow/issues/175>`_). Now you can use PostgreSQL as database backend when deploying ODAHU. You can find additional documentation in :ref:`instructions <tutorials_installation:Install base Kubernetes services>`.
+- We added PostgreSQL as main database backend as part of increasing project maturity (`#175 <https://github.com/odahu/odahu-flow/issues/175>`_). You can find additional documentation in :ref:`instructions <tutorials_installation:Install base Kubernetes services>`.
 
 Features (ODAHU-flow-ctl):
 """"""""""""
 
 - Add option `--ignore-if-exist` for entities creation (`#199 <https://github.com/odahu/odahu-flow/issues/199>`_).
-- Commands & options descriptions updated (`#160 <https://github.com/odahu/odahu-flow/issues/160>`_, `#197 <https://github.com/odahu/odahu-flow/issues/197>`_, `#209 <https://github.com/odahu/odahu-flow/issues/209>`_).
+- Descriptions updated for commands & options (`#160 <https://github.com/odahu/odahu-flow/issues/160>`_, `#197 <https://github.com/odahu/odahu-flow/issues/197>`_, `#209 <https://github.com/odahu/odahu-flow/issues/209>`_).
 
 Features (ODAHU-UI):
 """"""""""""
 
-- UI is now `available <https://github.com/odahu/odahu-ui/>`_ under Apache License Version 2.0.
+- We open sourced our UI and it's now `available <https://github.com/odahu/odahu-ui/>`_ under Apache License Version 2.0.
 - Kibana support added for training and packaging log views.
 - Add `logout` button.
 - Add Default Reference for git connection during Training creation.
