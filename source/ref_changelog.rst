@@ -4,27 +4,34 @@ Changelog
 Odahu 1.2.0, 26 June 2020
 --------------------------
 
-New Features:
+Features (ODAHU-flow):
 """"""""""""
 
-- Core:
-    * Knative updated to latest version that makes it possible to deploy model services to different node pools (`#123 <https://github.com/odahu/odahu-flow/issues/123>`_).
-    * Go dependencies was globally updated to migrate from GOPATH to go modules (`#32 <https://github.com/odahu/odahu-flow/issues/32>`_).
-    * PostgreSQL as database backend. Now you can use PostgreSQL as database backend when deploying ODAHU. You can find additional documentation :ref:`here <gen_database:Postgres>` (`#175 <https://github.com/odahu/odahu-flow/issues/175>`_).
+- PostgreSQL as database backend (`#175 <https://github.com/odahu/odahu-flow/issues/175>`_). Now you can use PostgreSQL as database backend when deploying ODAHU. You can find additional documentation in :ref:`instructions <tutorials_installation:Install base Kubernetes services>`.
 
-- ODAHU CLI:
-    * Add option `--ignore-if-exist` for entities creation (`#199 <https://github.com/odahu/odahu-flow/issues/199>`_).
-    * Commands & options descriptions updated (`#160 <https://github.com/odahu/odahu-flow/issues/160>`_, `#197 <https://github.com/odahu/odahu-flow/issues/197>`_, `#209 <https://github.com/odahu/odahu-flow/issues/209>`_).
+Features (ODAHU-flow-ctl):
+""""""""""""
 
-- ODAHU UI:
-    * Become open source and now available at separate `github repo <https://github.com/odahu/odahu-ui/>`_
-    * Kibana support added for training and packaging log views. 
-    * Add `logout` button.
-    * Add Default Reference for git connection during Training creation.
-    * Support the configuration default values in the UI.
-    * Show component versions on the UI.
-    * Add training name input validation.
-    * Show username in docker connection.
+- Add option `--ignore-if-exist` for entities creation (`#199 <https://github.com/odahu/odahu-flow/issues/199>`_).
+- Commands & options descriptions updated (`#160 <https://github.com/odahu/odahu-flow/issues/160>`_, `#197 <https://github.com/odahu/odahu-flow/issues/197>`_, `#209 <https://github.com/odahu/odahu-flow/issues/209>`_).
+
+Features (ODAHU-UI):
+""""""""""""
+
+- UI is now `available <https://github.com/odahu/odahu-ui/>`_ under Apache License Version 2.0.
+- Kibana support added for training and packaging log views.
+- Add `logout` button.
+- Add Default Reference for git connection during Training creation.
+- Support the configuration default values in the UI.
+- Show component versions on the UI.
+- Add training name input validation.
+- Show username in docker connection.
+
+Updated:
+""""""""""""
+
+- Knative updated to version 0.15.0. That makes it possible to deploy model services to different node pools (`#123 <https://github.com/odahu/odahu-flow/issues/123>`_).
+- Go dependencies was globally updated to migrate from GOPATH to go modules (`#32 <https://github.com/odahu/odahu-flow/issues/32>`_).
 
 Bug Fixes:
 """"""""""""
