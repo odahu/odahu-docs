@@ -9,6 +9,10 @@ Additionally, it provides the following set of features:
     * Scale to zero
     * Dynamic Model swagger
     * Monitoring of Model Deployment
+    
+.. important::
+
+   Model could be deployed only if docker images were packaged through Docker REST packager.
 
 ********************************************
 General deployment structure
