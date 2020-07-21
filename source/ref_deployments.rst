@@ -22,7 +22,7 @@ General deployment structure
     # Id must:
     #  * contain at most 63 characters
     #  * contain only lowercase alphanumeric characters or ‘-’
-    #  * start with an alphanumeric character
+    #  * start with an alphabetic character
     #  * end with an alphanumeric character
     id: wine-12345
     spec:
