@@ -12,7 +12,7 @@ Additionally, it provides the following set of features:
     
 .. important::
 
-   Model could be deployed only if docker images were packaged through Docker REST packager.
+   Model could be deployed only if docker image was packaged through Docker REST packager.
 
 ********************************************
 General deployment structure
