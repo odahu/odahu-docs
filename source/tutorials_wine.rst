@@ -378,7 +378,7 @@ Check that all Connections were created successfully:
    - id: models-output
        description: Storage for trainined artifacts
        type: gcs
-   - id: wine
+   - id: wine-tutorial
        description: Wine dataset
        type: gcs
 
@@ -422,7 +422,8 @@ Paste code into the file:
      workDir: mlflow/sklearn/wine  # MLproject location (in GitHub)
      data:
        - connName: wine-tutorial
-         localPath: mlflow/sklearn/wine/wine-quality.csv  # wine-quality.csv file
+         # Where to save a local copy of wine-quality.csv from wine-tutorial GCP connection
+         localPath: mlflow/sklearn/wine/wine-quality.csv  
      hyperParameters:
        alpha: "1.0"
      resources:
@@ -442,7 +443,7 @@ In this file, we:
 - line 9: Point ``workDir`` to the MLFlow project directory. (This is the directory that has the :ref:`MLproject file` in it.)
 - line 10: A section defining input data
 - line 11: ``connName`` id of the :ref:`Wine connection` (created in the previous step)
-- line 12: ``localPath`` relative path of the data file at the training (docker) container where data were put
+- line 12: ``localPath`` relative (to Git repository root) path of the data file at the training (docker) container where data were put
 - lines 13-14: Input hyperparameters, defined in MLProject file, and passed to ``main`` method
 - line 22: ``vcsName`` id of the :ref:`VCS Connection` (created in the previous step)
 
