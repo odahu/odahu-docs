@@ -201,7 +201,7 @@ How to describe operators
 When you initialize Odahu custom operators such as ``TrainingOperator``, ``PackagingOperator``, or
 ``DeploymentOperator`` you should pass odahu resource payload as a parameter.
 
-Actually, this is payload that describes a resource that will be created at Odahu-flow cluster. You should describe
+Actually, this is a payload that describes a resource that will be created at Odahu-flow cluster. You should describe
 such payloads using odahuflow.sdk models
 
 .. code-block:: python

@@ -96,7 +96,7 @@ Use built-in policies
 ODAHU is distributed with build-in policies that are written on `Rego policy language`_.
 
 `Role based access control`_ is implemented by default.
-But there is nothing you need to know about rego policies language until
+But there is nothing you need to know about rego policies language as long as
 the set of pre-defined roles fits your needs. In this section, you can see such roles and how to manage them
 using Keycloak as an example of idP_
 
@@ -316,7 +316,7 @@ use more general `Access based access control`_. For this rewrite `core.rego` fi
 
 
 .. code-block:: javascript
-   :name: ODAHU Role base access implementation
+   :name: ODAHU Role based access implementation
    :caption: core.rego
    :linenos:
 

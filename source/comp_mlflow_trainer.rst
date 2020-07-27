@@ -6,7 +6,7 @@ MLFlow Trainer
 
 Odahu provides a :term:`Trainer Extension` for the popular `MLflow <https://www.mlflow.org/>`_ framework.
 
-This allows Python model :term:`Training <Train>` in Python, and provides support for MLflow APIs. Trained models are
+This allows model :term:`Training <Train>` in Python, and provides support for MLflow APIs. Trained models are
 packaged using the :term:`General Python Prediction Interface`.
 
 Limitations
