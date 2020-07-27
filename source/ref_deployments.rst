@@ -9,6 +9,10 @@ Additionally, it provides the following set of features:
     * Scale to zero
     * Dynamic Model swagger
     * Monitoring of Model Deployment
+    
+.. important::
+
+   Model could be deployed only if docker image was packaged through Docker REST packager.
 
 ********************************************
 General deployment structure
@@ -22,7 +26,7 @@ General deployment structure
     # Id must:
     #  * contain at most 63 characters
     #  * contain only lowercase alphanumeric characters or ‘-’
-    #  * start with an alphanumeric character
+    #  * start with an alphabetic character
     #  * end with an alphanumeric character
     id: wine-12345
     spec:
