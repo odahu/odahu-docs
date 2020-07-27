@@ -49,7 +49,7 @@ General training structure
       data:
           # You can specify a connection name
         - connName: wine
-          # Path to a file or a dir where data will copy from a bucket; revalive to your Git repository root derictory.
+          # Path to a file or a dir where data will copy from a bucket; relative to your Git repository root derictory.
           localPath: mlflow/wine-quality/
           # Path to the dir or file in a bucket
           # Optional. If it is missing then the path from connection will be used.
