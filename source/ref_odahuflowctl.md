@@ -54,3 +54,27 @@ odahuflowctl login --url <api-url>
 ```
 
 Odahu CLI will open an IAM server in your default browser. Sign in with your account credentials.
+
+<br>
+
+## Completion
+
+`odahuflowctl` cli supports completion for following shells: bash, zsh, fish, PowerShell.
+
+To activate it evaluate the output of `odahuflowctl completion <YOUR_SHELL>`.
+
+Bash example:
+```shell script
+source <(odahuflowctl completion bash)
+```
+
+<br>
+
+To activate completion automatically in any new shell, you can save the completion code to a file 
+and add it to your shell profile.
+
+Bash example:
+```shell script
+odahuflowctl completion bash > ${HOME}/.odahuflow/odahuflowctl_completion.sh
+(echo ""; echo "source ${HOME}/.odahuflow/odahuflowctl_completion.sh"; echo "") >> ${HOME}/.bashrc
+```
