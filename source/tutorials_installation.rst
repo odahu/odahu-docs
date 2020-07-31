@@ -23,7 +23,7 @@ Deploy Kubernetes cluster in Google Compute Platform (`GKE <https://cloud.google
 
 -  `GCP service
    account <https://cloud.google.com/compute/docs/access/service-accounts>`__
-   to deploy Kubernetes cluster with and use it credentials for access to object storage and Google Cloud Registry
+   to deploy Kubernetes cluster with and use its credentials for access to object storage and Google Cloud Registry
 -  Google Cloud Storage bucket (``odahu-flow-test-store`` in examples below) to store models output data
 
 Run deploy of a new Kubernetes cluster:
@@ -393,7 +393,7 @@ For information about `authn` section parameters see
 .. _how-to-customize-opa-policies:
 
 By default chart is delivered with :ref:`built-in policies <gen_security:Built-in policies overview>`
-that implements Role base access system
+that implements Role based access system
 and set of pre-defined roles. To customize some of built-in policies files or define new ones use next Helm values
 
 .. code-block:: yaml
@@ -407,7 +407,7 @@ and set of pre-defined roles. To customize some of built-in policies files or de
         #  file2: ".rego policy content encoded as base64"
 
 .. warning::
-    content of rego files defined in values.yaml should be base64 encoded
+    Content of rego files defined in values.yaml should be base64 encoded
 
 
 .. _tutorials_installation-odahu-svc:

@@ -439,7 +439,7 @@ Paste code into the file:
 In this file, we:
 
 - line 7: Set Odahu toolchain's name to :ref:`mlflow <mod_dev_using_mlflow-section>`
-- line 8: Reference ``main`` method in ``entry_points`` (which is defined for :ref:`MLproject files <MLproject file>`.
+- line 8: Reference ``main`` method in ``entry_points`` (which is defined for :ref:`MLproject files <MLproject file>`)
 - line 9: Point ``workDir`` to the MLFlow project directory. (This is the directory that has the :ref:`MLproject file` in it.)
 - line 10: A section defining input data
 - line 11: ``connName`` id of the :ref:`Wine connection` (created in the previous step)
@@ -666,7 +666,7 @@ Use the deployed model
 
 After the model is deployed, you can check its API in Swagger:
 
-Open ``<your-odahu-platform-host>/swagger/index.html`` and look and the endpoints:
+Open ``<your-odahu-platform-host>/service-catalog/swagger/index.html`` and look and the endpoints:
 
 1. ``GET /model/wine-tutorial/api/model/info`` – OpenAPI model specification;
 2. ``POST /model/wine-tutorial/api/model/invoke`` – Endpoint to do predictions;

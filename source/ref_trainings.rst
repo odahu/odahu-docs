@@ -41,7 +41,7 @@ General training structure
       # The toolchain parameter is a point of extension for different ML frameworks.
       # For now, we only support the Mlfow toolchain
       toolchain: mlflow
-      # Mlflow MLProject file can contains the list of entrypoints. You must choose one of these.
+      # Mlflow MLProject file contains the list of entrypoints. You must choose one of those.
       entrypoint: main
       # Working directory inside a training (docker) container, which GIT repository copied in.
       workDir: work/dir
@@ -171,7 +171,7 @@ Model Dependencies Cache
 ODAHU Flow downloads your dependencies on every model training launch.
 You can experience the following troubles with this approach:
     * downloading and installation of some dependencies can take a long time
-    * network errors during downloading dependencies due to network errors
+    * network errors during downloading dependencies
 
 To overcome these and other problems, ODAHU Flow provides a way to specify
 a prebuilt training Docker image with your dependencies.
@@ -300,7 +300,7 @@ Installation
 ------------
 
 The most straightforward way to install the MLFlow trainer on an Odahu Cluster is to deploy the `odahu-flow-mlflow` helm chart.
-The helm chart registers the trainer in the API Odahu and deploys an `a MLflow Tracking Server <https://www.mlflow.org/docs/latest/tracking.html#mlflow-tracking-servers>`_.
+The helm chart registers the trainer in the API Odahu and deploys an `MLflow Tracking Server <https://www.mlflow.org/docs/latest/tracking.html#mlflow-tracking-servers>`_.
 By default, the deployed MLflow Tracking Server is available at `https://cluster-url/mlflow` address.
 
 .. code-block:: bash
@@ -367,7 +367,7 @@ Next, you can find the Model Trainings for the MLProject file.
 MLFlow protocol
 ---------------
 
-Odahu-flow requires that a model be logged through `mlflow API <https://www.mlflow.org/docs/latest/python_api/mlflow.pyfunc.html#mlflow.pyfunc.log_model>`_.
+Odahu-flow requires that a model is logged through `mlflow API <https://www.mlflow.org/docs/latest/python_api/mlflow.pyfunc.html#mlflow.pyfunc.log_model>`_.
 
 .. code-block:: python
     :caption: Example of sklearn model logging:

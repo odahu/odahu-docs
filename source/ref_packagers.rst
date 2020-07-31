@@ -63,14 +63,14 @@ You can find the description of all fields below:
           requests:
             cpu: 1
             memory: 1Gi
-        # List of arguments. Depends of a Model Packaging integration.
+        # List of arguments. Depends on a Model Packaging integration.
         # You can find specific values in the sections below.
-        # This parameter is used for customizing of a packaging process.
+        # This parameter is used for customizing a packaging process.
         arguments: {}
-        # List of targets. Depends of a Model Packaging integration.
+        # List of targets. Depends on a Model Packaging integration.
         # You can find specific values in the sections below.
         # A packager can interact with a Docker registry, PyPi repository, and so on.
-        # You should provide a list of connections for a packager can get access to them.
+        # You should provide a list of connections for a packager to get access to them.
         targets: []
         # You can set connection which points to some bucket where the Trained Model Binary is stored
         # then packager will extract your binary from this connection
@@ -155,7 +155,7 @@ Model Docker Dependencies Cache
 ODAHU Flow downloads your dependencies on every docker model packaging launch.
 You can experience the following troubles with this approach:
     * downloading and installation of some dependencies can take a long time
-    * network errors during downloading dependencies due to network errors
+    * network errors during downloading dependencies
 
 To overcome these and other problems, ODAHU Flow provides a way to specify
 a prebuilt packaging Docker image with your dependencies.

@@ -133,7 +133,7 @@ Glossary
 
     Odahu-flow's CRDs
         Objects that :term:`API service` creates for actions that require computing resources
-        to be stored. For example: :term:`connections <Connection>`, :term:`Trains <Train>`, etc).
+        to be stored. For example: :term:`connections <Connection>`, :term:`Trains <Train>`, etc.
 
         These objects are Kubernetes Custom Resources and are managed by :term:`operator`.
 

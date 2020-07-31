@@ -79,11 +79,11 @@ Getting the model name of the model deployments:
 
     odahuflowctl deployment get --id tensorflow-cli -o 'jsonpath=[*].spec.model.name'
 
-* Creating of a training from `train.yaml` file:
+* Creating of a deployment from `deploy.yaml` file:
 
 .. code-block:: bash
 
-    odahuflowctl deployment create -f train.yaml
+    odahuflowctl deployment create -f deploy.yaml
 
 * All model deployments commands and documentation:
 
