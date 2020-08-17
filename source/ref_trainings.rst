@@ -77,6 +77,9 @@ General training structure
       # image: python:3.8
       # A connection which describes credentials to a GIT repository
       vcsName: <git-connection>
+      # Git reference (branch or tag)
+      # This must be specified here OR in Git connection itself
+      reference: master
     status:
       # One of the following states: scheduling, running, succeeded, failed, unknown
       state: running
