@@ -4,30 +4,20 @@ Changelog
 Odahu 1.2.0, 26 June 2020
 --------------------------
 
-Features (ODAHU-flow):
+Features:
 """"""""""""
 
-- We added PostgreSQL as main database backend as part of increasing project maturity (`#175 <https://github.com/odahu/odahu-flow/issues/175>`_). You can find additional documentation in :ref:`instructions <tutorials_installation:Install base Kubernetes services>`.
+- Core:
+    * PostgreSQL became main database backend as part of increasing project maturity (`#175 <https://github.com/odahu/odahu-flow/issues/175>`_). You can find additional documentation in :ref:`instructions <tutorials_installation:Install base Kubernetes services>`.
 
-Features (ODAHU-flow-ctl):
-""""""""""""
+- ODAHU CLI:
+    * Option `--ignore-if-exist` added for entities creation (`#199 <https://github.com/odahu/odahu-flow/issues/199>`_).
+    * Descriptions updated for commands & options (`#160 <https://github.com/odahu/odahu-flow/issues/160>`_, `#197 <https://github.com/odahu/odahu-flow/issues/197>`_, `#209 <https://github.com/odahu/odahu-flow/issues/209>`_).
 
-- Add option `--ignore-if-exist` for entities creation (`#199 <https://github.com/odahu/odahu-flow/issues/199>`_).
-- Descriptions updated for commands & options (`#160 <https://github.com/odahu/odahu-flow/issues/160>`_, `#197 <https://github.com/odahu/odahu-flow/issues/197>`_, `#209 <https://github.com/odahu/odahu-flow/issues/209>`_).
+- ODAHU UI:
+    * ODAHU UI turned into open-source software and now available on `github <https://github.com/odahu/odahu-ui/>`_ under Apache License Version 2.0. UDAHU UI is an WEB-interface for ODAHU based on React and TypeScript. It provides ODAHU workflows overview and controls, log browsing and entity management.
 
-Features (ODAHU-UI):
-""""""""""""
-
-- We open sourced our UI and it's now `available <https://github.com/odahu/odahu-ui/>`_ under Apache License Version 2.0.
-- Kibana support added for training and packaging log views.
-- Add `logout` button.
-- Add Default Reference for git connection during Training creation.
-- Support the configuration default values in the UI.
-- Show component versions on the UI.
-- Add training name input validation.
-- Show username in docker connection.
-
-Updated:
+Updates:
 """"""""""""
 
 - Knative updated to version 0.15.0. That makes it possible to deploy model services to different node pools (`#123 <https://github.com/odahu/odahu-flow/issues/123>`_).
