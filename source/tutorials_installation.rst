@@ -7,7 +7,7 @@ In particular:
 
 -  Python 3.6 or higher; to install :ref:`JupyterLab extension <int_jupyterlab_extension:Jupyterlab extension>` or :ref:`ref_odahuflowctl:odahuflowctl` which are interfaces for interacting with Odahu-flow cluster.
 -  Kubernetes cluster to perform base and accessory ODAHU services in it, as well as models training, packaging and deployment processes.
-   To be able to use ODAHU services, minimum version of your Kubernetes cluster must be at least `1.13 <https://v1-13.docs.kubernetes.io/docs/setup/release/notes/>`__.
+   To be able to use ODAHU services, minimum version of your Kubernetes cluster must be at least `1.16 <https://v1-16.docs.kubernetes.io/docs/setup/release/notes/>`__.
 -  object storage to store models training artifacts and get input data for models (:ref:`ref_connections:S3`, :ref:`ref_connections:Google Cloud Storage`, :ref:`ref_connections:Azure Blob storage` are supported)
 -  :ref:`Docker registry <ref_connections:Docker>` (to store resulting Docker images from :ref:`packagers <ref_packagers:Model Packagers>`)
 
@@ -119,53 +119,8 @@ Fetch your Kubernetes credentials for kubectl after cluster is successfully depl
 Install base Kubernetes services
 --------------------------------
 
-Install Helm and Tiller (`version 2.14.3 <https://v2-14-0.helm.sh/docs/using_helm/#installing-helm>`__)
+Install Helm (`version 3.1.2 <https://helm.sh/docs/intro/install/>`__)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Make sure you have a Kubernetes service account with the ``cluster-admin`` role defined for Tiller.
-If not already defined, create one using following commands:
-
-.. code:: bash
-
-    $ cat << EOF > tiller_sa.yaml
-    ---
-    apiVersion: v1
-    kind: ServiceAccount
-    metadata:
-      name: tiller
-      namespace: kube-system
-    ---
-    apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRoleBinding
-    metadata:
-      name: tiller
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: ClusterRole
-      name: cluster-admin
-    subjects:
-    - kind: ServiceAccount
-      name: tiller
-      namespace: kube-system
-    EOF
-
-::
-
-    $ kubectl apply -f ./tiller_sa.yaml
-
-Install Tiller in your cluster with created service account:
-
-.. code:: bash
-
-    $ helm init --service-account=tiller
-
-Ensure that Tiller is installed:
-
-.. code:: bash
-
-    $ kubectl -n kube-system get pods --selector=app=helm
-    NAME                            READY   STATUS    RESTARTS   AGE
-    tiller-deploy-57f498469-r5cmv   1/1     Running   0          16s
 
 .. _installation-nginx-ingress:
 
@@ -351,6 +306,75 @@ Example:
 
     $ helm install odahu/odahu-flow-fluentd --name fluentd --namespace fluentd --values ./fluentd_values.yaml
 
+.. _postgres_installation:
+Install `PostgreSQL <https://www.postgresql.org/>`__ (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create namespace for PostgreSQL:
+
+.. code:: bash
+
+    $ kubectl create namespace postgresql
+
+Install PostgreSQL Operator with `Helm
+chart <https://github.com/zalando/postgres-operator/tree/master/charts/postgres-operator>`__:
+
+.. code:: bash
+
+    $ helm install postgres-operator/postgres-operator --name odahu-db --namespace postgresql
+
+You must configure your PostgreSQL operator using next values
+
+.. code-block:: yaml
+    :caption: Parameters to configure PostgreSQL Provider:
+
+    $  cat << EOF > postgres.yaml
+    apiVersion: "acid.zalan.do/v1"
+    kind: postgresql
+    metadata:
+      name: odahu
+      namespace: postgres
+    spec:
+      teamId: "postgres"
+      volume:
+        size: 10Gi
+      numberOfInstances: 2
+      users:
+        mlflow: []
+        jupyterhub: []
+        odahu: []
+      databases:
+        mlflow: mlflow,
+        jupyterhub: jupyterhub,
+        odahu: odahu
+      postgresql:
+        version: "12"
+      ---
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: jupyterhub.odahu-db.credentials.postgresql.acid.zalan.do
+        namespace: postgres
+      type: Opaque
+      ---
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: mlflow.odahu-db.credentials.postgresql.acid.zalan.do
+        namespace: postgres
+      type: Opaque
+      ---
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: odahu.odahu-db.credentials.postgresql.acid.zalan.do
+        namespace: postgres
+      type: Opaque
+
+Apply configuration to kubernetes:
+.. code:: bash
+
+    kubectl apply -f postgres.yaml
 
 .. _opa_installation:
 Install `Open Policy Agent <https://www.openpolicyagent.org/>`__ (optional)
@@ -464,6 +488,7 @@ Example:
         external_urls:
         - name: Documentation
           url: https://docs.odahu.org
+        databaseConnectionString: postgresql://odahu:PASSWORD@odahu-db.postgresql/odahu
       connection:
         enabled: true
         decrypt_token: somenotemptystring
