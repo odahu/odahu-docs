@@ -236,7 +236,8 @@ The following fields of connection API are required:
     * ``spec.type`` - It must be equal **git**.
     * ``spec.keySecret`` - a base64 encoded SSH private key.
     * ``spec.uri`` -  GIT SSH URL, for example git@github.com:odahu/odahu-examples.git
-    * ``spec.reference`` -  a branch, tag, or commit.
+
+``spec.reference`` must be provided either in a connection OR in a model training object (:ref:`ref_trainings:General training structure`).
 
 Example of command to encode ssh key:
 
