@@ -283,7 +283,7 @@ Paste code into the created file:
      type: git
      uri: git@github.com:odahu/odahu-examples.git
      reference: origin/master
-     keySecret: <paste here your key github ssh key>
+     keySecret: <paste here your base64-encoded key github ssh key>
      description: Git repository with odahu-flow-examples
      webUILink: https://github.com/odahu/odahu-examples
 
@@ -325,7 +325,7 @@ Paste this code into the file:
      type: gcs
      uri: gs://<paste your bucket address here>/data-tutorial/wine-quality.csv
      region: <paste region here>
-     keySecret: <paste key secret here>  # should be enclosed in single quotes
+     keySecret: <paste base64-encoded key secret here>  # should be enclosed in single quotes
      description: Wine dataset
 
 Create a connection using the :term:`Odahu-flow CLI` or :term:`Plugin for JupyterLab`, as in the previous example.
@@ -358,7 +358,7 @@ Paste this code into the file:
      type: docker
      uri: <past uri of your registry here>  # uri to docker image registry
      username: <paste your username here>
-     password: <paste your password here>
+     password: <paste your base64-encoded password here>
      description: Docker registry for model packaging
 
 

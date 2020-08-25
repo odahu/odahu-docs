@@ -37,7 +37,7 @@ Below you can find the description of all fields:
         type: s3
         # Username
         username: admin
-        # Password
+        # Password, must be base64-encoded
         password: admin
         # Service account role
         role: some-role
@@ -45,11 +45,11 @@ Below you can find the description of all fields:
         region: some region
         # VCS reference
         reference: develop
-        # Key ID
+        # Key ID, must be base64-encoded
         keyID: "1234567890"
-        # SSH or service account secret
+        # SSH or service account secret, must be base64-encoded
         keySecret: b2RhaHUK
-        # SSH public key
+        # SSH public key, must be base64-encoded
         publicKey: b2RhaHUK
 
 *********************
@@ -137,8 +137,8 @@ Before usage, make sure that:
 The following fields of connection API are required:
 
     * ``spec.type`` - It must be equal **s3**.
-    * ``spec.keyID`` - an access key ID (for example, ``AKIAIOSFODNN7EXAMPLE``).
-    * ``spec.keySecret`` - a secret access key (for example, ``wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY``).
+    * ``spec.keyID`` - **base64-encoded** access key ID (for example, ``AKIAIOSFODNN7EXAMPLE``).
+    * ``spec.keySecret`` - **base64-encoded** secret access key (for example, ``wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY``).
     * ``spec.uri`` -  S3 compatible URI, for example s3://<bucket-name>/dir1/dir2/
     * ``spec.region`` - `AWS Region <https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region>`_, where a bucket was created.
 
@@ -150,13 +150,15 @@ The following fields of connection API are required:
     spec:
         type: s3
         uri: s3://raw-data/model/input
-        keyID: "AKIAIOSFODNN7EXAMPLE"
-        keySecret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+        # keyID before base64-encoding: AKIAIOSFODNN7EXAMPLE
+        keyID: "QUtJQUlPU0ZPRE5ON0VYQU1QTEU="
+        # keySecret before base64 encoding: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+        keySecret: "d0phbHJYVXRuRkVNSS9LN01ERU5HL2JQeFJmaUNZRVhBTVBMRUtFWQ=="
         description: "Training data for a model"
         region: eu-central-1
 
 Google Cloud Storage
---------------------
+-------------------->
 
 `Google Cloud Storage <https://cloud.google.com/storage/docs/>`_ allows storing and accessing data on Google Cloud Platform infrastructure.
 This type of connection is used as storage of:
@@ -178,7 +180,7 @@ Before usage, make sure that:
 The following fields of connection API are required:
 
     * ``spec.type`` - It must be equal **gcs**.
-    * ``spec.keySecret`` - a service account key in json format.
+    * ``spec.keySecret`` - **base64-encoded** service account key in json format.
     * ``spec.uri`` -  GCS compatible URI, for example gcs://<bucket-name>/dir1/dir2/
     * ``spec.region`` - `GCP Region <https://cloud.google.com/compute/docs/regions-zones>`_, where a bucket was created.
 
@@ -190,9 +192,28 @@ The following fields of connection API are required:
     spec:
         type: gcs
         uri: gsc://raw-data/model/input
-        keySecret: '{"type": "service_account", "project_id": "project_id", "private_key_id": "private_key_id", "private_key": "-----BEGIN PRIVATE KEY-----\nprivate_key\n-----END PRIVATE KEY-----\n", "client_email": "test@project_id.iam.gserviceaccount.com", "client_id": "123455678", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test@project_id.iam.gserviceaccount.com"}'
+        keySecret: ewogICAgInR5cGUiOiAic2VydmljZV9hY2NvdW50IiwKICAgICJwcm9qZWN0X2lkIjogInByb2plY3RfaWQiLAogICAgInByaXZhdGVfa2V5X2lkIjogInByaXZhdGVfa2V5X2lkIiwKICAgICJwcml2YXRlX2tleSI6ICItLS0tLUJFR0lOIFBSSVZBVEUgS0VZLS0tLS1cbnByaXZhdGVfa2V5XG4tLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tXG4iLAogICAgImNsaWVudF9lbWFpbCI6ICJ0ZXN0QHByb2plY3RfaWQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICAgImNsaWVudF9pZCI6ICIxMjM0NTU2NzgiLAogICAgImF1dGhfdXJpIjogImh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9vL29hdXRoMi9hdXRoIiwKICAgICJ0b2tlbl91cmkiOiAiaHR0cHM6Ly9vYXV0aDIuZ29vZ2xlYXBpcy5jb20vdG9rZW4iLAogICAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICAgImNsaWVudF94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3JvYm90L3YxL21ldGFkYXRhL3g1MDkvdGVzdEBwcm9qZWN0X2lkLmlhbS5nc2VydmljZWFjY291bnQuY29tIgp9
         description: "Training data for a model"
         region: us-central2
+
+
+.. code-block:: json
+    :caption: Original service account JSON key, that is used in the example above, before base64-encoding:
+    :name: GCS service account key
+
+    {
+        "type": "service_account",
+        "project_id": "project_id",
+        "private_key_id": "private_key_id",
+        "private_key": "-----BEGIN PRIVATE KEY-----\nprivate_key\n-----END PRIVATE KEY-----\n",
+        "client_email": "test@project_id.iam.gserviceaccount.com",
+        "client_id": "123455678",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test@project_id.iam.gserviceaccount.com"
+    }
+
 
 Azure Blob storage
 ------------------
@@ -212,7 +233,7 @@ The following fields of connection API are required:
 
     * ``spec.type`` - It must be equal **azureblob**.
     * ``spec.keySecret`` - Odahu-flow uses the `shared access signatures <https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview>`_ to authorize in Azure.
-      The key has the following format: "<primary_blob_endpoint>/<sas_token>".
+      The key has the following format: "<primary_blob_endpoint>/<sas_token>" and must be **base64-encoded**.
     * ``spec.uri`` -  Azure storage compatible URI, for example <bucket-name>/dir1/dir2/
 
 .. code-block:: yaml
@@ -223,7 +244,8 @@ The following fields of connection API are required:
     spec:
         type: azureblob
         uri: raw-data/model/input
-        keySecret: https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2019-02-02&ss=bf&srt=s&st=2019-08-01T22%3A18%3A26Z&se=2019-08-10T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
+        # keySecret before base64-encoding: https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2019-02-02&ss=bf&srt=s&st=2019-08-01T22%3A18%3A26Z&se=2019-08-10T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
+        keySecret: aHR0cHM6Ly9teWFjY291bnQuYmxvYi5jb3JlLndpbmRvd3MubmV0Lz9yZXN0eXBlPXNlcnZpY2UmY29tcD1wcm9wZXJ0aWVzJnN2PTIwMTktMDItMDImc3M9YmYmc3J0PXMmc3Q9MjAxOS0wOC0wMVQyMiUzQTE4JTNBMjZaJnNlPTIwMTktMDgtMTBUMDIlM0EyMyUzQTI2WiZzcj1iJnNwPXJ3JnNpcD0xNjguMS41LjYwLTE2OC4xLjUuNzAmc3ByPWh0dHBzJnNpZz1GJTZHUlZBWjVDZGoyUHc0dGdVN0lsU1RrV2duN2JVa2tBZzhQNkhFU1h3bWYlNEI=
         description: "Training data for a model"
 
 GIT
@@ -286,7 +308,7 @@ The following fields of connection API are required:
 
     * ``spec.type`` - It must be equal **docker**.
     * ``spec.username`` - docker registry username.
-    * ``spec.password`` - docker registry password.
+    * ``spec.password`` - **base64-encoded** docker registry password.
     * ``spec.uri`` - docker registry host.
 
 .. warning::
@@ -301,7 +323,25 @@ The following fields of connection API are required:
         type: docker
         uri: gcr.io/project/odahuflow
         username: "_json"
-        password: '{"type": "service_account", "project_id": "project_id", "private_key_id": "private_key_id", "private_key": "-----BEGIN PRIVATE KEY-----\nprivate_key\n-----END PRIVATE KEY-----\n", "client_email": "test@project_id.iam.gserviceaccount.com", "client_id": "123455678", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test@project_id.iam.gserviceaccount.com"}'
+        password: ewogICAgInR5cGUiOiAic2VydmljZV9hY2NvdW50IiwKICAgICJwcm9qZWN0X2lkIjogInByb2plY3RfaWQiLAogICAgInByaXZhdGVfa2V5X2lkIjogInByaXZhdGVfa2V5X2lkIiwKICAgICJwcml2YXRlX2tleSI6ICItLS0tLUJFR0lOIFBSSVZBVEUgS0VZLS0tLS1cbnByaXZhdGVfa2V5XG4tLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tXG4iLAogICAgImNsaWVudF9lbWFpbCI6ICJ0ZXN0QHByb2plY3RfaWQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICAgImNsaWVudF9pZCI6ICIxMjM0NTU2NzgiLAogICAgImF1dGhfdXJpIjogImh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9vL29hdXRoMi9hdXRoIiwKICAgICJ0b2tlbl91cmkiOiAiaHR0cHM6Ly9vYXV0aDIuZ29vZ2xlYXBpcy5jb20vdG9rZW4iLAogICAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICAgImNsaWVudF94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3JvYm90L3YxL21ldGFkYXRhL3g1MDkvdGVzdEBwcm9qZWN0X2lkLmlhbS5nc2VydmljZWFjY291bnQuY29tIgp9
+
+.. code-block:: json
+    :caption: Original service account JSON key, that is used in the example above, before base64-encoding:
+    :name: GCS service account key
+
+    {
+        "type": "service_account",
+        "project_id": "project_id",
+        "private_key_id": "private_key_id",
+        "private_key": "-----BEGIN PRIVATE KEY-----\nprivate_key\n-----END PRIVATE KEY-----\n",
+        "client_email": "test@project_id.iam.gserviceaccount.com",
+        "client_id": "123455678",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test@project_id.iam.gserviceaccount.com"
+    }
+
 
 .. code-block:: yaml
     :caption: Example of Docker Hub
@@ -311,8 +351,9 @@ The following fields of connection API are required:
     spec:
         type: docker
         uri: docker.io/odahu/
-        username: "username"
-        password: "password"
+        username: username
+        # password before encoding: mypassword
+        password: bXlwYXNzd29yZA===
 
 Amazon Elastic Container Registry
 ---------------------------------
@@ -333,8 +374,8 @@ Before usage, make sure that:
 The following fields of connection API are required:
 
     * ``spec.type`` - It must be equal **ecr**.
-    * ``spec.keyID`` - an access key ID (for example, ``AKIAIOSFODNN7EXAMPLE``).
-    * ``spec.keySecret`` - a secret access key (for example, ``wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY``).
+    * ``spec.keyID`` - **base64-encoded** access key ID (for example, ``AKIAIOSFODNN7EXAMPLE``).
+    * ``spec.keySecret`` - **base64-encoded** secret access key (for example, ``wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY``).
     * ``spec.uri`` -  The url must have the following format, `aws_account_id`.dkr.ecr.`region`.amazonaws.com/`some-prefix`.
     * ``spec.region`` - `AWS Region <https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region>`_, where a docker registry was created.
 
@@ -346,7 +387,9 @@ The following fields of connection API are required:
     spec:
         type: ecr
         uri: 5555555555.dkr.ecr.eu-central-1.amazonaws.com/odahuflow
-        keyID: "AKIAIOSFODNN7EXAMPLE"
-        keySecret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+        # keyID before base64-encoding: "AKIAIOSFODNN7EXAMPLE"
+        keyID: QUtJQUlPU0ZPRE5ON0VYQU1QTEU=
+        # keySecret before base64-encoding: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+        keySecret: d0phbHJYVXRuRkVNSS9LN01ERU5HL2JQeFJmaUNZRVhBTVBMRUtFWQ==
         description: "Packager registry"
         region: eu-central-1
