@@ -2,7 +2,6 @@ SHELL := /bin/bash
 
 -include .env
 .DEFAULT_GOAL := help
-
 ## build-docs: Build legion docs
 build-docs: build-docs-builder
 	docker run --rm -v $(PWD):/var/docs --workdir /var/docs odahu/docs-builder:latest /generate.sh
