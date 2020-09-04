@@ -1,6 +1,36 @@
 Changelog
 =========
 
+Odahu 1.3.0, 14 September 2020
+--------------------------
+
+Features:
+""""""""""""
+
+- Core:
+    * Persistence Agent added to synchronize k8s CRDS into main storage (`#268 <https://github.com/odahu/odahu-flow/issues/268>`_`).
+    * All secrets passed to ODAHU API now should be base64 encoded (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_`, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_`).
+    * Positive tests for API via SDK added (`#247 <https://github.com/odahu/odahu-flow/issues/247>`_`).
+
+Updates:
+""""""""""""
+
+- Core:
+    * Robot tests will now output pods state after each API call to simplify debugging. 
+
+Bug Fixes:
+""""""""""""
+
+- Core:
+    * Refactoring: some abstractions & components were renamed and moved to separate packages to facilitate future development.
+    * ODAHU will mask secrets in connection creation response.
+    * Rclone output will not reveal secrets on unit test setup stage anymore.
+    * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_`).
+    * Respect `artifactNameTemplate` for local training result file name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
+
+- SDK:
+    * All API connection errors now should be correctly handled and retried.
+
 Odahu 1.2.0, 26 June 2020
 --------------------------
 
