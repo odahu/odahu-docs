@@ -23,7 +23,7 @@ Bug Fixes:
 
 - Core:
     * Refactoring: some abstractions & components were renamed and moved to separate packages to facilitate future development.
-    * ODAHU will mask secrets in connection creation response.
+    * For connection create/update operations ODAHU API will mask secrets in response body.
     * Rclone output will not reveal secrets on unit test setup stage anymore.
     * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_`).
     * Respect `artifactNameTemplate` for local training result file name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
