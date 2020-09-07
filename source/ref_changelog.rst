@@ -26,7 +26,7 @@ Bug Fixes:
     * For connection create/update operations ODAHU API will mask secrets in response body.
     * Rclone output will not reveal secrets on unit test setup stage anymore.
     * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_`).
-    * Respect `artifactNameTemplate` for local training result file name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
+    * Respect `artifactNameTemplate` for local training result directory name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
 
 - SDK:
     * All API connection errors now should be correctly handled and retried.
