@@ -80,6 +80,11 @@ General training structure
       # Git reference (branch or tag)
       # This must be specified here OR in Git connection itself
       reference: master
+      # Node selector that exactly matches a node pool from ODAHU config
+      # This is optional; when omitted, ODAHU uses any of available training node pools
+      # Read more about node selector: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+      nodeSelector:
+        label: value
     status:
       # One of the following states: scheduling, running, succeeded, failed, unknown
       state: running
