@@ -51,36 +51,41 @@ You can find the description of all fields below:
     #  * end with an alphanumeric character
     id: "id-12345"
     spec:
-        # Type of a packager. Available values: docker-rest, docker-cli.
-        integrationName: docker-rest
-        # Training output artifact name
-        artifactName: wine-model-123456789.zip
-        # Compute resources
-        resources:
-          limits:
-            cpu: 1
-            memory: 1Gi
-          requests:
-            cpu: 1
-            memory: 1Gi
-        # List of arguments. Depends on a Model Packaging integration.
-        # You can find specific values in the sections below.
-        # This parameter is used for customizing a packaging process.
-        arguments: {}
-        # List of targets. Depends on a Model Packaging integration.
-        # You can find specific values in the sections below.
-        # A packager can interact with a Docker registry, PyPi repository, and so on.
-        # You should provide a list of connections for a packager to get access to them.
-        targets: []
-        # You can set connection which points to some bucket where the Trained Model Binary is stored
-        # then packager will extract your binary from this connection
-        outputConnection: custom-connection
+      # Type of a packager. Available values: docker-rest, docker-cli.
+      integrationName: docker-rest
+      # Training output artifact name
+      artifactName: wine-model-123456789.zip
+      # Compute resources
+      resources:
+        limits:
+          cpu: 1
+          memory: 1Gi
+        requests:
+          cpu: 1
+          memory: 1Gi
+      # List of arguments. Depends on a Model Packaging integration.
+      # You can find specific values in the sections below.
+      # This parameter is used for customizing a packaging process.
+      arguments: {}
+      # List of targets. Depends on a Model Packaging integration.
+      # You can find specific values in the sections below.
+      # A packager can interact with a Docker registry, PyPi repository, and so on.
+      # You should provide a list of connections for a packager to get access to them.
+      targets: []
+      # You can set connection which points to some bucket where the Trained Model Binary is stored
+      # then packager will extract your binary from this connection
+      outputConnection: custom-connection
+      # Node selector that exactly matches a node pool from ODAHU config
+      # This is optional; when omitted, ODAHU uses any of available packaging node pools
+      # Read more about node selector: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+      nodeSelector:
+        label: value
     # Every packager saves its results into status field.
     # Example of fields: docker image or python packager name.
     status:
-        results:
-            - name: some_param
-              value: some_value
+      results:
+        - name: some_param
+          value: some_value
 
 .. note::
 
