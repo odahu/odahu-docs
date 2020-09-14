@@ -219,7 +219,7 @@ Docker REST
 ********************************************
 
 The Docker REST packager wraps an ML model into the REST service inside a Docker image.
-The resulting service can be used for point prediction thorough HTTP.
+The resulting service can be used for point prediction through HTTP.
 
 The packager provides the following list of targets:
 
