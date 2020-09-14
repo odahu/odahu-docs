@@ -367,7 +367,7 @@ The packager provides the following list of targets:
    :header: "Target Name", "Connection Types", "Required", "Description"
    :widths: 20, 20, 10, 100
 
-   "docker-push", ":ref:`docker<ref_connections:Docker>`, :ref:`ecr<ref_connections:Amazon Elastic Container Registry>`", "The packager will use the connection for pushing a Docker image result"
+   "docker-push", ":ref:`docker<ref_connections:Docker>`, :ref:`ecr<ref_connections:Amazon Elastic Container Registry>`", "True", "The packager will use the connection for pushing a Docker image result"
    "docker-pull", ":ref:`docker<ref_connections:Docker>`, :ref:`ecr<ref_connections:Amazon Elastic Container Registry>`", "False", "The packager will use the connection for pulling a custom base Docker image"
 
 The packager provides the following list of arguments:
