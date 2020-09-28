@@ -61,11 +61,19 @@ Odahu CLI will open an IAM server in your default browser. Sign in with your acc
 
 `odahuflowctl` cli supports completion for following shells: bash, zsh, fish, PowerShell.
 
-To activate it evaluate the output of `odahuflowctl completion <YOUR_SHELL>`.
+To activate it, evaluate the output of `odahuflowctl completion <YOUR_SHELL>`.  
+`<YOURSHELL>` is the optional, it can be automatically identified.
 
 Bash example:
 ```shell script
 source <(odahuflowctl completion bash)
+```
+
+powershell exampl: 
+```shell script
+odahuflowctl completion > $HOME\.odahuflow\odahu_completion.ps1;
+. $HOME\.odahuflow\odahu_completion.ps1;
+Remove-Item $HOME\.odahuflow\odahu_completion.ps1
 ```
 
 <br>
@@ -76,5 +84,11 @@ and add it to your shell profile.
 Bash example:
 ```shell script
 odahuflowctl completion bash > ${HOME}/.odahuflow/odahuflowctl_completion.sh
-(echo ""; echo "source ${HOME}/.odahuflow/odahuflowctl_completion.sh"; echo "") >> ${HOME}/.bashrc
+(echo ""; echo "source ${HOME}/.odahuflow/odahuflowctl_completion.sh"; echo "") >> ${HOME}/.bashrc;
+rm ${HOME}/.odahuflow/odahuflowctl_completion.sh
+```
+
+powershell example: 
+```shell script
+write "`n# odahuflowctl completion" (odahuflowctl completion) >> $PROFILE.CurrentUserAllHosts
 ```
