@@ -69,7 +69,7 @@ Bash example:
 source <(odahuflowctl completion bash)
 ```
 
-powershell exampl: 
+powershell example: 
 ```shell script
 odahuflowctl completion > $HOME\.odahuflow\odahu_completion.ps1;
 . $HOME\.odahuflow\odahu_completion.ps1;
