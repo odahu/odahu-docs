@@ -84,8 +84,7 @@ and add it to your shell profile.
 Bash example:
 ```shell script
 odahuflowctl completion bash > ${HOME}/.odahuflow/odahuflowctl_completion.sh
-(echo ""; echo "source ${HOME}/.odahuflow/odahuflowctl_completion.sh"; echo "") >> ${HOME}/.bashrc;
-rm ${HOME}/.odahuflow/odahuflowctl_completion.sh
+(echo ""; echo "source ${HOME}/.odahuflow/odahuflowctl_completion.sh"; echo "") >> ${HOME}/.bashrc
 ```
 
 powershell example: 
