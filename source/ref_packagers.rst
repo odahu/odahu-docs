@@ -243,8 +243,6 @@ The packager provides the following list of arguments:
    "threads", "integer", "4", "False", "Count of serving threads"
    "host", "string", "0.0.0.0", "False", "Host to bind"
    "dockerfileBaseImage", "string", "python:3.6", "False", "Base image for Dockerfile"
-   "dockerfileAddCondaInstallation", "boolean", "True", "False", "Add conda installation code to Dockerfile"
-   "dockerfileCondaEnvsLocation", "boolean", "/opt/conda/envs/", "False", "Conda env location in Dockerfile"
 
 The packager provides the following list of result fields:
 
@@ -378,8 +376,6 @@ The packager provides the following list of arguments:
 
    "imageName", "string", "{{ Name }}-{{ Version }}:{{ RandomUUID }}", "False", "This option provides a way to specify the Docker image name. You can hardcode the full name or specify a template. Available template values: Name (Model Name), Version (Model Version), RandomUUID. Examples: myservice:123, {{ Name }}:{{ Version }}"
    "dockerfileBaseImage", "string", "python:3.6", "False", "Base image for Dockerfile"
-   "dockerfileAddCondaInstallation", "boolean", "True", "False", "Add conda installation code to Dockerfile"
-   "dockerfileCondaEnvsLocation", "string", "/opt/conda/envs/", "False", "Conda env location in Dockerfile"
 
 The packager provides the following list of result fields:
 
