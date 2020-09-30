@@ -34,6 +34,7 @@ Bug Fixes:
     * State of resources now updates correctly after changing in UI (`#11 <https://github.com/odahu/odahu-ui/issues/11>_`).
     * User aren't able to submit training when resource request is bigger than limit '(`#355 <https://github.com/odahu/odahu-flow/pull/355>_`).
     * Mask secrets on review page during conenction creation process (`#42 <https://github.com/odahu/odahu-ui/issues/42>_`)
+    * UI now responds correct in case of concurrent deletion of entities (`#44 <https://github.com/odahu/odahu-ui/issues/44>_`).
     * Additional validation added to prevent creation of resources with unsupported names (`#342 <https://github.com/odahu/odahu-flow/issues/342>_`, `#34 <https://github.com/odahu/odahu-ui/issues/34>_`).
     * Sorting added for training & packaging views (`#13 <https://github.com/odahu/odahu-ui/issues/13>_`,`#48 <https://github.com/odahu/odahu-ui/issues/48>_`).
     * `reference` field become optional for VCS connection (`#50 <https://github.com/odahu/odahu-ui/issues/50>_`).
