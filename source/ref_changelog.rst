@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Odahu 1.3.0, 14 September 2020
+Odahu 1.3.0, 05 October 2020
 --------------------------
 
 Features:
@@ -27,7 +27,24 @@ Bug Fixes:
     * Rclone output will not reveal secrets on unit test setup stage anymore.
     * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_`).
     * Respect `artifactNameTemplate` for local training result file name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
+    * Allow to pass Azure BLOB URI without schema on connection creation (`#345 <https://github.com/odahu/odahu-flow/issues/345>_`)
+    * Validate model deployment ID to ensure it starts with alphabetic character (`#294 <https://github.com/odahu/odahu-flow/issues/294>_`)
 
+- UI:
+    * State of resources now updates correctly after changing in UI (`#11 <https://github.com/odahu/odahu-ui/issues/11>_`).
+    * User aren't able to submit training when resource request is bigger than limit '(`#355 <https://github.com/odahu/odahu-flow/pull/355>_`).
+    * Mask secrets on review page during conenction creation process (`#42 <https://github.com/odahu/odahu-ui/issues/42>_`)
+    * Additional validation added to prevent creation of resources with unsupported names (`#342 <https://github.com/odahu/odahu-flow/issues/342>_`, `#34 <https://github.com/odahu/odahu-ui/issues/34>_`).
+    * Sorting added for training & packaging views (`#13 <https://github.com/odahu/odahu-ui/issues/13>_`,`#48 <https://github.com/odahu/odahu-ui/issues/48>_`).
+    * `reference` field become optional for VCS connection (`#50 <https://github.com/odahu/odahu-ui/issues/50>_`).
+    * Git connection hint fixed (`#7 <https://github.com/odahu/odahu-ui/issues/7>_`).
+
+- CLI:
+    * Configuration secrets is now masked in config output (`#307 <https://github.com/odahu/odahu-flow/issues/307>_`). 
+    * Local model output path will now display correctly (`#371 <https://github.com/odahu/odahu-flow/issues/371>_`).
+    * Local training output will now print only local training results (`#370 <https://github.com/odahu/odahu-flow/issues/370>_`)..
+    * Help message fixed for `odahuflowctl gppi` command (`#375 <https://github.com/odahu/odahu-flow/issues/375>_`).
+    
 - SDK:
     * All API connection errors now should be correctly handled and retried.
 
