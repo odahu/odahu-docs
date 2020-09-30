@@ -9,7 +9,7 @@ Features:
 
 - Core:
     * Persistence Agent added to synchronize k8s CRDS into main storage (`#268 <https://github.com/odahu/odahu-flow/issues/268>`_`).
-    * All secrets passed to ODAHU API now should be base64 encoded (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_`, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_`).
+    * All secrets passed to ODAHU API now should be base64 encoded. Decrypted secrets retrieved from ODAHU API via `/connection/:id/decrypted` are now also base64 encoded. (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_`, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_`).
     * Positive tests for API via SDK added (`#247 <https://github.com/odahu/odahu-flow/issues/247>`_`).
 
 Updates:
@@ -23,10 +23,10 @@ Bug Fixes:
 
 - Core:
     * Refactoring: some abstractions & components were renamed and moved to separate packages to facilitate future development.
-    * ODAHU will mask secrets in connection creation response.
+    * For connection create/update operations ODAHU API will mask secrets in response body.
     * Rclone output will not reveal secrets on unit test setup stage anymore.
     * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_`).
-    * Respect `artifactNameTemplate` for local training result file name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
+    * Respect `artifactNameTemplate` for local training result directory name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
     * Allow to pass Azure BLOB URI without schema on connection creation (`#345 <https://github.com/odahu/odahu-flow/issues/345>_`)
     * Validate model deployment ID to ensure it starts with alphabetic character (`#294 <https://github.com/odahu/odahu-flow/issues/294>_`)
 
