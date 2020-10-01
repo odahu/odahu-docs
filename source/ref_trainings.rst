@@ -6,6 +6,9 @@ Model Trainings
 
 ODAHU model training component helps to automate ML model training jobs execution in K8S.
 The primary goal of model training component is to create a :term:`Trained Model Binary` for a :term:`Packager`.
+=======
+The Odahu-flow Model Training API provides features to manage remote training jobs.
+The primary goal of API is to create a :term:`Trained Model Binary` for a :term:`Packager`.
 The API is pluggable and can be extended for different ML frameworks.
 
 You can find the list of out-of-the-box trainers below:

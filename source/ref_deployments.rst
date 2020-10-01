@@ -26,6 +26,16 @@ the model via HTTP (or any other protocol).
 An Inference Servers that wraps the model has to be indicated in :code:`predictor` field of a Model Deployment.
 
 ODAHU currently supports several Inference Servers:
+=======
+Odahu-flow Model Deployment API allows deploy of ML models in a Kubernetes cluster.
+Additionally, it provides the following set of features:
+
+    * Feedback loop
+    * Scale to zero
+    * Dynamic Model swagger
+    * Monitoring of Model Deployment
+    
+.. important::
 
 - ODAHU Inference Server: :code:`predictor: odahu-ml-server`
 - NVIDIA Triton Inference Server: :code:`predictor: triton`
