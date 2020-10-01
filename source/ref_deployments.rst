@@ -2,6 +2,8 @@
 Model Deployments
 ######################
 
+.. image:: img/deployment.png
+
 Odahu-flow Model Deployment API allows deploy of ML models in a Kubernetes cluster.
 Additionally, it provides the following set of features:
 

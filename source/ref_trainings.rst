@@ -2,6 +2,8 @@
 Model Trainings
 ######################
 
+.. image:: img/training.png
+
 The Odahu-flow Model Training API provides features to manage remote training jobs.
 The primary goal of API is to create a :term:`Trained Model Binary` for a :term:`Packager`.
 The API is pluggable and can be extended for different ML frameworks.
