@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Odahu 1.3.0, 05 October 2020
+Odahu 1.3.0, 07 October 2020
 --------------------------
 
 Features:
