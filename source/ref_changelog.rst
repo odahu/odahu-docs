@@ -8,9 +8,9 @@ Features:
 """"""""""""
 
 - Core:
-    * Persistence Agent added to synchronize k8s CRDS into main storage (`#268 <https://github.com/odahu/odahu-flow/issues/268>`_`).
-    * All secrets passed to ODAHU API now should be base64 encoded. Decrypted secrets retrieved from ODAHU API via `/connection/:id/decrypted` are now also base64 encoded. (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_`, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_`).
-    * Positive and negative (for 404 & 409 status codes) API tests via odahuflow SDK added (`#247 <https://github.com/odahu/odahu-flow/issues/247>`_`).
+    * Persistence Agent added to synchronize k8s CRDS into main storage (`#268 <https://github.com/odahu/odahu-flow/issues/268>`_).
+    * All secrets passed to ODAHU API now should be base64 encoded. Decrypted secrets retrieved from ODAHU API via `/connection/:id/decrypted` are now also base64 encoded. (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_).
+    * Positive and negative (for 404 & 409 status codes) API tests via odahuflow SDK added (`#247 <https://github.com/odahu/odahu-flow/issues/247>`_).
 
 Updates:
 """"""""""""
@@ -25,26 +25,26 @@ Bug Fixes:
     * Refactoring: some abstractions & components were renamed and moved to separate packages to facilitate future development.
     * For connection create/update operations ODAHU API will mask secrets in response body.
     * Rclone output will not reveal secrets on unit test setup stage anymore.
-    * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_`).
-    * Respect `artifactNameTemplate` for local training result directory name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_`).
-    * Allow to pass Azure BLOB URI without schema on connection creation (`#345 <https://github.com/odahu/odahu-flow/issues/345>_`)
-    * Validate model deployment ID to ensure it starts with alphabetic character (`#294 <https://github.com/odahu/odahu-flow/issues/294>_`)
+    * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_).
+    * Respect `artifactNameTemplate` for local training result directory name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_).
+    * Allow to pass Azure BLOB URI without schema on connection creation (`#345 <https://github.com/odahu/odahu-flow/issues/345>`_)
+    * Validate model deployment ID to ensure it starts with alphabetic character (`#294 <https://github.com/odahu/odahu-flow/issues/294>`_)
 
 - UI:
-    * State of resources now updates correctly after changing in UI (`#11 <https://github.com/odahu/odahu-ui/issues/11>_`).
-    * User aren't able to submit training when resource request is bigger than limit '(`#355 <https://github.com/odahu/odahu-flow/pull/355>_`).
-    * Mask secrets on review page during conenction creation process (`#42 <https://github.com/odahu/odahu-ui/issues/42>_`)
-    * UI now responds correct in case of concurrent deletion of entities (`#44 <https://github.com/odahu/odahu-ui/issues/44>_`).
-    * Additional validation added to prevent creation of resources with unsupported names (`#342 <https://github.com/odahu/odahu-flow/issues/342>_`, `#34 <https://github.com/odahu/odahu-ui/issues/34>_`).
-    * Sorting added for training & packaging views (`#13 <https://github.com/odahu/odahu-ui/issues/13>_`,`#48 <https://github.com/odahu/odahu-ui/issues/48>_`).
-    * `reference` field become optional for VCS connection (`#50 <https://github.com/odahu/odahu-ui/issues/50>_`).
-    * Git connection hint fixed (`#7 <https://github.com/odahu/odahu-ui/issues/7>_`).
+    * State of resources now updates correctly after changing in UI (`#11 <https://github.com/odahu/odahu-ui/issues/11>`_).
+    * User aren't able to submit training when resource request is bigger than limit '(`#355 <https://github.com/odahu/odahu-flow/pull/355>`_).
+    * Mask secrets on review page during conenction creation process (`#42 <https://github.com/odahu/odahu-ui/issues/42>`_)
+    * UI now responds correct in case of concurrent deletion of entities (`#44 <https://github.com/odahu/odahu-ui/issues/44>`_).
+    * Additional validation added to prevent creation of resources with unsupported names (`#342 <https://github.com/odahu/odahu-flow/issues/342>`_, `#34 <https://github.com/odahu/odahu-ui/issues/34>`_).
+    * Sorting added for training & packaging views (`#13 <https://github.com/odahu/odahu-ui/issues/13>`_, `#48 <https://github.com/odahu/odahu-ui/issues/48>`_).
+    * `reference` field become optional for VCS connection (`#50 <https://github.com/odahu/odahu-ui/issues/50>`_).
+    * Git connection hint fixed (`#7 <https://github.com/odahu/odahu-ui/issues/7>`_).
 
 - CLI:
-    * Configuration secrets is now masked in config output (`#307 <https://github.com/odahu/odahu-flow/issues/307>_`). 
-    * Local model output path will now display correctly (`#371 <https://github.com/odahu/odahu-flow/issues/371>_`).
-    * Local training output will now print only local training results (`#370 <https://github.com/odahu/odahu-flow/issues/370>_`)..
-    * Help message fixed for `odahuflowctl gppi` command (`#375 <https://github.com/odahu/odahu-flow/issues/375>_`).
+    * Configuration secrets is now masked in config output (`#307 <https://github.com/odahu/odahu-flow/issues/307>`_). 
+    * Local model output path will now display correctly (`#371 <https://github.com/odahu/odahu-flow/issues/371>`_).
+    * Local training output will now print only local training results (`#370 <https://github.com/odahu/odahu-flow/issues/370>`_).
+    * Help message fixed for `odahuflowctl gppi` command (`#375 <https://github.com/odahu/odahu-flow/issues/375>`_).
     
 - SDK:
     * All API connection errors now should be correctly handled and retried.
