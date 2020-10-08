@@ -74,7 +74,7 @@ General training structure
           value: TEST_ENV_VALUE
       # A Docker image where the training will be launched.
       # By default, the image from a toolchain is used.
-      # image: python:3.8
+      image: python:3.8
       # A connection which describes credentials to a GIT repository
       vcsName: <git-connection>
       # Git reference (branch or tag)
