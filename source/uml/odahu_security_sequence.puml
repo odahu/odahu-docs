@@ -4,14 +4,14 @@ participant Client order 10
 participant Nginx order 20
 participant Auth2Proxy order 30
 
-box "Envoy Sidecar"
-participant "Proxy" order 40
-participant "Authn Filter" order 40
-participant "Authz Filter" order 50
-endbox
+box "App Pod"
+participant "Envoy Proxy\nsidecar" order 40
+participant "Authn Filter" order 40 #EEEBDC
+participant "Authz Filter" order 50 #EEEBDC
 
-participant "Open Policy Agent" order 60
-participant "API Server" order 70
+participant "Open Policy Agent\nsidecar" order 60
+participant "App Container" order 70
+endbox
 
 title Odahu Request Lifecycle
 
@@ -23,18 +23,21 @@ note over Auth2Proxy: 1. Verify token in\nOpenID Provider
 note over Auth2Proxy: 2. Set token from \ncookie to header\nif header is empty
 Auth2Proxy --> Nginx: Yes
 == In a Cluster processing ==
-Nginx -> Proxy: HTTP Request\n + JWT in Header
-Proxy --> "Authn Filter": Authenticated?
+Nginx -> "Envoy Proxy\nsidecar": HTTP Request\n + JWT in Header
+
+group envoy sidecar force authentication and authorization
+"Envoy Proxy\nsidecar" --> "Authn Filter": Authenticated?
 note over "Authn Filter": 1. Verify JWT
 note over "Authn Filter": 2. Parse JWT Claims
-"Authn Filter" --> Proxy: Yes + Parsed Claims
-Proxy --> "Authz Filter": Authorized? + Claims
-"Authz Filter" --> "Open Policy Agent": Authorized? + Claims + \nHTTP Request Info
-"Open Policy Agent" --> "Authz Filter": Yes
-"Authz Filter" --> Proxy: Yes
-Proxy -> "API Server": HTTP Request
-"API Server" -> Proxy: HTTP Response
-Proxy -> Nginx: HTTP Response
+"Authn Filter" --> "Envoy Proxy\nsidecar": Yes + Parsed Claims
+"Envoy Proxy\nsidecar" --> "Authz Filter": Authorized? + Claims
+"Authz Filter" --> "Open Policy Agent\nsidecar": Authorized? + Claims + \nHTTP Request Info
+"Open Policy Agent\nsidecar" --> "Authz Filter": Yes
+"Authz Filter" --> "Envoy Proxy\nsidecar": Yes
+end
+"Envoy Proxy\nsidecar" -> "App Container": HTTP Request
+"App Container" -> "Envoy Proxy\nsidecar": HTTP Response
+"Envoy Proxy\nsidecar" -> Nginx: HTTP Response
 Nginx -> Client: HTTP Response
 
 @enduml
