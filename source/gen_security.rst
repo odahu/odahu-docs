@@ -29,7 +29,7 @@ Security overview
 
 
 Component roles
-==================
+""""""""""""""""""""""""""""""""""""""""""""
 
 There are some common terms related to access control management systems.
 In this documentation, the next ones are commonly used.
@@ -55,7 +55,7 @@ Policy Decision Point (PDP)
 
 
 API Request lifecycle
-==================================
+""""""""""""""""""""""""""""""""""""""""""""
 
 To have a better understanding of how all ODAHU security components work together
 let's review the API request lifecycle and describe what is happened for each HTTP request.
@@ -84,7 +84,9 @@ let's review the API request lifecycle and describe what is happened for each HT
    protected ensures that security policy allows making this request to ODAHU API
 
    1. Envoy verifies JWT token in `Authorization Request Header Field`_  using `JSON Web Token (JWT) Authentication`_ filter
-   2. Envoy makes a query to OpenPolicyAgent_ as PDP_ using `External Authorization`_ filter passing parsed JWT token from the previous step
+   2. Envoy makes a query to OpenPolicyAgent_ sidecar as PDP_ using `External Authorization`_ filter passing parsed JWT token
+      from the previous step. OpenPolicyAgent_ sidecars are injected for all pods that have
+      `odahu-flow-authorization=enabled` label
 
 4. If a request is permitted by OpenPolicyAgent_, it is sent to upstream (ODAHU API)
 
@@ -92,98 +94,29 @@ let's review the API request lifecycle and describe what is happened for each HT
 UML sequence diagram of successful API request described above is shown on image:
 
 .. uml:: uml/odahu_security_sequence.puml
-   :scale: 70 %
+   :scale: 90 %
 
 
 ***********************
-Use built-in policies
+Policies
 ***********************
+
 
 ODAHU is distributed with build-in policies that are written on `Rego policy language`_.
 
-`Role based access control`_ is implemented by default.
-But there is nothing you need to know about rego policies language as long as
-the set of pre-defined roles fits your needs. In this section, you can see such roles and how to manage them
-using Keycloak as an example of idP_
+`Role based access control`_ is implemented by default for next services:
 
-Pre-defined roles overview
-============================
-
-ODAHU has next predefined roles:
-
-  #. 'odahu_viewer' – can do any GET requests to any API resources
-  #. 'odahu_data_scientist' – allowed requests:
-
-     #. Action: GET, Resource pattern: api/v1/connection
-     #. Action: GET, Resource pattern: api/v1/packaging/integration
-     #. Action: GET, Resource pattern: api/v1/toolchain/integration
-     #. Action pattern: ALL, Resource pattern:  api/v1/model/training
-     #. Action pattern: ALL, Resource pattern:  api/v1/model/packaging
-     #. Action pattern: ALL, Resource pattern:  api/v1/model/deployment
-
-  #. 'odahu_admin' – can do any requests to any API resources
+   - ODAHU feedback api
+   - ODAHU core api
+   - ODAHU deployed ML Models
 
 
-Example of role management with Keycloak
-=========================================
-
-Because of ODAHU relies on any `OpenID Connect`_ provider as idP_ user roles are expected to be set as `JWT Claims`_.
-How to assign roles of the user as JWT Claims depends on certain OpenID provider, but almost all of them provide such a feature.
-By default, ODAHU expects a list of roles in 'realm_access.roles' claim inside JWT token. (This is default roles location for Keycloak).
-But if you have another idP_ and can not configure it to pass roles in that claim you can configure mapper
-(see more in `Customize default mapper`_).
-In this section we show how to (using Keycloak as idP_):
-
-Create ODAHU pre-defined roles in your idP_
---------------------------------------------
-
-Create roles from section `Pre-defined roles overview`_ in your Keycloak as
-`Realm Specific Roles <https://www.keycloak.org/docs/latest/server_admin/#realm-roles>`_.
-
-  #. Select appropriate Keycloak realm
-  #. Add clients from `Pre-defined roles overview`_:
-
-     #. odahu_viewer
-     #. odahu_data_scientist
-     #. odahu_admin
+ODAHU API and feedback pods policies
+""""""""""""""""""""""""""""""""""""""
 
 
-Set user role manually
-------------------------
-
-To manually set up created role use `User Role Mapping <https://www.keycloak.org/docs/latest/server_admin/#user-role-mappings>`_
-
-Set user role automatically
-------------------------
-
-If you don't create and manage users in your realm manually but rather use
-`Identity Broker <https://www.keycloak.org/docs/latest/server_admin/#_identity_broker>`_ then you can configure
-that all new users that will be exported from the broker will have certain ODAHU role by default.
-
-To set default role create mapper with type 'Hardcoded Role' in broker settings as described in
-`Keycloak Mapping Claims and Assertions <https://www.keycloak.org/docs/latest/server_admin/#_mappers>`_.
-
-Create a service account with some roles
-----------------------------------------
-
-If you are going to use ODAHU API from bot or service (not human) then you should use
-`Service account <https://www.keycloak.org/docs/latest/server_admin/#_service_accounts>`_.
-
-Create OIDC client with access type
-`Confidential Client Credentials <https://www.keycloak.org/docs/latest/server_admin/#_client-credentials>`_
-and add some ODAHU roles to its service account as described in
-`Adding or removing roles for client’s service account <https://www.keycloak.org/docs/latest/server_admin/#adding-or-removing-roles-for-client-s-service-account>`_.
-
-
-*****************************
-Configure built-in policies
-*****************************
-
-In this section, different ways to manage access control in ODAHU is described
-
-
-Built-in policies overview
-===========================
+Overview
+===================
 
 ODAHU is distributed with a pre-defined set of OpenPolicyAgent_ policies. These policies implement  simple
 `Role based access control`_ (RBAC).
@@ -211,8 +144,14 @@ All policies customization can be done on the stage of system configuration as d
 :ref:`installation guide <tutorials_installation:Installation>`
 
 
+
+Customize
+=========================
+
+In this section, different ways to manage access control in ODAHU is described
+
 Extend roles
-=======================
+----------------------
 
 To define new custom roles you should just add it as a variable in file `roles.rego`
 
@@ -269,7 +208,7 @@ In this file, we:
 
 
 Customize default mapper
-========================
+-----------------------------------
 
 You can configure `mapper.rego` to extend input that is passed to `core.rego` file with RBAC implementation
 
@@ -315,7 +254,7 @@ In this file, we:
 
 
 Create custom policies
-========================
+---------------------------------
 
 If `Role based access control`_ is not enough for your purposes you can customize policies to
 use more general `Access based access control`_. For this rewrite `core.rego` file or create your own rego policies
@@ -359,6 +298,10 @@ In this file, we:
 - lines 8-16: allow access if there are required permissions for action and resource for at least one user's roles
 - lines 12-21: allow access to root for any user
 - lines 23-26: allow access to swagger docs to any user
+
+
+ODAHU ML Models pods policies
+""""""""""""""""""""""""""""""""""""""
 
 .. Links
 
