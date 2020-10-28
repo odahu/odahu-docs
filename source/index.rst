@@ -27,8 +27,10 @@
    :caption: Components
 
    comp_api
+   comp_feedback
    comp_operator
    comp_mlflow_trainer
+   comp_security
 
 .. toctree::
    :maxdepth: 2
