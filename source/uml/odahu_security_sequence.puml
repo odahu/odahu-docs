@@ -25,7 +25,7 @@ Auth2Proxy --> Nginx: Yes
 == In a Cluster processing ==
 Nginx -> "Envoy Proxy\nsidecar": HTTP Request\n + JWT in Header
 
-group envoy sidecar force authentication and authorization
+group envoy sidecar forces authentication and authorization
 "Envoy Proxy\nsidecar" --> "Authn Filter": Authenticated?
 note over "Authn Filter": 1. Verify JWT
 note over "Authn Filter": 2. Parse JWT Claims

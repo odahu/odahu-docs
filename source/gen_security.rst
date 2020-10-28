@@ -11,13 +11,10 @@ and give users a flexible access control management solution.
 The first section `Security overview`_  shows the general design of authentication and authorization is described.
 Look at this section to have a deep understanding of how ODAHU security works under the hood or to learn basic concepts.
 
-The second section `Use built-in policies`_ describes how to add users permissions to use ODAHU via your idP_
-and ODAHU pre-defined roles
+The second section `Policies`_ describes default security policies for different ODAHU services and how to
+configure them
 
-The third section `Configure built-in policies`_ describes how you can get more flexibility
-such as adding new roles, map attributes for ODAHU RBAC from `JWT claims`_
-or writing your policy that could be more generic than RBAC like `Access based access control`_.
-
+Implementation details of ODAHU Security system could be found :ref:`here<comp_security:Implementation details>`
 
 
 .. contents:: Content table
@@ -101,24 +98,24 @@ UML sequence diagram of successful API request described above is shown on image
 Policies
 ***********************
 
+ODAHU is distributed with build-in policies that are written on `Rego policy language`_ and included into helm charts
+of appropriate services.
 
-ODAHU is distributed with build-in policies that are written on `Rego policy language`_.
+`Role based access control`_ is implemented by default for next services
 
-`Role based access control`_ is implemented by default for next services:
-
-   - ODAHU feedback api
-   - ODAHU core api
-   - ODAHU deployed ML Models
+   - :ref:`API <comp_api:API>`
+   - :ref:`Feedback aggregator <comp_feedback:Feedback aggregator>`
+   - `ODAHU deployed ML Models`
 
 
-ODAHU API and feedback pods policies
-""""""""""""""""""""""""""""""""""""""
-
+ODAHU API and Feedback aggregator policies
+"""""""""""""""""""""""""""""""""""""""""""
 
 Overview
 ===================
 
-ODAHU is distributed with a pre-defined set of OpenPolicyAgent_ policies. These policies implement  simple
+:ref:`API <comp_api:API>` and :ref:`Feedback aggregator <comp_feedback:Feedback aggregator>` are distributed
+with a pre-defined set of OpenPolicyAgent_ policies. These policies implement  simple
 `Role based access control`_ (RBAC).
 
 Next features are implemented using `Rego policy language`_:
@@ -144,11 +141,10 @@ All policies customization can be done on the stage of system configuration as d
 :ref:`installation guide <tutorials_installation:Installation>`
 
 
-
 Customize
 =========================
 
-In this section, different ways to manage access control in ODAHU is described
+In this section, different ways to customize pre-defined policies
 
 Extend roles
 ----------------------
@@ -258,6 +254,7 @@ Create custom policies
 
 If `Role based access control`_ is not enough for your purposes you can customize policies to
 use more general `Access based access control`_. For this rewrite `core.rego` file or create your own rego policies
+from scratch
 
 
 .. code-block:: javascript
@@ -283,13 +280,13 @@ use more general `Access based access control`_. For this rewrite `core.rego` fi
    }
 
    allow {
-      parsed_input.action == "GET"
-     parsed_input.resource == "/"
+       parsed_input.action == "GET"
+       parsed_input.resource == "/"
    }
 
    allow {
-     parsed_input.action == "GET"
-    re_match("/swagger*", parsed_input.resource)
+       parsed_input.action == "GET"
+       re_match("/swagger*", parsed_input.resource)
    }
 
 
