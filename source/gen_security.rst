@@ -293,12 +293,18 @@ from scratch
 In this file, we:
 
 - lines 8-16: allow access if there are required permissions for action and resource for at least one user's roles
-- lines 12-21: allow access to root for any user
+- lines 18-21: allow access to root for any user
 - lines 23-26: allow access to swagger docs to any user
 
 
 ODAHU ML Models pods policies
 """"""""""""""""""""""""""""""""""""""
+
+All deployed models automatically have policies that permit requests to them to all users
+that have :term:`Model Deployment Access Role Name`. This role can be set while deployment of a model using
+.Spec.roleName ModelDeployment manifest key and also some other roles that statically configured in polices
+when ODAHU is deployed
+
 
 .. Links
 
