@@ -6,7 +6,7 @@ Security subsystem
 Security subsystem is distributed as a helm chart and relies on `OpenPolicyAgent`_ to make decisions about authorization
 and `Istio`_ to enforce authorization for requests to the protected services.
 
-You can read concepts about ODAHU security in :ref:`an appropriate docs section<gen_security:Security>`
+You can read about ODAHU security concepts in :ref:`an appropriate docs section<gen_security:Security>`
 
 Implementation details
 ----------------------
