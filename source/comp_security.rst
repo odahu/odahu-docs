@@ -27,7 +27,7 @@ value of pod label ``opa-policy-config-map-name``. If this label is missed then 
 Default policy – reject all requests.
 
 Different ODAHU components such as :ref:`API <comp_api:API>` and :ref:`Feedback aggregator <comp_feedback:Feedback aggregator>`
-are distributed with a pre-defined set of OpenPolicyAgent_ policies. They create ConfigMap with their policies in the deployment process.
+are distributed with a pre-defined set of OpenPolicyAgent_ policies. They create ConfigMap with their policies during the deployment process.
 
 If user change ConfigMap with policies then appropriate pod must be restarted to refresh its policies.
 
