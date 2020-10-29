@@ -300,7 +300,7 @@ In this file, we:
 ODAHU ML Models pods policies
 """"""""""""""""""""""""""""""""""""""
 
-All deployed models automatically have policies that permit requests to them to all users
+All deployed models contain default policies that permit requests to them to all users
 that have :term:`Model Deployment Access Role Name`. This role can be set on model deployment stage using
 .Spec.roleName ModelDeployment manifest key and also some other roles that statically configured in polices
 when ODAHU is deployed
