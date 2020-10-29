@@ -30,7 +30,7 @@ Implementation details
 :term:`Feedback aggregator` contains two major subcomponents
 
 - REST Server that provides :term:`Model Feedback API` and send them to configured fluentd server
-- Envoy Proxy tap filter that catch all requests and response to deployed models and send this info
+- Envoy Proxy tap filter that catch all requests and response of deployed models and send this info
   to configured fluentd server
 
 .. csv-table::
