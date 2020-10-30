@@ -1,6 +1,26 @@
 Changelog
 =========
 
+Odahu 1.4.0
+--------------------------
+
+Features:
+""""""""""""
+
+Updates:
+""""""""""""
+
+- CLI:
+    * We added ``odahuflowctl local pack run`` command's new option ``--disable-target`` that allows you disable targets
+      which will be passed to packager process. You can use multiple options at once. For example:
+      ``odahuflowctl local pack run ... --disable-target=docker-pull --disable-target=docker-push``.
+    * ``odahuflowctl local pack run`` command's options ``--disable-package-targets/--no-disable-package-targets`` are
+      deprecated.
+    * ``odahuflowctl local pack run`` behavior that implicitly disable all targets by default is deprecated.
+
+Bug Fixes:
+""""""""""""
+
 Odahu 1.3.0, 07 October 2020
 --------------------------
 
@@ -16,7 +36,7 @@ Updates:
 """"""""""""
 
 - Core:
-    * Robot tests will now output pods state after each API call to simplify debugging. 
+    * Robot tests will now output pods state after each API call to simplify debugging.
 
 Bug Fixes:
 """"""""""""
@@ -41,11 +61,11 @@ Bug Fixes:
     * Git connection hint fixed (`#7 <https://github.com/odahu/odahu-ui/issues/7>`_).
 
 - CLI:
-    * Configuration secrets is now masked in config output (`#307 <https://github.com/odahu/odahu-flow/issues/307>`_). 
+    * Configuration secrets is now masked in config output (`#307 <https://github.com/odahu/odahu-flow/issues/307>`_).
     * Local model output path will now display correctly (`#371 <https://github.com/odahu/odahu-flow/issues/371>`_).
     * Local training output will now print only local training results (`#370 <https://github.com/odahu/odahu-flow/issues/370>`_).
     * Help message fixed for `odahuflowctl gppi` command (`#375 <https://github.com/odahu/odahu-flow/issues/375>`_).
-    
+
 - SDK:
     * All API connection errors now should be correctly handled and retried.
 
