@@ -27,7 +27,7 @@ Authentication and authorization
 --------------------------------
 
 :term:`API service` distributed in :ref:`odahu-flow-core helm chart <gen_distros:Distributions>` with enabled authorization
-and pre-defined OPA policies. If :ref:`Security Subsystem <comp_security:Security-subsystem>` is installed then all requests to api service will be
+and pre-defined OPA policies. If :ref:`Security Subsystem <comp_security:Security-subsystem>` is installed, then all requests to API service will be
 enforced using :ref:`pre-defined OPA policies <gen_security:ODAHU API and Feedback aggregator policies>`.
 
 
