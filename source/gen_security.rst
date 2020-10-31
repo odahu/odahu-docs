@@ -252,8 +252,8 @@ In this file, we:
 Create custom policies
 ---------------------------------
 
-If `Role based access control`_ is not enough for your purposes you can customize policies to
-use more general `Access based access control`_. For this rewrite `core.rego` file or create your own rego policies
+If `Role-based access control`_ is not enough for your purposes you can customize policies to
+use more general `Attribute-based access control`_. For this purpose, rewrite `core.rego` file or create your own rego policies
 from scratch
 
 
