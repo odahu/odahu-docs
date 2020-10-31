@@ -101,7 +101,7 @@ Policies
 ODAHU is distributed with build-in policies that are written on `Rego policy language`_ and included into helm charts
 of appropriate services.
 
-`Role based access control`_ is implemented by default for next services
+`Role-based access control`_ is implemented by default for next services
 
    - :ref:`API <comp_api:API>`
    - :ref:`Feedback aggregator <comp_feedback:Feedback aggregator>`
