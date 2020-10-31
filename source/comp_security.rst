@@ -22,8 +22,8 @@ Helm chart deploys
 - ConfigMap with common policy that included into all `OpenPolicyAgent`_ sidecars and implements masking of a sensitive data
 - ConfigMap with default policy that included into `OpenPolicyAgent`_ sidecars when pod does not specify ConfigMap with its polices
 
-When webhook server deploys `OpenPolicyAgent`_ sidecar it attaches policies from ConfigMap. ConfigMap can be found by
-value of pod label ``opa-policy-config-map-name``. If this label is missed then default policy will be used.
+When the webhook server deploys `OpenPolicyAgent`_ sidecar, it attaches policies from ConfigMap. ConfigMap can be found by
+the value of the pod label ``opa-policy-config-map-name``. If this label is missed, then the default policy will be used.
 Default policy – reject all requests.
 
 Different ODAHU components such as :ref:`API <comp_api:API>` and :ref:`Feedback aggregator <comp_feedback:Feedback aggregator>`
