@@ -149,7 +149,7 @@ In this section, different ways to customize pre-defined policies
 Extend roles
 ----------------------
 
-To define new custom roles you should just add it as a variable in file `roles.rego`
+To define new custom roles, you should add them as a variable in the `roles.rego` file
 
 .. code-block:: javascript
    :name: Add new role
