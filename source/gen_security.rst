@@ -116,7 +116,7 @@ Overview
 
 :ref:`API <comp_api:API>` and :ref:`Feedback aggregator <comp_feedback:Feedback aggregator>` are distributed
 with a pre-defined set of OpenPolicyAgent_ policies. These policies implement  simple
-`Role based access control`_ (RBAC).
+`Role-based access control`_ (RBAC).
 
 Next features are implemented using `Rego policy language`_:
 
