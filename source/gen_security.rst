@@ -88,7 +88,7 @@ let's review the API request lifecycle and describe what is happened for each HT
 4. If a request is permitted by OpenPolicyAgent_, it is sent to upstream (ODAHU API)
 
 
-UML sequence diagram of successful API request described above is shown on image:
+UML sequence diagram of a successful API request described above is shown in the image:
 
 .. uml:: uml/odahu_security_sequence.puml
    :scale: 90 %
