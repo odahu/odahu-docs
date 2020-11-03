@@ -11,7 +11,7 @@ Updates:
 """"""""""""
 
 - CLI:
-    * We added ``odahuflowctl local pack run`` command's new option ``--disable-target`` that allows you disable targets
+    * We added ``--disable-target`` option for ``odahuflowctl local pack run`` command that allows you disable targets
       which will be passed to packager process. You can use multiple options at once. For example:
       ``odahuflowctl local pack run ... --disable-target=docker-pull --disable-target=docker-push``.
     * ``odahuflowctl local pack run`` command's options ``--disable-package-targets/--no-disable-package-targets`` are
