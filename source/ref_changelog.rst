@@ -16,7 +16,7 @@ Updates:
       ``odahuflowctl local pack run ... --disable-target=docker-pull --disable-target=docker-push``.
     * ``odahuflowctl local pack run`` command's options ``--disable-package-targets/--no-disable-package-targets`` are
       deprecated.
-    * ``odahuflowctl local pack run`` behavior that implicitly disable all targets by default is deprecated.
+    * ``odahuflowctl local pack run`` behavior that implicitly disables all targets by default is deprecated.
 
 Bug Fixes:
 """"""""""""
