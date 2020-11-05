@@ -26,12 +26,10 @@ You can read all of the up-to-date documentation and invoke all methods (allowed
 Authentication and authorization
 --------------------------------
 
-:term:`API service` analyzes incoming HTTP headers for JWT token, extracts client's scopes from this token and approves / declines incoming requests based on these (provided in JWT) scopes.
+:term:`API service` distributed in :ref:`odahu-flow-core helm chart <gen_distros:Distributions>` with enabled authorization
+and pre-defined OPA policies. If :ref:`Security Subsystem <comp_security:Security-subsystem>` is installed, then all requests to API service will be
+enforced using :ref:`pre-defined OPA policies <gen_security:ODAHU API and Feedback aggregator policies>`.
 
-.. _api-server-auth:
-
-.. todo:
-    implement next piece
 
 Implementation details
 ----------------------

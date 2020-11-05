@@ -53,7 +53,7 @@ Glossary
         :term:`Connections <Connection>` to deploy a packaged model on a Kubernetes cluster.
 
     Deploy
-        Containerized process that `Deploys <Deploy>`results of a :term:`Package` operation to Kubernetes cluster with
+        Containerized process that deploys results of a :term:`Package` operation to Kubernetes cluster with
         a REST web service.
 
     Trainer Metrics

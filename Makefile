@@ -1,10 +1,12 @@
 SHELL := /bin/bash
 
+GENERATE_ARGS=
+
 -include .env
 .DEFAULT_GOAL := help
 ## build-docs: Build legion docs
 build-docs: build-docs-builder
-	docker run --rm -v $(PWD):/var/docs --workdir /var/docs odahu/docs-builder:latest /generate.sh
+	docker run --rm -v $(PWD):/var/docs --workdir /var/docs odahu/docs-builder:latest /generate.sh $(GENERATE_ARGS)
 
 ## build-docs-builder: Build docker image that can build documentation
 build-docs-builder:
