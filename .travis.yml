@@ -7,6 +7,10 @@ stages:
   - scan
   - build
 
+env:
+  - SHORT_VERSION=${TRAVIS_TAG}
+  - FULL_VERSION=${TRAVIS_TAG}
+
 jobs:
   include:
     ################
@@ -38,5 +42,4 @@ jobs:
         fqdn: docs.odahu.org
         name: "odahu-docs Publisher"
         on:
-          branch: develop
-
+          tags: true
