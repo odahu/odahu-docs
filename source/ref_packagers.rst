@@ -260,6 +260,7 @@ The following example assumes that you have created a connection with `test-dock
     :caption: Minimal Example of Docker REST packager
     :name: Minimal Example of Docker REST packager file
 
+    kind: ModelPackaging
     id: "docker-rest-packager-example"
     spec:
         integrationName: docker-rest
@@ -276,6 +277,7 @@ Now, let's try to change the docker image name and number of workers.
     :caption: Docker REST packager with custom arguments
     :name: Docker REST packager with custom arguments file
 
+    kind: ModelPackaging
     id: "docker-rest-packager-example"
     spec:
         integrationName: docker-rest
@@ -394,6 +396,7 @@ The following example assumes that you have created a connection with `test-dock
     :caption: Minimal Example of Docker CLI packager
     :name: Minimal Example of Docker CLI packager file
 
+    kind: ModelPackaging
     id: "docker-cli-packager-example"
     spec:
         integrationName: docker-cli
@@ -410,6 +413,7 @@ Now, let's try to change the docker image name and the base image.
     :caption: Docker CLI packager with custom arguments
     :name: Docker CLI packager with custom arguments file
 
+    kind: ModelPackaging
     id: "docker-cli-packager-example"
     spec:
         integrationName: docker-cli
