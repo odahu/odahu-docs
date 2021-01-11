@@ -547,3 +547,104 @@ Let's make a batch prediction.
         "predictions"
       ]
     }
+
+
+********************************************
+Nvidia Triton Packager
+********************************************
+
+Triton Packager wraps model with `Triton Inference Server <https://github.com/triton-inference-server/server>`_.
+The server supports multiple ML frameworks. Depending on the framework the packager expects different input.
+
+Required files:
+-----------------
+
+* model file/directory with fixed naming. Refer to
+  `Triton Backend Docs <https://github.com/triton-inference-server/backend/blob/main/README.md>`_
+  to find more specific information on particular Triton backend.
+    * TensorRT: :code:`model.plan`
+    * TensorFlow SavedModel: :code:`model.savedmodel/...`
+    * TensorFlow Grafdef: :code:`model.graphdef`
+    * ONNX: :code:`model.onnx` file or directory
+    * TorchScript: :code:`model.pt`
+    * Caffe 2 Netdef: :code:`model.netdef` + :code:`init_model.netdef`
+* :code:`config.pbtxt`, Triton config file
+  (`Triton Model Configuration Docs <https://github.com/triton-inference-server/server/blob/master/docs/model_configuration.md>`_).
+  Optional for the following backends:
+    * TensorRT
+    * TF SavedModel
+    * ONNX
+
+Optional files:
+------------------
+
+* :code:`odahuflow.model.yaml` in the following format.
+  When omitted defaults to model :code:`model` of version :code:`1`;
+
+.. code-block:: yaml
+    :name: Example odahuflow.model.yaml file
+
+    name: model
+    version: 1
+
+* :code:`conda.yaml` for Python backend. If conda-file detected new conda env is created and used for run model.
+* Any other arbitrary files will be copied and put next to model file.
+
+
+Targets, Arguments and Results
+----------------------
+
+
+Triton Packager Targets:
+
+.. csv-table::
+   :header: "Target Name", "Connection Types", "Required", "Description"
+   :widths: 20, 20, 10, 100
+
+   "docker-push", ":ref:`docker<ref_connections:Docker>`, :ref:`ecr<ref_connections:Amazon Elastic Container Registry>`", "True", "The packager will use the connection for pushing a Docker image result"
+
+Triton Packager Arguments:
+
+.. csv-table::
+   :header: "Argument Name", "Type", "Default", "Required", "Description"
+   :widths: 20, 20, 20, 10, 100
+
+   "imageName", "string", "{{ Name }}-{{ Version }}:{{ RandomUUID }}", "False", "This option provides a way to specify the Docker image name. You can hardcode the full name or specify a template. Available template values: Name (Model Name), Version (Model Version), RandomUUID. Examples: myservice:123, {{ Name }}:{{ Version }}"
+   "triton_base_image_tag", "string", "20.11-py3", "False", "Triton Base image tag for Dockerfile"
+
+Triton Packager Results:
+
+.. csv-table::
+   :header: "Name", "Type", "Description"
+   :widths: 20, 20, 100
+
+   "image", "string", "The full name of a built Docker image"
+
+
+Example
+--------
+
+Example input file structure for Python Backend:
+
+* :code:`model.py` - the Python module that implements
+  `interface expected by Triton <https://github.com/triton-inference-server/python_backend#usage>`_;
+* :code:`odahuflow.model.yaml` - simple manifest with model name and version
+* :code:`conda.yaml` - describes Conda environment for model
+* :code:`config.pbtxt` - Triton Model config file
+  (`specification <https://github.com/triton-inference-server/server/blob/master/docs/model_configuration.md>`_)
+* :code:`data.json`... - arbitrary file(s) that will be put next to model file
+
+
+.. code-block:: yaml
+    :caption: Triton packaging with custom arguments
+    :name: Triton packaging with custom arguments
+
+    id: "triton-packager-example"
+    spec:
+        integrationName: docker-triton
+        artifactName: model-123456789.tar
+        targets:
+            - connectionName: test-docker-registry
+              name: docker-push
+        arguments:
+            imageName: "triton-model:prefix-{{ RandomUUID }}"
