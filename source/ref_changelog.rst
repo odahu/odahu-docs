@@ -10,6 +10,18 @@ Features:
 Updates:
 """"""""""""
 
+- Core:
+    * Triton Packaging Integration (:ref:`ref_packagers:Nvidia Triton Packager`) added as a part of Triton pipeline
+      (`#437 <https://github.com/odahu/odahu-flow/issues/437>`_).
+    * Service catalog rewritten
+      (`#457 <https://github.com/odahu/odahu-flow/pull/457>`_).
+
+- UI:
+  * New tab `Play` on Deployment page provide a way to get deployed model metadata and make inference requests
+    from the UI
+    (`#61 <https://github.com/odahu/odahu-ui/issues/61>`_)
+
+
 - CLI:
     * We added ``--disable-target`` option for ``odahuflowctl local pack run`` command that allows you disable targets
       which will be passed to packager process. You can use multiple options at once. For example:
