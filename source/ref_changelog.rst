@@ -40,8 +40,6 @@ Features:
 """"""""""""
 
 - Core:
-    * Triton Packaging Integration (:ref:`ref_packagers:Nvidia Triton Packager`) added as a part of Triton pipeline
-      (`#437 <https://github.com/odahu/odahu-flow/issues/437>`_).
     * Persistence Agent added to synchronize k8s CRDS into main storage (`#268 <https://github.com/odahu/odahu-flow/issues/268>`_).
     * All secrets passed to ODAHU API now should be base64 encoded. Decrypted secrets retrieved from ODAHU API via `/connection/:id/decrypted` are now also base64 encoded. (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_).
     * Positive and negative (for 404 & 409 status codes) API tests via odahuflow SDK added (`#247 <https://github.com/odahu/odahu-flow/issues/247>`_).
