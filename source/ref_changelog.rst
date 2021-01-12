@@ -17,7 +17,7 @@ Updates:
       (`#457 <https://github.com/odahu/odahu-flow/pull/457>`_).
 
 - UI:
-  * New tab `Play` on Deployment page provide a way to get deployed model metadata and make inference requests
+  * New tab `Play` on Deployment page provides a way to get deployed model metadata and make inference requests
     from the UI
     (`#61 <https://github.com/odahu/odahu-ui/issues/61>`_)
 
