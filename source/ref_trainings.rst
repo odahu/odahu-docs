@@ -414,7 +414,7 @@ and therefore does not require models stored in MLFlow format as a resulted arti
 
 Instead, MLFlow Project toolchain relies only on
 `MLFlow Project functionality <https://www.mlflow.org/docs/latest/projects.html>`_  to run training script
-and manage dependencies. User can store result artifacts in any format as he wishes.
+and manage dependencies. User can store result artifacts in any format as they wish.
 
 Installation
 ------------
