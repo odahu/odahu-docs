@@ -10,6 +10,18 @@ Features:
 Updates:
 """"""""""""
 
+- Core:
+    * Triton Packaging Integration (:ref:`ref_packagers:Nvidia Triton Packager`) added as a part of Triton pipeline
+      (`#437 <https://github.com/odahu/odahu-flow/issues/437>`_).
+    * Service catalog rewritten
+      (`#457 <https://github.com/odahu/odahu-flow/pull/457>`_).
+
+- UI:
+  * New tab `Play` on Deployment page provides a way to get deployed model metadata and make inference requests
+    from the UI
+    (`#61 <https://github.com/odahu/odahu-ui/issues/61>`_)
+
+
 - CLI:
     * We added ``--disable-target`` option for ``odahuflowctl local pack run`` command that allows you disable targets
       which will be passed to packager process. You can use multiple options at once. For example:
@@ -28,8 +40,6 @@ Features:
 """"""""""""
 
 - Core:
-    * Triton Packaging Integration (:ref:`ref_packagers:Nvidia Triton Packager`) added as a part of Triton pipeline
-      (`#437 <https://github.com/odahu/odahu-flow/issues/437>`_).
     * Persistence Agent added to synchronize k8s CRDS into main storage (`#268 <https://github.com/odahu/odahu-flow/issues/268>`_).
     * All secrets passed to ODAHU API now should be base64 encoded. Decrypted secrets retrieved from ODAHU API via `/connection/:id/decrypted` are now also base64 encoded. (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_).
     * Positive and negative (for 404 & 409 status codes) API tests via odahuflow SDK added (`#247 <https://github.com/odahu/odahu-flow/issues/247>`_).
