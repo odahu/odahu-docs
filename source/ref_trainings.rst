@@ -448,5 +448,5 @@ Additionally, to manually store artifacts all content from ``$WORK_DIR/data`` fo
 ``$ODAHUFLOW_OUTPUT_DIR``, where ``$WORK_DIR`` is a :ref:`workDir parameter<Training API>` value
 from training spec.
 
-You can use this feature if you have some artifacts that can be defined statically before script execution. For example,
+You can use this feature if you have some file(s) that are required by further steps and can be defined statically before script execution. For example,
 some python wrapper scripts to deploy a model into a specific ML Server in the future.
