@@ -408,7 +408,7 @@ MLFlow Project toolchain
 
 MLFlow Project toolchain is a lightweight version of :ref:`MLFlow toolchain`.
 
-The main difference is that MLFlow Project toolchain does not require user stores models using
+The main difference is that MLFlow Project toolchain does not require user to store models using
 `MLFlow Tracking API <https://www.mlflow.org/docs/latest/tracking.html>`_
 and therefore does not require models stored in MLFlow format as a resulted artifact.
 
