@@ -444,7 +444,7 @@ of ``$ODAHUFLOW_OUTPUT_DIR`` environment variable.
 
     train_x.head().to_pickle(os.path.join(output_dir, 'head_input.pkl'))
 
-Additionally to manual stored artifacts all content from ``$WORK_DIR/data`` folder will be automatically copied to
+Additionally, to manually store artifacts all content from ``$WORK_DIR/data`` folder will be automatically copied to
 ``$ODAHUFLOW_OUTPUT_DIR``, where ``$WORK_DIR`` is a :ref:`workDir parameter<Training API>` value
 from training spec.
 
