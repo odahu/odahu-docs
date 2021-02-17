@@ -21,15 +21,13 @@ done
 
 rm -rf "${OUT_DIR}"
 
+echo "Fetching swagger spec for ODAHU API"
+wget -O "${SRC_DIR}/odahu-core-openapi.yaml"  https://raw.githubusercontent.com/odahu/odahu-flow/feat/batch-test/packages/operator/docs/swagger.yaml
+
 echo "Building of HTML docs"
 sphinx-build -b html "${SRC_DIR}" "${OUT_DIR}"
 touch "${OUT_DIR}"/.nojekyll
 
 ls -al out
 zip -r "odahu-docs.zip" ${OUT_DIR}/*
-
-if [ "$SKIP_PDF" = false ]; then
-  echo "Building of PDF docs"
-  sphinx-build -b pdf "${SRC_DIR}" "."
-fi
 

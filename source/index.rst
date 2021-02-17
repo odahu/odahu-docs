@@ -50,6 +50,7 @@
    ref_trainings
    ref_packagers
    ref_deployments
+   ref_batch
    gen_glossary
    ref_changelog
 
