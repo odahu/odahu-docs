@@ -21,7 +21,7 @@ jobs:
             make build-docs
             sudo cp ./odahu-docs.pdf ./out/odahu-docs.pdf
       - persist_to_workspace:
-          root: /out
+          root: .
           paths:
             - out
   deploy:
@@ -29,7 +29,7 @@ jobs:
       - image: circleci/node:12.20
     steps:
       - attach_workspace:
-          at: /out
+          at: .
       - add_ssh_keys:
           fingerprints:
             - "88:79:7f:50:24:5c:b6:00:49:ac:b4:e6:ae:4b:ab:7a"
@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Deploy docs to gh-pages branch
           command: |
-            gh-pages --branch 'master' --repo "odahu/docs.odahu.org" --dist "out/"
+            gh-pages --branch 'master' --repo "odahu/docs.odahu.org" --dist "workspace/tmp/out/"
 
 workflows:
   main:
