@@ -11,8 +11,8 @@ jobs:
     environment:
       SHORT_VERSION: ${CIRCLE_BRANCH}
       FULL_VERSION: ${CIRCLE_BRANCH}
-    docker:
-      - image: circleci/python:3.6
+    machine:
+      image: ubuntu-2004:202010-01
     steps:
       - checkout
       - run:
