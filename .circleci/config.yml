@@ -21,8 +21,9 @@ jobs:
             make build-docs
             sudo cp ./odahu-docs.pdf ./out/odahu-docs.pdf
       - persist_to_workspace:
-        root: /out
-        paths: out
+          root: /out
+          paths:
+            - out
   deploy:
     docker:
       - image: circleci/node:12.20
