@@ -29,7 +29,7 @@ jobs:
       - image: circleci/node:12.20
     steps:
       - attach_workspace:
-        at: /out
+          at: /out
       - add_ssh_keys:
           fingerprints:
             - "88:79:7f:50:24:5c:b6:00:49:ac:b4:e6:ae:4b:ab:7a"
