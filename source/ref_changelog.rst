@@ -42,7 +42,7 @@ Bug Fixes:
     * Empty `uri` param is not longer validated for `ecr` connection type (`#440 <https://github.com/odahu/odahu-flow/issues/440>`_).
     * Return correct error when missed `uri` param passed for `git` connection type (`#436 <https://github.com/odahu/odahu-flow/issues/436>`_).
     * Return correct error when user has insufficient privileges (`#444 <https://github.com/odahu/odahu-flow/issues/444>`_).
-    * Default branch is now taken for VCS connection is not provided by user (`#148 <https://github.com/odahu/odahu-flow/issues/148>`_).
+    * Default branch is now taken for VCS connection if it's not provided by user (`#148 <https://github.com/odahu/odahu-flow/issues/148>`_).
 
 - UI:
     * Auto-generated predictor value doesn't show warning on deploy creation (`#80 <https://github.com/odahu/odahu-ui/issues/80>`_).
