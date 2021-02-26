@@ -1,37 +1,56 @@
 Changelog
 =========
 
-Odahu 1.4.0
+Odahu 1.4.0, 26 February 2021
 --------------------------
 
 Features:
 """"""""""""
 
+- Core:
+    * Triton Packaging Integration (:ref:`ref_packagers:Nvidia Triton Packager`) added as a part of Triton pipeline (`#437 <https://github.com/odahu/odahu-flow/issues/437>`_).
+    * Local training & packaging now covered with tests (`#157 <https://github.com/odahu/odahu-flow/issues/157>`_).
+    * MLflow toolchain with custom format for model training artifact (`#31 <https://github.com/odahu/odahu-trainer/issues/31>`_).
+
+- UI:
+    * New `Play` tab on Deployment page provides a way to get deployed model metadata and make inference requests
+      from the UI (`#61 <https://github.com/odahu/odahu-ui/issues/61>`_).
+    * New `Logs` tab on Deployment page provides a way to browse logs of deployed model (`#45 <https://github.com/odahu/odahu-ui/issues/45>`_).
+    * User now can create packaging and deployments based on finished trainings and packagings (`#38 <https://github.com/odahu/odahu-ui/issues/38>`_).
+
 Updates:
 """"""""""""
 
 - Core:
-    * Triton Packaging Integration (:ref:`ref_packagers:Nvidia Triton Packager`) added as a part of Triton pipeline
-      (`#437 <https://github.com/odahu/odahu-flow/issues/437>`_).
-    * Service catalog rewritten
-      (`#457 <https://github.com/odahu/odahu-flow/pull/457>`_).
-
-- UI:
-  * New tab `Play` on Deployment page provides a way to get deployed model metadata and make inference requests
-    from the UI
-    (`#61 <https://github.com/odahu/odahu-ui/issues/61>`_)
-
+    * Service catalog is rewritten (`#457 <https://github.com/odahu/odahu-flow/issues/457>`_).
+    * Deployed ML models performance optimized (`#357 <https://github.com/odahu/odahu-flow/issues/357>`_).
+    * OpenPolicyAgent-based RBAC for deployed models are implemented (`#238 <https://github.com/odahu/odahu-flow/issues/238>`_).
 
 - CLI:
-    * We added ``--disable-target`` option for ``odahuflowctl local pack run`` command that allows you disable targets
-      which will be passed to packager process. You can use multiple options at once. For example:
+    * Option ``--disable-target`` for ``odahuflowctl local pack run`` command added. It allows you disable targets which will be passed to packager process. You can use multiple options at once. For example:
       ``odahuflowctl local pack run ... --disable-target=docker-pull --disable-target=docker-push``.
-    * ``odahuflowctl local pack run`` command's options ``--disable-package-targets/--no-disable-package-targets`` are
-      deprecated.
+    * Options ``--disable-package-targets/--no-disable-package-targets`` for ``odahuflowctl local pack run`` command are deprecated.
     * ``odahuflowctl local pack run`` behavior that implicitly disables all targets by default is deprecated.
 
 Bug Fixes:
 """"""""""""
+
+- Core:
+    * Knative doesn't create multiple releases anymore when using multiple node pools (`#434 <https://github.com/odahu/odahu-flow/issues/434>`_).
+    * Liveness & readiness probes lowest values are now 0 instead of 1 (`#442 <https://github.com/odahu/odahu-flow/issues/442>`_). 
+    * Correct error code now returned on failed deployment validation (`#441 <https://github.com/odahu/odahu-flow/issues/441>`_).
+    * Empty `uri` param is not longer validated for `ecr` connection type (`#440 <https://github.com/odahu/odahu-flow/issues/440>`_).
+    * Return correct error when missed `uri` param passed for `git` connection type (`#436 <https://github.com/odahu/odahu-flow/issues/436>`_).
+    * Return correct error when user has insufficient privileges (`#444 <https://github.com/odahu/odahu-flow/issues/444>`_).
+    * Default branch is now taken for VCS connection is not provided by user (`#148 <https://github.com/odahu/odahu-flow/issues/148>`_).
+
+- UI:
+    * Auto-generated predictor value doesn't show warning on deploy creation (`#80 <https://github.com/odahu/odahu-ui/issues/80>`_).
+    * Default deploy liveness & readiness delays are unified with server values (`#74 <https://github.com/odahu/odahu-ui/issues/74>`_).
+    * Deployment doesn't raise error when valid predictor value passed (`#46 <https://github.com/odahu/odahu-ui/issues/46>`_).
+    * Sorting for some columns fixed (`#48 <https://github.com/odahu/odahu-ui/issues/48>`_).
+    * Secrets are now masked on review stage of connection creation (`#42 <https://github.com/odahu/odahu-ui/issues/42>`_).
+
 
 Odahu 1.3.0, 07 October 2020
 --------------------------
