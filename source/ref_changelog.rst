@@ -50,6 +50,7 @@ Bug Fixes:
     * Deployment doesn't raise error when valid predictor value passed (`#46 <https://github.com/odahu/odahu-ui/issues/46>`_).
     * Sorting for some columns fixed (`#48 <https://github.com/odahu/odahu-ui/issues/48>`_).
     * Secrets are now masked on review stage of connection creation (`#42 <https://github.com/odahu/odahu-ui/issues/42>`_).
+    * Interface is now works as expected with long fields on edit connection page (`#65 <https://github.com/odahu/odahu-ui/issues/65>`_)
 
 
 Odahu 1.3.0, 07 October 2020
