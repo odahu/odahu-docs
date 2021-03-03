@@ -9,10 +9,34 @@ Additionally, it provides the following set of features:
     * Scale to zero
     * Dynamic Model swagger
     * Monitoring of Model Deployment
-    
-.. important::
 
-   Model could be deployed only if docker image was packaged through Docker REST packager.
+***************************
+Predictors
+***************************
+
+A model can be deployed in ODAHU if only it is packed with a supported Inference Server (predictor).
+Inference Server is typically a web service that "wraps" an ML model and lets remote clients to invoke
+the model via HTTP (or any other protocol).
+
+ODAHU currently supports 2 predictors:
+
+- ODAHU ML Server: :code:`odahu-ml-server`
+- NVIDIA Triton Server: :code:`triton`
+
+ODAHU ML Server
+################
+
+ODAHU ML Server is an inference server that build a simple HTTP layer on top of any
+`MLFlow model <https://www.mlflow.org/docs/latest/models.html>`_ with an HTTP layer.
+
+To pack a model into ODAHU ML Server :ref:`Docker REST <ref_packagers:Docker REST>` packager can be used.
+
+NVIDIA Triton Server
+####################
+
+`Triton Server <https://github.com/triton-inference-server/server>`_ is a feature-rich inference server. To pack a model into a Triton Server,
+:ref:`Triton Packager <ref_packagers:Nvidia Triton Packager>` should be used.
+Triton Server uses `KFServing Inference Protocol <https://github.com/kubeflow/kfserving/blob/master/docs/predict-api/v2/required_api.md>`_.
 
 ********************************************
 General deployment structure
@@ -30,6 +54,10 @@ General deployment structure
     #  * end with an alphanumeric character
     id: wine-12345
     spec:
+        # Predictor is an inference backend name; required field
+        # Possible values are: odahu-ml-server, triton
+        predictor: odahu-ml-server
+
         # Model image is required value. Change it
         image: gcr.io/project/test-e2e-wine-1.0:b591c752-43d4-43e0-8392-9a5715b67573
         # If the Docker image is pulled from a private Docker repository then
