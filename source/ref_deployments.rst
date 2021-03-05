@@ -11,35 +11,38 @@ Additionally, it provides the following set of features:
     * Monitoring of Model Deployment
 
 ***************************
-Predictors
+Inference Servers
 ***************************
 
-A model can be deployed in ODAHU if only it is packed with a supported Inference Server (predictor).
+A model can be deployed in ODAHU if only it is packed with a supported Inference Server.
 Inference Server is typically a web service that "wraps" an ML model and lets remote clients to invoke
 the model via HTTP (or any other protocol).
 
-ODAHU currently supports 2 predictors:
+An Inference Servers that wraps the model has to be indicated in :code:`predictor` field of a Model Deployment.
 
-- ODAHU ML Server: :code:`odahu-ml-server`
-- NVIDIA Triton Server: :code:`triton`
+ODAHU currently supports several Inference Servers:
 
-ODAHU ML Server
+- ODAHU Inference Server: :code:`predictor: odahu`
+- NVIDIA Triton Inference Server: :code:`predictor: triton`
+
+ODAHU Inference Server
 ################
 
-ODAHU ML Server is an inference server that build a simple HTTP layer on top of any
+ODAHU Inference Server is an inference server that builds a simple HTTP layer on top of any
 `MLFlow model <https://www.mlflow.org/docs/latest/models.html>`_ with an HTTP layer.
 
-To pack a model into ODAHU ML Server :ref:`Docker REST <ref_packagers:Docker REST>` packager can be used.
+To pack a model into ODAHU Inference Server :ref:`Docker REST <ref_packagers:Docker REST>` packager has to be used.
 
-NVIDIA Triton Server
+NVIDIA Triton Inference Server
 ####################
 
-`Triton Server <https://github.com/triton-inference-server/server>`_ is a feature-rich inference server. To pack a model into a Triton Server,
-:ref:`Triton Packager <ref_packagers:Nvidia Triton Packager>` should be used.
+`Triton Server <https://github.com/triton-inference-server/server>`_ is a feature-rich inference server.
+To pack a model into a Triton Server, :ref:`Triton Packager <ref_packagers:Nvidia Triton Packager>` has to be used.
+
 Triton Server uses `KFServing Inference Protocol <https://github.com/kubeflow/kfserving/blob/master/docs/predict-api/v2/required_api.md>`_.
 
 ********************************************
-General deployment structure
+General Deployment Manifest Structure
 ********************************************
 
 .. code-block:: yaml
