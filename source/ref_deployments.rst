@@ -58,8 +58,8 @@ General Deployment Manifest Structure
     id: wine-12345
     spec:
         # Predictor is an inference backend name; required field
-        # Possible values are: odahu-ml-server, triton
-        predictor: odahu-ml-server
+        # Possible values are: odahu, triton
+        predictor: odahu
 
         # Model image is required value. Change it
         image: gcr.io/project/test-e2e-wine-1.0:b591c752-43d4-43e0-8392-9a5715b67573
