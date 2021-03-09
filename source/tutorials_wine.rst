@@ -616,7 +616,7 @@ Paste code into the file:
    kind: ModelDeployment
    spec:
      image: "<fill-in>"
-     predictor: odahu-ml-server
+     predictor: odahu
      minReplicas: 1
      imagePullConnectionID: docker-tutorial
 
