@@ -616,13 +616,15 @@ Paste code into the file:
    kind: ModelDeployment
    spec:
      image: "<fill-in>"
+     predictor: odahu-ml-server
      minReplicas: 1
      imagePullConnectionID: docker-tutorial
 
 In this file, we:
 
 - line 4: Set the ``image`` that was created in the Package step
-- line 6: Set the id of the :term:`REST API Packager`
+- line 5: Set the ``predictor`` that indicates what Inference Server is used in the image; Check `Predictors`_ for more;
+- line 7: Set the connection ID to access the container registry where the image lives
 
 Create a :term:`Deploy` using the :term:`Odahu-flow CLI`:
 
