@@ -22,11 +22,13 @@ An Inference Servers that wraps the model has to be indicated in :code:`predicto
 
 ODAHU currently supports several Inference Servers:
 
-- ODAHU Inference Server: :code:`predictor: odahu`
+- ODAHU Inference Server: :code:`predictor: odahu-ml-server`
 - NVIDIA Triton Inference Server: :code:`predictor: triton`
 
 ODAHU Inference Server
 ################
+
+Value for "predictor" field of Model Deployment: :code:`predictor: odahu-ml-server`
 
 ODAHU Inference Server is an inference server that builds a simple HTTP layer on top of any
 `MLFlow model <https://www.mlflow.org/docs/latest/models.html>`_ with an HTTP layer.
@@ -35,6 +37,8 @@ To pack a model into ODAHU Inference Server :ref:`Docker REST <ref_packagers:Doc
 
 NVIDIA Triton Inference Server
 ####################
+
+Value for "predictor" field of Model Deployment: :code:`predictor: triton`
 
 `Triton Server <https://github.com/triton-inference-server/server>`_ is a feature-rich inference server.
 To pack a model into a Triton Server, :ref:`Triton Packager <ref_packagers:Nvidia Triton Packager>` has to be used.
@@ -58,8 +62,8 @@ General Deployment Manifest Structure
     id: wine-12345
     spec:
         # Predictor is an inference backend name; required field
-        # Possible values are: odahu, triton
-        predictor: odahu
+        # Possible values are: odahu-ml-server, triton
+        predictor: odahu-ml-server
 
         # Model image is required value. Change it
         image: gcr.io/project/test-e2e-wine-1.0:b591c752-43d4-43e0-8392-9a5715b67573
