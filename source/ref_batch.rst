@@ -53,7 +53,7 @@ InferenceJob
 
 ``InferenceJob`` describes forecast process that was triggered by on of the triggers of ``InferenceService``.
 If ``[].spec.triggers.webhook`` is enabled then its possible to run ``InferenceJob`` by making POST request as described
-below. Be default webhook trigger is enabled. Note, that currently its the only one way to trigger jobs.
+below. By default webhook trigger is enabled. Note, that currently its the only one way to trigger jobs.
 
 
 .. openapi:: odahu-core-openapi.yaml
