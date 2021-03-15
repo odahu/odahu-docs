@@ -5,8 +5,8 @@ Batch Inference
 
 This section describes API and protocols related to Batch inference using ODAHU.
 
-ODAHU Batch Inference feature allows to user get inferences using model for large datasets that are delivered not via
-WEB API but other mechanisms.
+ODAHU Batch Inference feature allows user to get inferences using ML model for large datasets that are delivered asyncronously, not via
+HTTP API, but through other mechanisms.
 
 Currently Batch Inference supports next ways to delivery data for forecasting:
 
