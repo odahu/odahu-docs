@@ -31,3 +31,7 @@ touch "${OUT_DIR}"/.nojekyll
 ls -al out
 zip -r "odahu-docs.zip" ${OUT_DIR}/*
 
+if [ "$SKIP_PDF" = false ]; then
+  echo "Building of PDF docs"
+  sphinx-build -b pdf "${SRC_DIR}" "."
+fi

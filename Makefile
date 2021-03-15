@@ -5,7 +5,7 @@ GENERATE_ARGS=
 -include .env
 .DEFAULT_GOAL := help
 ## build-docs: Build ODAHU docs
-build-docs:
+build-docs: build-docs-builder
 	docker run --rm -v $(PWD):/var/docs -e "SHORT_VERSION=${SHORT_VERSION}" -e "FULL_VERSION=${FULL_VERSION}" --workdir /var/docs odahu/docs-builder:latest /generate.sh $(GENERATE_ARGS)
 
 ## build-docs-builder: Build docker image that can build documentation
