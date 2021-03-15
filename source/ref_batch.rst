@@ -3,7 +3,7 @@
 Batch Inference
 ###################
 
-This section describes API and protocols related to Batch inference using ODAHU
+This section describes API and protocols related to Batch inference using ODAHU.
 
 ODAHU Batch Inference feature allows to user get inferences using model for large datasets that are delivered not via
 WEB API but other mechanisms.
@@ -121,4 +121,3 @@ This section helps with deeper understanding of underlying mechanisms.
   9. Upload data from ``$ODAHU_MODEL_OUTPUT`` to ``[].spec.outputDestination.path``
 
 .. image:: img/batch.png
-
