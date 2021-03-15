@@ -42,8 +42,7 @@ jobs:
       - run:
           name: Deploy docs to gh-pages branch
           command: |
-            pwd
-            ls -la project/out
+            gh-pages --branch 'master' --repo "odahu/docs.odahu.org" --dist "out/"
 
 workflows:
   main:
@@ -55,3 +54,8 @@ workflows:
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              only: /release\/(\d\.){2}\d$/
+            tags:
+              only: /(\d\.){2}\d$/
