@@ -37,7 +37,7 @@ InferenceService represents the following required entities:
 - Model files location on object storage (directory or .zip / .tar.gz archive)
 - Command and Arguments that describe how to execute image
 
-When user trained a model then he should build and image with code that follows `Predictor code protocol`_ and register
+When a user trains a model then they should build an image with code that follows `Predictor code protocol`_ and register
 this image as well as appropriate model files using ``InferenceService`` entity in ODAHU Platform.
 
 User describes how inference should be triggered using different options in ``[].spec.triggers``.
