@@ -31,7 +31,7 @@ API Reference
 InferenceService
 =================
 
-InferenceService represents next required entities:
+InferenceService represents the following required entities:
 
 - Predictor docker image that contains predictor code
 - Model files location on object storage (directory or .zip / .tar.gz archive)
