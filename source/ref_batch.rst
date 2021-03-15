@@ -16,7 +16,7 @@ Currently Batch Inference supports next ways to delivery data for forecasting:
   - S3
   - Azureblob
 
-For the future we consider to add ability to process data directly from Kafka topic and other async data sources.
+In future we consider to add ability to process data directly from Kafka topic and other async data sources.
 
 Please also take a look at `example <https://github.com/odahu/odahu-examples/tree/feat/batch-inference-example/batch-inference>`_.
 
