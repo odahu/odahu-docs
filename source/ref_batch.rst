@@ -66,7 +66,7 @@ below. By default webhook trigger is enabled. Note, that currently its the only 
 Predictor code protocol
 *********************************
 
-ODAHU Platform launches docker image that provided by user as ``[].spec.image`` (InferenceService_) and guaranties the
+ODAHU Platform launches docker image provided by user as ``[].spec.image`` (InferenceService_) and guarantees the
 next conventions about input/model location inside container as well as format of input and output data.
 
 ==============
