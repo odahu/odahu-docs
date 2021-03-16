@@ -92,12 +92,12 @@ Input and output formats
 
 Predictor code must expect input as set of JSON files with extensions ``.json`` located in folder that can be found
 in ``$ODAHU_MODEL_INPUT`` environment variable. These JSON files have structure of
-`Kubeflow inference request objects <https://github.com/kubeflow/kfserving/blob/master/docs/predict-api/v2/required_api.md#inference-request-json-object>`_.
+`Kubeflow inference request objects <https://github.com/kubeflow/kfserving/blob/v0.5.1/docs/predict-api/v2/required_api.md#inference-request-json-object>`_.
 
 
 Predictor code must save results as set of JSON files with extension ``.json`` in the folder that can be found in ``$ODAHU_MODEL_INPUT`` environment variable.
 These JSON files must have structure of
-`Kubeflow inference response objects <https://github.com/kubeflow/kfserving/blob/master/docs/predict-api/v2/required_api.md#inference-response-json-object>`_.
+`Kubeflow inference response objects <https://github.com/kubeflow/kfserving/blob/v0.5.1/docs/predict-api/v2/required_api.md#inference-response-json-object>`_.
 
 
 
@@ -113,10 +113,10 @@ This section helps with deeper understanding of underlying mechanisms.
   1. Configure rclone using ODAHU connections described in ``BatchInferenceService``
   2. Sync data input from object storage to local fs using rclone
   3. Sync model from object storage to local fs using rclone
-  4. Validate input to `Predict Protocol - Version 2 <https://github.com/kubeflow/kfserving/blob/master/docs/predict-api/v2/required_api.md#inference-request-json-object>`_
+  4. Validate input to `Predict Protocol - Version 2 <https://github.com/kubeflow/kfserving/blob/v0.5.1/docs/predict-api/v2/required_api.md#inference-request-json-object>`_
   5. Log Model Input to feedback storage
   6. Run user container with setting ``$ODAHU_MODEL``, ``$ODAHU_MODEL_INPUT``, ``$ODAHU_MODEL_OUTPUT``
-  7. Validate output to `Predict Protocol - Version 2 <https://github.com/kubeflow/kfserving/blob/master/docs/predict-api/v2/required_api.md#inference-response-json-object>`_
+  7. Validate output to `Predict Protocol - Version 2 <https://github.com/kubeflow/kfserving/blob/v0.5.1/docs/predict-api/v2/required_api.md#inference-response-json-object>`_
   8. Log Model Output to feedback storage
   9. Upload data from ``$ODAHU_MODEL_OUTPUT`` to ``[].spec.outputDestination.path``
 
