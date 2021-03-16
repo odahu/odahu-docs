@@ -1,6 +1,21 @@
 Changelog
 =========
 
+Odahu 1.5.0
+--------------------------
+
+Updates
+""""""""""""
+
+- Aiflow plugin:
+
+    * Airflow plugin operators expect a service account's ``client_secret`` in a ``password`` field of `Airflow Connection` now.
+      previously it expects ``client_secret`` in ``extra`` field. (`#29 <https://github.com/odahu/odahu-airflow-plugin/issues/29>`_).
+      `Breaking change!`: You should recreate all Airflow connections for ODAHU server by moving the ``client_secret``
+      from the ``extra`` field into the ``password`` field. Please do not forget to remove your ``client_secret`` from
+      the ``extra`` field for security reasons.
+
+
 Odahu 1.4.0, 26 February 2021
 --------------------------
 
