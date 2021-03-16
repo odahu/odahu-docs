@@ -36,13 +36,13 @@ jobs:
       - run:
           name: Setup gh-pages
           command: |
-            npm install -g --silent gh-pages@3.1.0
-            git config user.email "gh-docs@odahu.org"
-            git config user.name "odahu-docs Publisher"
+            sudo npm install -g --silent gh-pages@3.1.0
+            git config --global user.email "gh-docs@odahu.org"
+            git config --global user.name "odahu-docs Publisher"
       - run:
           name: Deploy docs to gh-pages branch
           command: |
-            gh-pages --branch 'master' --repo "odahu/docs.odahu.org" --dist "workspace/tmp/out/"
+            gh-pages --branch 'master' --repo "odahu/docs.odahu.org" --dist "out/"
 
 workflows:
   main:
