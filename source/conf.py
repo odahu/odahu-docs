@@ -43,7 +43,8 @@ extensions = [
     'sphinx_markdown_tables',
     'rst2pdf.pdfbuilder',
     'sphinx.ext.autosectionlabel',
-    'sphinxcontrib.plantuml'
+    'sphinxcontrib.plantuml',
+    'sphinxcontrib.openapi',
 ]
 
 plantuml = 'java -jar /plantuml.jar'
