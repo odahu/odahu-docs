@@ -22,7 +22,7 @@ done
 rm -rf "${OUT_DIR}"
 
 echo "Fetching swagger spec for ODAHU API"
-wget -O "${SRC_DIR}/odahu-core-openapi.yaml"  https://raw.githubusercontent.com/odahu/odahu-flow/develop/packages/operator/docs/swagger.yaml
+wget -O "${SRC_DIR}/odahu-core-openapi.yaml"  https://raw.githubusercontent.com/odahu/odahu-flow/1.5.0-rc4/packages/operator/docs/swagger.yaml
 
 echo "Building of HTML docs"
 sphinx-build -b html "${SRC_DIR}" "${OUT_DIR}"
