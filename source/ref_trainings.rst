@@ -51,7 +51,7 @@ General training structure
       # The training data for a ML script. You can find full description there: https://docs.odahu.org/ref_trainings.html#training-data
       data:
           # You can specify a connection name
-        - connName: wine
+        - connection: wine
           # Path to a file or a dir where data will copy from a bucket; relative to your Git repository root derictory.
           localPath: mlflow/wine-quality/
           # Path to the dir or file in a bucket
@@ -78,11 +78,16 @@ General training structure
       # A Docker image where the training will be launched.
       # By default, the image from a toolchain is used.
       # image: python:3.8
-      # A connection which describes credentials to a GIT repository
-      vcsName: <git-connection>
-      # Git reference (branch or tag)
-      # This must be specified here OR in Git connection itself
-      reference: master
+      # A section defining training source code
+      algorithmSource:
+        # Use vcs if source code located in a repository and objectStorage if in a storage. Should not use both
+        vcs:
+          # A connection which describes credentials to a GIT repository or to a bucket if using objectStorage
+          connection: <git-connection>
+          # Git reference (branch or tag)
+          # This must be specified here OR in Git connection itself
+          # In case of using objectStorage, specify path: <remote path> instead of reference
+          reference: master
       # Node selector that exactly matches a node pool from ODAHU config
       # This is optional; when omitted, ODAHU uses any of available training node pools
       # Read more about node selector: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
@@ -138,7 +143,7 @@ Finally, we provide a data section of Model Training.
 
     spec:
       data:
-        - connName: wine-training-data-conn
+        - connection: wine-training-data-conn
           localPath: data/
           remotePath: wine/11-11-2011/
 
