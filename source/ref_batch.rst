@@ -120,4 +120,3 @@ This section helps with deeper understanding of underlying mechanisms.
   8. Log Model Output to feedback storage
   9. Upload data from ``$ODAHU_MODEL_OUTPUT`` to ``[].spec.outputDestination.path``
 
-.. image:: img/batch.png

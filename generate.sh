@@ -7,13 +7,12 @@ SKIP_PDF=false
 function setup_openapi_ref() {
   echo "Fetching  ${SHORT_VERSION} branch in odahu/odahu-flow repository for open api spec"
   set +e
-  http_code=$(wget -S --spider -O "${SRC_DIR}/odahu-core-openapi.yaml" https://raw.githubusercontent.com/odahu/odahu-flow/${SHORT_VERSION}/packages/operator/docs/swagger.yaml 2>&1 | grep "HTTP/" | awk '{print $2}')
+  http_code=$(wget -S -O "${SRC_DIR}/odahu-core-openapi.yaml" https://raw.githubusercontent.com/odahu/odahu-flow/${SHORT_VERSION}/packages/operator/docs/swagger.yaml 2>&1 | grep "HTTP/" | awk '{print $2}')
   echo "Fetching ${SHORT_VERSION} branch HTTP response code = ${http_code}"
-  wgetreturn=$?
   # Use develop branch in odahu/odahu-flow repo to fetch API specification (OpenAPI yaml config)
   # We consider that this is feature branch in docs repo and there is no corresponding branch in odahu-flow repo
-  if [[ $http_code -eq 404 ]]; then
-      echo "Unable to fetch ${SHORT_VERSION} (not found) branch in odahu/odahu-flow repository. Fetching develop branch..."
+  if [[ $http_code -ne 404 ]]; then
+      echo "Unable to fetch ${SHORT_VERSION} branch in odahu/odahu-flow repository. Fetching develop branch..."
       wget -O "${SRC_DIR}/odahu-core-openapi.yaml"  https://raw.githubusercontent.com/odahu/odahu-flow/develop/packages/operator/docs/swagger.yaml
   fi
   set -e
