@@ -11,7 +11,7 @@ function setup_openapi_ref() {
   echo "Fetching ${SHORT_VERSION} branch HTTP response code = ${http_code}"
   # Use develop branch in odahu/odahu-flow repo to fetch API specification (OpenAPI yaml config)
   # We consider that this is feature branch in docs repo and there is no corresponding branch in odahu-flow repo
-  if [[ $http_code -ne 404 ]]; then
+  if [[ $http_code -ne 200 ]]; then
       echo "Unable to fetch ${SHORT_VERSION} branch in odahu/odahu-flow repository. Fetching develop branch..."
       wget -O "${SRC_DIR}/odahu-core-openapi.yaml"  https://raw.githubusercontent.com/odahu/odahu-flow/develop/packages/operator/docs/swagger.yaml
   fi
