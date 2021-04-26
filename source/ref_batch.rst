@@ -18,7 +18,7 @@ Currently Batch Inference supports the following ways to delivery data for forec
 
 In future we consider to add ability to process data directly from Kafka topic and other async data sources.
 
-Please also take a look at `example <https://github.com/odahu/odahu-examples/tree/feat/batch-inference-example/batch-inference>`_.
+Please also take a look at `example <https://github.com/odahu/odahu-examples/tree/1.5.0-rc4/batch-inference>`_.
 
 
 
@@ -120,4 +120,3 @@ This section helps with deeper understanding of underlying mechanisms.
   8. Log Model Output to feedback storage
   9. Upload data from ``$ODAHU_MODEL_OUTPUT`` to ``[].spec.outputDestination.path``
 
-.. image:: img/batch.png
