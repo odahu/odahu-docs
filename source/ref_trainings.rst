@@ -449,9 +449,9 @@ of ``$ODAHUFLOW_OUTPUT_DIR`` environment variable.
 
     train_x.head().to_pickle(os.path.join(output_dir, 'head_input.pkl'))
 
-Additionally, to manually store artifacts all content from ``$WORK_DIR/data`` folder will be automatically copied to
-``$ODAHUFLOW_OUTPUT_DIR``, where ``$WORK_DIR`` is a :ref:`workDir parameter<Training API>` value
-from training spec.
+Additionally, if ``$STATIC_ARTIFACTS_DIR`` variable is specified with a path to directory, all the contents
+is copied to final artifact. Path must be relative to working directory.
 
-You can use this feature if you have some file(s) that are required by further steps and can be defined statically before script execution. For example,
+You can use this feature if you have some file(s) that are required by further steps and
+can be defined statically before script execution. For example,
 some python wrapper scripts to deploy a model into a specific ML Server in the future.
