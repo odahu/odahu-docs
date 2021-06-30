@@ -421,7 +421,7 @@ Paste code into the file:
      entrypoint: main
      workDir: mlflow/sklearn/wine  # MLproject location (in GitHub)
      data:
-       - connName: wine-tutorial
+       - connection: wine-tutorial
          # Where to save a local copy of wine-quality.csv from wine-tutorial GCP connection
          localPath: mlflow/sklearn/wine/wine-quality.csv  
      hyperParameters:
@@ -433,7 +433,9 @@ Paste code into the file:
        requests:
           cpu: 2
           memory: 2Gi
-      vcsName: odahu-flow-tutorial
+      algorithmSource:
+        vcs:
+          connection: odahu-flow-tutorial
 
 
 In this file, we:
@@ -442,10 +444,12 @@ In this file, we:
 - line 8: Reference ``main`` method in ``entry_points`` (which is defined for :ref:`MLproject files <MLproject file>`)
 - line 9: Point ``workDir`` to the MLFlow project directory. (This is the directory that has the :ref:`MLproject file` in it.)
 - line 10: A section defining input data
-- line 11: ``connName`` id of the :ref:`Wine connection` (created in the previous step)
-- line 12: ``localPath`` relative (to Git repository root) path of the data file at the training (docker) container where data were put
-- lines 13-14: Input hyperparameters, defined in MLProject file, and passed to ``main`` method
-- line 22: ``vcsName`` id of the :ref:`VCS Connection` (created in the previous step)
+- line 11: ``connection`` id of the :ref:`Wine connection` (created in the previous step)
+- line 13: ``localPath`` relative (to Git repository root) path of the data file at the training (docker) container where data were put
+- lines 14-15: Input hyperparameters, defined in MLProject file, and passed to ``main`` method
+- line 23: A section defining training source code
+- line 24: ``vcs`` if source code located in a repository and ``objectStorage`` if in a storage. Should not use both
+- line 25: id of the :ref:`VCS Connection` (created in the previous step)
 
 :term:`Train` using :term:`Odahu-flow CLI`:
 
@@ -616,13 +620,15 @@ Paste code into the file:
    kind: ModelDeployment
    spec:
      image: "<fill-in>"
+     predictor: odahu-ml-server
      minReplicas: 1
      imagePullConnectionID: docker-tutorial
 
 In this file, we:
 
 - line 4: Set the ``image`` that was created in the Package step
-- line 6: Set the id of the :term:`REST API Packager`
+- line 5: Set the ``predictor`` that indicates what Inference Server is used in the image; Check `Predictors`_ for more;
+- line 7: Set the connection ID to access the container registry where the image lives
 
 Create a :term:`Deploy` using the :term:`Odahu-flow CLI`:
 

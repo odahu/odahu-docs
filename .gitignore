@@ -4,3 +4,4 @@ source/.doctrees/
 /_static
 /odahu-docs.pdf
 /odahu-docs.zip
+.env

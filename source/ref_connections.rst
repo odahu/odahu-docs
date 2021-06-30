@@ -158,7 +158,7 @@ The following fields of connection API are required:
         region: eu-central-1
 
 Google Cloud Storage
--------------------->
+--------------------
 
 `Google Cloud Storage <https://cloud.google.com/storage/docs/>`_ allows storing and accessing data on Google Cloud Platform infrastructure.
 This type of connection is used as storage of:

@@ -10,11 +10,14 @@ The API is pluggable and can be extended for different ML frameworks.
 
 You can find the list of out-of-the-box trainers below:
 
-    * :ref:`ref_trainings:MLFlow`
+    * :ref:`ref_trainings:MLFlow toolchain`
+    * :ref:`ref_trainings:MLFlow Project toolchain`
 
 ********************************************
 General training structure
 ********************************************
+
+.. _Training API:
 
 .. code-block:: yaml
     :caption: Training API
@@ -50,7 +53,7 @@ General training structure
       # The training data for a ML script. You can find full description there: https://docs.odahu.org/ref_trainings.html#training-data
       data:
           # You can specify a connection name
-        - connName: wine
+        - connection: wine
           # Path to a file or a dir where data will copy from a bucket; relative to your Git repository root derictory.
           localPath: mlflow/wine-quality/
           # Path to the dir or file in a bucket
@@ -77,11 +80,21 @@ General training structure
       # A Docker image where the training will be launched.
       # By default, the image from a toolchain is used.
       # image: python:3.8
-      # A connection which describes credentials to a GIT repository
-      vcsName: <git-connection>
-      # Git reference (branch or tag)
-      # This must be specified here OR in Git connection itself
-      reference: master
+      # A section defining training source code
+      algorithmSource:
+        # Use vcs if source code located in a repository and objectStorage if in a storage. Should not use both
+        vcs:
+          # A connection which describes credentials to a GIT repository or to a bucket if using objectStorage
+          connection: <git-connection>
+          # Git reference (branch or tag)
+          # This must be specified here OR in Git connection itself
+          # In case of using objectStorage, specify path: <remote path> instead of reference
+          reference: master
+      # Node selector that exactly matches a node pool from ODAHU config
+      # This is optional; when omitted, ODAHU uses any of available training node pools
+      # Read more about node selector: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+      nodeSelector:
+        label: value
     status:
       # One of the following states: scheduling, running, succeeded, failed, unknown
       state: running
@@ -132,7 +145,7 @@ Finally, we provide a data section of Model Training.
 
     spec:
       data:
-        - connName: wine-training-data-conn
+        - connection: wine-training-data-conn
           localPath: data/
           remotePath: wine/11-11-2011/
 
@@ -296,10 +309,12 @@ JupyterLab
 Odahu-flow provides the :ref:`int_jupyterlab_extension:JupyterLab extension` for interacting with Training API.
 
 ********************************************
-MLFlow
+MLFlow toolchain
 ********************************************
 
 `MLflow <https://mlflow.org/docs/latest/index.html>`_ is library-agnostic. You can use it with any machine learning library, and in any programming language, since all functions are accessible through a REST API and CLI.
+
+.. _MLFlow toolchain Installation:
 
 Installation
 ------------
@@ -322,6 +337,8 @@ By default, the deployed MLflow Tracking Server is available at `https://cluster
 .. warning::
 
     Odahu-flow must be deployed before the mlflow trainer.
+
+.. _MLProject description:
 
 MLProject file
 --------------
@@ -390,3 +407,53 @@ These names must be `head_input.pkl` and `head_output.pkl`, respectively.
     mlflow.log_artifact('head_input.pkl', 'model')
     train_y.head().to_pickle('head_output.pkl')
     mlflow.log_artifact('head_output.pkl', 'model')
+
+
+********************************************
+MLFlow Project toolchain
+********************************************
+
+MLFlow Project toolchain is a lightweight version of :ref:`MLFlow toolchain`.
+
+The main difference is that MLFlow Project toolchain does not require user to store models using
+`MLFlow Tracking API <https://www.mlflow.org/docs/latest/tracking.html>`_
+and therefore does not require models stored in MLFlow format as a resulted artifact.
+
+Instead, MLFlow Project toolchain relies only on
+`MLFlow Project functionality <https://www.mlflow.org/docs/latest/projects.html>`_  to run training script
+and manage dependencies. User can store result artifacts in any format as they wish.
+
+Installation
+------------
+
+Installation of MLFlow Project toolchain is identical to :ref:`MLFlow installation<MLFlow toolchain Installation>`
+
+MLProject file
+--------------
+
+MLFlow Project toolchain runs training script using MLProject specification. Please refer to
+:ref:`previous section<MLProject description>`
+or `official MLFlow documentation <https://www.mlflow.org/docs/latest/projects.html#mlproject-file>`_
+to learn more about MLProject file.
+
+Storing training artifacts
+-----------------------------
+
+You can store any artifacts during script execution in a special directory. To get a path to output directory read value
+of ``$ODAHUFLOW_OUTPUT_DIR`` environment variable.
+
+
+.. code-block:: python
+    :caption: Example
+    :linenos:
+
+    output_dir = os.environ.get("ODAHUFLOW_OUTPUT_DIR")
+
+    train_x.head().to_pickle(os.path.join(output_dir, 'head_input.pkl'))
+
+Additionally, to manually store artifacts all content from ``$WORK_DIR/data`` folder will be automatically copied to
+``$ODAHUFLOW_OUTPUT_DIR``, where ``$WORK_DIR`` is a :ref:`workDir parameter<Training API>` value
+from training spec.
+
+You can use this feature if you have some file(s) that are required by further steps and can be defined statically before script execution. For example,
+some python wrapper scripts to deploy a model into a specific ML Server in the future.

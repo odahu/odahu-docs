@@ -29,13 +29,13 @@ Type (required)
 Schema (optional)
     `https`
 
-Login (required)
-    Specify the user name to connect.
+Login (not required)
+    Leave this field empty
 
 Password (required)
-    Specify the password to connect.
+    The client secret. The client MAY omit the parameter if the client secret is an empty string. `See more <https://tools.ietf.org/html/rfc6749#section-2.3.1>`_
 
-Extra (optional)
+Extra (Required)
     Specify the extra parameters (as json dictionary) that can be used in Odahu
     connection. Because Odahu uses OpenID authorization, additional OpenID/OAuth 2.0 parameters may be supplied here.
 
@@ -43,7 +43,6 @@ Extra (optional)
 
     * **auth_url**: url of `authorization server <https://tools.ietf.org/html/rfc6749#section-1.1>`_
     * **client_id**: The client identifier issued to the client during the registration process. `See more <https://tools.ietf.org/html/rfc6749#section-2.3.1>`_
-    * **client_secret**: The client secret. The client MAY omit the parameter if the client secret is an empty string. `See more <https://tools.ietf.org/html/rfc6749#section-2.3.1>`_
     * **scope**: `Access Token Scope <https://tools.ietf.org/html/rfc6749#section-3.3>`_
 
     Example "extras" field:
@@ -53,7 +52,6 @@ Extra (optional)
        {
           "auth_url": "https://keycloak.<my-app-domain>",
           "client_id": "my-app",
-          "client_secret": "*********",
           "scope": "openid profile email offline_access groups",
        }
 

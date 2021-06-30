@@ -1,6 +1,121 @@
 Changelog
 =========
 
+Odahu 1.5.0
+--------------------------
+
+Updates
+""""""""""""
+
+- Aiflow plugin:
+
+    * Airflow plugin operators expect a service account's ``client_secret`` in a ``password`` field of `Airflow Connection` now.
+      previously it expects ``client_secret`` in ``extra`` field. (`#29 <https://github.com/odahu/odahu-airflow-plugin/issues/29>`_).
+      `Breaking change!`: You should recreate all Airflow connections for ODAHU server by moving the ``client_secret``
+      from the ``extra`` field into the ``password`` field. Please do not forget to remove your ``client_secret`` from
+      the ``extra`` field for security reasons.
+
+
+Odahu 1.4.0, 26 February 2021
+--------------------------
+
+Features:
+""""""""""""
+
+- Core:
+    * Triton Packaging Integration (:ref:`ref_packagers:Nvidia Triton Packager`) added as a part of Triton pipeline (`#437 <https://github.com/odahu/odahu-flow/issues/437>`_).
+    * Local training & packaging now covered with tests (`#157 <https://github.com/odahu/odahu-flow/issues/157>`_).
+    * MLflow toolchain with custom format for model training artifact (`#31 <https://github.com/odahu/odahu-trainer/issues/31>`_).
+
+- UI:
+    * New `Play` tab on Deployment page provides a way to get deployed model metadata and make inference requests
+      from the UI (`#61 <https://github.com/odahu/odahu-ui/issues/61>`_).
+    * New `Logs` tab on Deployment page provides a way to browse logs of deployed model (`#45 <https://github.com/odahu/odahu-ui/issues/45>`_).
+    * User now can create packaging and deployments based on finished trainings and packagings (`#38 <https://github.com/odahu/odahu-ui/issues/38>`_).
+
+Updates:
+""""""""""""
+
+- Core:
+    * Service catalog is rewritten (`#457 <https://github.com/odahu/odahu-flow/issues/457>`_).
+    * Deployed ML models performance optimized (`#357 <https://github.com/odahu/odahu-flow/issues/357>`_).
+    * OpenPolicyAgent-based RBAC for deployed models are implemented (`#238 <https://github.com/odahu/odahu-flow/issues/238>`_).
+
+- CLI:
+    * Option ``--disable-target`` for ``odahuflowctl local pack run`` command added. It allows you disable targets which will be passed to packager process. You can use multiple options at once. For example:
+      ``odahuflowctl local pack run ... --disable-target=docker-pull --disable-target=docker-push``.
+    * Options ``--disable-package-targets/--no-disable-package-targets`` for ``odahuflowctl local pack run`` command are deprecated.
+    * ``odahuflowctl local pack run`` behavior that implicitly disables all targets by default is deprecated.
+
+Bug Fixes:
+""""""""""""
+
+- Core:
+    * Knative doesn't create multiple releases anymore when using multiple node pools (`#434 <https://github.com/odahu/odahu-flow/issues/434>`_).
+    * Liveness & readiness probes lowest values are now 0 instead of 1 (`#442 <https://github.com/odahu/odahu-flow/issues/442>`_). 
+    * Correct error code now returned on failed deployment validation (`#441 <https://github.com/odahu/odahu-flow/issues/441>`_).
+    * Empty `uri` param is not longer validated for `ecr` connection type (`#440 <https://github.com/odahu/odahu-flow/issues/440>`_).
+    * Return correct error when missed `uri` param passed for `git` connection type (`#436 <https://github.com/odahu/odahu-flow/issues/436>`_).
+    * Return correct error when user has insufficient privileges (`#444 <https://github.com/odahu/odahu-flow/issues/444>`_).
+    * Default branch is now taken for VCS connection if it's not provided by user (`#148 <https://github.com/odahu/odahu-flow/issues/148>`_).
+
+- UI:
+    * Auto-generated predictor value doesn't show warning on deploy creation (`#80 <https://github.com/odahu/odahu-ui/issues/80>`_).
+    * Default deploy liveness & readiness delays are unified with server values (`#74 <https://github.com/odahu/odahu-ui/issues/74>`_).
+    * Deployment doesn't raise error when valid predictor value passed (`#46 <https://github.com/odahu/odahu-ui/issues/46>`_).
+    * Sorting for some columns fixed (`#48 <https://github.com/odahu/odahu-ui/issues/48>`_).
+    * Secrets are now masked on review stage of connection creation (`#42 <https://github.com/odahu/odahu-ui/issues/42>`_).
+    * Interface is now works as expected with long fields on edit connection page (`#65 <https://github.com/odahu/odahu-ui/issues/65>`_)
+
+
+Odahu 1.3.0, 07 October 2020
+--------------------------
+
+Features:
+""""""""""""
+
+- Core:
+    * Persistence Agent added to synchronize k8s CRDS into main storage (`#268 <https://github.com/odahu/odahu-flow/issues/268>`_).
+    * All secrets passed to ODAHU API now should be base64 encoded. Decrypted secrets retrieved from ODAHU API via `/connection/:id/decrypted` are now also base64 encoded. (`#181 <https://github.com/odahu/odahu-flow/issues/181>`_, `#308 <https://github.com/odahu/odahu-flow/issues/308>`_).
+    * Positive and negative (for 404 & 409 status codes) API tests via odahuflow SDK added (`#247 <https://github.com/odahu/odahu-flow/issues/247>`_).
+
+Updates:
+""""""""""""
+
+- Core:
+    * Robot tests will now output pods state after each API call to simplify debugging.
+
+Bug Fixes:
+""""""""""""
+
+- Core:
+    * Refactoring: some abstractions & components were renamed and moved to separate packages to facilitate future development.
+    * For connection create/update operations ODAHU API will mask secrets in response body.
+    * Rclone output will not reveal secrets on unit test setup stage anymore.
+    * `Output-dir` option path is now absolute (`#208 <https://github.com/odahu/odahu-flow/issues/208>`_).
+    * Respect `artifactNameTemplate` for local training result directory name (`#193 <https://github.com/odahu/odahu-flow/issues/193>`_).
+    * Allow to pass Azure BLOB URI without schema on connection creation (`#345 <https://github.com/odahu/odahu-flow/issues/345>`_)
+    * Validate model deployment ID to ensure it starts with alphabetic character (`#294 <https://github.com/odahu/odahu-flow/issues/294>`_)
+
+- UI:
+    * State of resources now updates correctly after changing in UI (`#11 <https://github.com/odahu/odahu-ui/issues/11>`_).
+    * User aren't able to submit training when resource request is bigger than limit '(`#355 <https://github.com/odahu/odahu-flow/pull/355>`_).
+    * Mask secrets on review page during conenction creation process (`#42 <https://github.com/odahu/odahu-ui/issues/42>`_)
+    * UI now responds correct in case of concurrent deletion of entities (`#44 <https://github.com/odahu/odahu-ui/issues/44>`_).
+    * Additional validation added to prevent creation of resources with unsupported names (`#342 <https://github.com/odahu/odahu-flow/issues/342>`_, `#34 <https://github.com/odahu/odahu-ui/issues/34>`_).
+    * Sorting added for training & packaging views (`#13 <https://github.com/odahu/odahu-ui/issues/13>`_, `#48 <https://github.com/odahu/odahu-ui/issues/48>`_).
+    * `reference` field become optional for VCS connection (`#50 <https://github.com/odahu/odahu-ui/issues/50>`_).
+    * Git connection hint fixed (`#7 <https://github.com/odahu/odahu-ui/issues/7>`_).
+
+- CLI:
+    * Configuration secrets is now masked in config output (`#307 <https://github.com/odahu/odahu-flow/issues/307>`_).
+    * Local model output path will now display correctly (`#371 <https://github.com/odahu/odahu-flow/issues/371>`_).
+    * Local training output will now print only local training results (`#370 <https://github.com/odahu/odahu-flow/issues/370>`_).
+    * Help message fixed for `odahuflowctl gppi` command (`#375 <https://github.com/odahu/odahu-flow/issues/375>`_).
+
+- SDK:
+    * All API connection errors now should be correctly handled and retried.
+
 Odahu 1.2.0, 26 June 2020
 --------------------------
 

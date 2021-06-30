@@ -1,19 +1,18 @@
-FROM python:3-alpine
+FROM ubuntu:18.04
 
-ENV LIBRARY_PATH=/lib:/usr/lib
-RUN apk --update --no-cache add \
-    bash \
-    coreutils \
-    git \
-    make \
-    ttf-dejavu \
-    graphviz \
-    build-base python3-dev jpeg-dev zlib-dev zip \
-    && apk upgrade
+# Install native dependencies
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y software-properties-common build-essential wget bzip2 ca-certificates curl git \
+                       bash coreutils make ttf-dejavu graphviz wget \
+                       python3-dev libjpeg-dev zlib1g-dev zip python3-pip openjdk-8-jre && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
 
 COPY requirements.txt /
-RUN pip install --upgrade pip && \
-    pip install -r /requirements.txt
+RUN pip3 install -r /requirements.txt
+
+RUN wget https://deac-riga.dl.sourceforge.net/project/plantuml/plantuml.jar
 
 ADD generate.sh /
 RUN chmod +x /generate.sh

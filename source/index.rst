@@ -27,8 +27,10 @@
    :caption: Components
 
    comp_api
+   comp_feedback
    comp_operator
    comp_mlflow_trainer
+   comp_security
 
 .. toctree::
    :maxdepth: 2
@@ -48,6 +50,7 @@
    ref_trainings
    ref_packagers
    ref_deployments
+   ref_batch
    gen_glossary
    ref_changelog
 
