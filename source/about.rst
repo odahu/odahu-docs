@@ -2,11 +2,11 @@
 About ODAHU
 ===========
 
-The Open Data Analytics Hub (ODAHU) is an open source project that provides the building blocks for enterprise grade MLOps platform.
+The Open Data AI Hub (ODAHU) is an open source project that provides the building blocks for enterprise grade MLOps platforms.
 
 **Multi ML Frameworks**
   - Supporting major ML frameworks: Scikit-learn, Keras, Tensorflow, PyTorch, H2O (and more)
-  - Extends MLflow platform with enterprise level features
+  - Extends MLflow services with enterprise level features
 **Multi Clouds**
   - Kubernetes native system of services
   - Deployment automation to Kubernetes cluster with Helm charts
