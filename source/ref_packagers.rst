@@ -5,8 +5,6 @@ Model Packagers
 .. image:: img/packaging.png
 
 ODAHU packaging component helps to wrap a :term:`Trained Model Binary` artifact into a inference service, batch job or command line tool.
-=======
-Odahu-flow packagers turn a :term:`Trained Model Binary` artifact into a specific application.
 You can find the list of out-of-the-box packagers below:
 
     * :ref:`ref_packagers:Docker REST`
