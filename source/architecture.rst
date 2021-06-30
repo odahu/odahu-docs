@@ -23,10 +23,6 @@ Interfaces:
     * :ref:`Command line interface <ref_odahuflowctl:Odahuflowctl>` based on ODAHU SDK for interacting with ODAHU components via terminal commands.
 
 Extensions for external tools:
-    * Web ontrol panel based on ODAHU SDK for interacting with ODAHU components via Web UI.
-    * :ref:`Command line interface <ref_odahuflowctl:Odahuflowctl>` based on ODAHU SDK for interacting with ODAHU components via terminal commands.
-
-Extensions for external workflow engines:
 
     * Argo Workflow templates based on ODAHU SDK and CLI provide Argo Workflow steps for ODAHU Training, Packaging and Deployment APIs `Argo Workflow <https://argoproj.github.io/argo-workflows/>`_
     * :ref:`ODAHU Airflow plugin <int_airflow:Airflow>` based on SDK provides Airflow operators for ODAHU Training, Packaging and Deployment APIs `Apache Airflow <https://airflow.apache.org/>`_
