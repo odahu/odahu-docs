@@ -42,11 +42,6 @@ this image as well as appropriate model files using ``InferenceService`` entity 
 
 User describes how inference should be triggered using different options in ``[].spec.triggers``.
 
-.. openapi:: odahu-core-openapi.yaml
-   :paths:
-      /api/v1/batch/service
-
-
 ==================
 InferenceJob
 ==================
@@ -54,13 +49,6 @@ InferenceJob
 ``InferenceJob`` describes forecast process that was triggered by one of the triggers in ``InferenceService``.
 If ``[].spec.triggers.webhook`` is enabled then its possible to run ``InferenceJob`` by making POST request as described
 below. By default webhook trigger is enabled. Note, that currently its the only one way to trigger jobs.
-
-
-.. openapi:: odahu-core-openapi.yaml
-   :paths:
-      /api/v1/batch/job
-
-
 
 *********************************
 Predictor code protocol
