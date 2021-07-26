@@ -3,9 +3,18 @@ Changelog
 
 Odahu 1.5.0
 --------------------------
+Features:
+""""""""""""
+
+- Core:
+    * Object storage added as an option of ML project source code repository (`#360 <https://github.com/odahu/odahu-flow/issues/360>`_).
 
 Updates
 """"""""""""
+- CLI:
+    * Model `info` and `invoke` parameter `jwt` renamed to `token` (`#577 <https://github.com/odahu/odahu-flow/issues/577>`_).
+    * Usage descriptions updated (`#577 <https://github.com/odahu/odahu-flow/issues/577>`_).
+    * Auth tokens are automatically refreshing (`#509 <https://github.com/odahu/odahu-flow/issues/509>`_).
 
 - Aiflow plugin:
 
@@ -14,6 +23,18 @@ Updates
       `Breaking change!`: You should recreate all Airflow connections for ODAHU server by moving the ``client_secret``
       from the ``extra`` field into the ``password`` field. Please do not forget to remove your ``client_secret`` from
       the ``extra`` field for security reasons.
+
+Bug Fixes:
+""""""""""""
+
+- Core:
+    * Fix & add missing updatedAT/createdAT (`#583 <https://github.com/odahu/odahu-flow/issues/583>`_, `#600 <https://github.com/odahu/odahu-flow/issues/600>`_, `#601 <https://github.com/odahu/odahu-flow/issues/601>`_, `#602 <https://github.com/odahu/odahu-flow/issues/602>`_).
+    * Training result doesn't contain commit ID when using object storage as algorythm source (`#584 <https://github.com/odahu/odahu-flow/issues/584>`_).
+    * RunID is now present for model training with mlflow toolchain (`#581 <https://github.com/odahu/odahu-flow/issues/581>`_).
+    * InferenceJob objects can now be deleted correctly (`#555 <https://github.com/odahu/odahu-flow/issues/555>`_).
+    * Deployment `roleName` changes now applies correctly (`#533 <https://github.com/odahu/odahu-flow/issues/533>`_).
+    * X-REQUEST-ID header are now correctly handled on service mesh layer to support third-party inference servers (`#525 <https://github.com/odahu/odahu-flow/issues/525>`_).
+    * Fix packaging deletion via `bulk delete` command (`#416 <https://github.com/odahu/odahu-flow/issues/416>`_).
 
 
 Odahu 1.4.0, 26 February 2021
