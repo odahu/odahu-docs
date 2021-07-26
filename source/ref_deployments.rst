@@ -2,13 +2,18 @@
 Model Deployments
 ######################
 
-Odahu-flow Model Deployment API allows deploy of ML models in a Kubernetes cluster.
-Additionally, it provides the following set of features:
+.. image:: img/deployment.png
 
-    * Feedback loop
-    * Scale to zero
-    * Dynamic Model swagger
-    * Monitoring of Model Deployment
+ODAHU model deployment component allows to deploy ML models as an inference online services or batch jobs in a Kubernetes cluster.
+
+Features:
+
+    * Automatic scaling of deployed inference service instances.
+    * Monitoring of deployed inference services.
+    * Various API traffic routing polices (A/B, Canary).
+    * Inference request and response logging in a structured form with unique id to be used in feedback loop.
+    * Dynamic OpenAPI/Swagger for deployed inference service APIs.
+    * Inference service API secured with JWT and access control polices.
 
 ***************************
 Inference Servers
@@ -96,7 +101,7 @@ Swagger UI
 
 ModelDeployments are available in the Swagger UI at http://api-service/swagger/index.html URL.
 
-Odahu-flow CLI
+ODAHU CLI
 --------------
 
 :ref:`ref_odahuflowctl:Odahuflowctl` supports the Model Deployment API.

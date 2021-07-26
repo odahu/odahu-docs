@@ -2,7 +2,9 @@
 Model Packagers
 ######################
 
-Odahu-flow packagers turn a :term:`Trained Model Binary` artifact into a specific application.
+.. image:: img/packaging.png
+
+ODAHU packaging component helps to wrap a :term:`Trained Model Binary` artifact into a inference service, batch job or command line tool.
 You can find the list of out-of-the-box packagers below:
 
     * :ref:`ref_packagers:Docker REST`
@@ -102,7 +104,7 @@ Swagger UI
 
 ModelPackaging and PackagingIntegration are available on the Swagger UI at http://api-service/swagger/index.html URL.
 
-Odahu-flow CLI
+ODAHU CLI
 --------------
 
 :ref:`ref_odahuflowctl:Odahuflowctl` supports the Packagers API.
