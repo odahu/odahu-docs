@@ -7,10 +7,27 @@ Features:
 """"""""""""
 
 - Core:
+    * `New Batch Inference API <https://docs.odahu.org/ref_batch.html>`_
+      (`#500 <https://github.com/odahu/odahu-flow/issues/500>`_,
+      `#537 <https://github.com/odahu/odahu-flow/issues/537>`_)
     * Object storage added as an option of ML project source code repository (`#360 <https://github.com/odahu/odahu-flow/issues/360>`_).
+
+- Python SDK:
+    * Add clients to work with User and Feedback entities (`#295 <https://github.com/odahu/odahu-flow/issues/295>`_)
 
 Updates
 """"""""""""
+- Core:
+    * Set `model-name`/`model-version` headers on service mesh level. That looses the requirements to inference servers.
+      Previously any inference server (typically a model is packed into one on Packaging stage) was obligated to
+      include the headers into response for feedback loop to work properly. That rule restricts from using any
+      third-party inference servers (such as NVIDIA Triton), because we cannot control the response headers.
+      (`#496 <https://github.com/odahu/odahu-flow/issues/496>`_).
+    * Removed deprecated fields `updateAt`/`createdAt` from core API entities
+      (`#394 <https://github.com/odahu/odahu-flow/issues/394>`_)
+    * Move to recommended and more high-level way of using Knative which under-the-hood is responsible for a big part
+      of `ModelDeployment` functionality (`#347 <https://github.com/odahu/odahu-flow/issues/347>`_)
+
 - CLI:
     * Model `info` and `invoke` parameter `jwt` renamed to `token` (`#577 <https://github.com/odahu/odahu-flow/issues/577>`_).
     * Usage descriptions updated (`#577 <https://github.com/odahu/odahu-flow/issues/577>`_).
