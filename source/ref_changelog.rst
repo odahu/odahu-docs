@@ -3,17 +3,49 @@ Changelog
 
 Odahu 1.5.0
 --------------------------
+Features:
+""""""""""""
+
+- Core:
+    * `New Batch Inference API <https://docs.odahu.org/ref_batch.html>`_ (`#500 <https://github.com/odahu/odahu-flow/issues/500>`_, `#537 <https://github.com/odahu/odahu-flow/issues/537>`_).
+    * Object storage added as an option of ML project source code repository (`#360 <https://github.com/odahu/odahu-flow/issues/360>`_).
+
+- Python SDK:
+    * Add clients to work with User and Feedback entities (`#295 <https://github.com/odahu/odahu-flow/issues/295>`_).
 
 Updates
 """"""""""""
+
+- Core:
+    * Set `model-name`/`model-version` headers on service mesh level (`#496 <https://github.com/odahu/odahu-flow/issues/496>`_). That looses the requirements to inference servers.
+      Previously any inference server (typically a model is packed into one on Packaging stage) was obligated to include the headers into response for feedback loop to work properly. That rule restricts from using any third-party inference servers (such as NVIDIA Triton), because we cannot control the response headers.
+    * Removed deprecated fields `updateAt`/`createdAt` from core API entities (`#394 <https://github.com/odahu/odahu-flow/issues/394>`_).
+    * Move to recommended and more high-level way of using Knative which under-the-hood is responsible for a big part of `ModelDeployment` functionality (`#347 <https://github.com/odahu/odahu-flow/issues/347>`_).
+
+- CLI:
+    * Model `info` and `invoke` parameter `JWT` renamed to `token` (`#577 <https://github.com/odahu/odahu-flow/issues/577>`_).
+    * Usage descriptions updated (`#577 <https://github.com/odahu/odahu-flow/issues/577>`_).
+    * Auth tokens are automatically refreshing (`#509 <https://github.com/odahu/odahu-flow/issues/509>`_).
 
 - Aiflow plugin:
 
     * Airflow plugin operators expect a service account's ``client_secret`` in a ``password`` field of `Airflow Connection` now.
       previously it expects ``client_secret`` in ``extra`` field. (`#29 <https://github.com/odahu/odahu-airflow-plugin/issues/29>`_).
-      `Breaking change!`: You should recreate all Airflow connections for ODAHU server by moving the ``client_secret``
-      from the ``extra`` field into the ``password`` field. Please do not forget to remove your ``client_secret`` from
-      the ``extra`` field for security reasons.
+
+      **`Breaking change!`**: You should recreate all Airflow connections for ODAHU server by moving the ``client_secret`` from the ``extra`` field into the ``password`` field.
+
+      **Please do not forget** to remove your ``client_secret`` from the ``extra`` field **for security reasons**.
+Bug Fixes:
+""""""""""""
+
+- Core:
+    * Fix & add missing updatedAT/createdAT (`#583 <https://github.com/odahu/odahu-flow/issues/583>`_, `#600 <https://github.com/odahu/odahu-flow/issues/600>`_, `#601 <https://github.com/odahu/odahu-flow/issues/601>`_, `#602 <https://github.com/odahu/odahu-flow/issues/602>`_).
+    * Training result doesn't contain commit ID when using object storage as algorythm source (`#584 <https://github.com/odahu/odahu-flow/issues/584>`_).
+    * RunID is now present for model training with mlflow toolchain (`#581 <https://github.com/odahu/odahu-flow/issues/581>`_).
+    * InferenceJob objects can now be deleted correctly (`#555 <https://github.com/odahu/odahu-flow/issues/555>`_).
+    * Deployment `roleName` changes now applies correctly (`#533 <https://github.com/odahu/odahu-flow/issues/533>`_).
+    * X-REQUEST-ID header are now correctly handled on service mesh layer to support third-party inference servers (`#525 <https://github.com/odahu/odahu-flow/issues/525>`_).
+    * Fix packaging deletion via `bulk delete` command (`#416 <https://github.com/odahu/odahu-flow/issues/416>`_).
 
 
 Odahu 1.4.0, 26 February 2021
