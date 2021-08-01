@@ -33,7 +33,7 @@ Updates
       previously it expects ``client_secret`` in ``extra`` field. (`#29 <https://github.com/odahu/odahu-airflow-plugin/issues/29>`_).
 
       **`Breaking change!`**: You should recreate all Airflow connections for ODAHU server by moving the ``client_secret`` from the ``extra`` field into the ``password`` field.
-      
+
       **Please do not forget** to remove your ``client_secret`` from the ``extra`` field **for security reasons**.
 Bug Fixes:
 """"""""""""
