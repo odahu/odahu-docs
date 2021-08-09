@@ -40,6 +40,8 @@ jobs:
       - run:
           name: Setup gh-pages
           command: |
+            pwd
+            ls -la
             cd project
             npm install --silent gh-pages@3.0.0
             git config --global user.email "gh-docs@odahu.org"
