@@ -41,7 +41,8 @@ jobs:
           name: Deploy docs
           command: |
             git clone git@github.com:odahu/docs.odahu.org.git
-            mv out/* docs.odahu.org/
+            cp -r out/* docs.odahu.org/
+            cp -r out/.[^.]* docs.odahu.org/
             cd docs.odahu.org
             git config user.email "gh-docs@odahu.org"
             git config user.name "odahu-docs Publisher"
