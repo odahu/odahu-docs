@@ -47,7 +47,7 @@ jobs:
           name: Deploy docs to gh-pages branch
           command: |
             cd project
-            npx gh-pages --dotfiles --message ${VERSION} --branch 'master' --repo "git@github.com:odahu/docs.odahu.org.git" --dist "out/"
+            npx gh-pages --dotfiles --message ${VERSION} --branch 'master' --repo git@github.com:odahu/docs.odahu.org.git --dist "out/"
 
 workflows:
   main:
