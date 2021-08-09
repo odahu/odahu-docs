@@ -59,3 +59,8 @@ workflows:
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              only: /release\/(\d\.){2}\d$/
+            tags:
+              only: /(\d\.){2}\d$/
