@@ -29,7 +29,7 @@ jobs:
       VERSION: ${CIRCLE_BRANCH}
       CACHE_DIR: cache
     docker:
-      - image: ubuntu-2004:202010-01
+      - image: cimg/base:2021.04
     steps:
       - attach_workspace:
           at: .
