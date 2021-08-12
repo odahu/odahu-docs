@@ -25,24 +25,29 @@ jobs:
           paths:
             - out
   deploy:
+    environment:
+      VERSION: ${CIRCLE_BRANCH}
+      CACHE_DIR: cache
     docker:
-      - image: circleci/node:12.20
+      - image: cimg/base:2021.04
     steps:
       - attach_workspace:
           at: .
       - add_ssh_keys:
           fingerprints:
             - "88:79:7f:50:24:5c:b6:00:49:ac:b4:e6:ae:4b:ab:7a"
+      - run: ssh-keyscan ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run:
-          name: Setup gh-pages
+          name: Deploy docs
           command: |
-            sudo npm install -g --silent gh-pages@3.1.0
-            git config --global user.email "gh-docs@odahu.org"
-            git config --global user.name "odahu-docs Publisher"
-      - run:
-          name: Deploy docs to gh-pages branch
-          command: |
-            gh-pages --branch 'master' --repo "odahu/docs.odahu.org" --dist "out/"
+            git clone git@github.com:odahu/docs.odahu.org.git
+            cp -r out/* docs.odahu.org/
+            cp -r out/.[^.]* docs.odahu.org/
+            cd docs.odahu.org
+            git config user.email "gh-docs@odahu.org"
+            git config user.name "odahu-docs Publisher"
+            git commit -am '${VERSION}'
+            git push origin master
 
 workflows:
   main:
