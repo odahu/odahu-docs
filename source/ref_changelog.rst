@@ -1,6 +1,20 @@
 Changelog
 =========
 
+Odahu 1.6.0
+--------------------------
+Features:
+""""""""""""
+
+- Core:
+    * MLFlow artifacts storage is now correctly works with cloud storage for Google Cloud and Amazon.
+
+Bug Fixes:
+""""""""""""
+
+- Core:
+    * Model feedback & Triton model logs are now stored without model name/versoon (`#607 <https://github.com/odahu/odahu-flow/issues/607>`_,).
+
 Odahu 1.5.0
 --------------------------
 Features:
