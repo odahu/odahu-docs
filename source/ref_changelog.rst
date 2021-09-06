@@ -13,7 +13,7 @@ Bug Fixes:
 """"""""""""
 
 - Core:
-    * Model feedback & Triton model logs are now stored without model name/versoon (`#607 <https://github.com/odahu/odahu-flow/issues/607>`_,).
+    * Model feedback & Triton model logs are now stored with model name/version (`#607 <https://github.com/odahu/odahu-flow/issues/607>`_,).
 
 Odahu 1.5.0
 --------------------------
