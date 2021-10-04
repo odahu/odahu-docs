@@ -5,18 +5,16 @@ ODAHU uses [Robot Framework](https://robotframework.org/) for an integration, sy
 
 All tests are located in the following directories of the [ODAHU project](https://github.com/odahu/odahu-flow):
 * `packages/robot/` - a python package with additional Robot libraries. For example: kubernetes, auth_client, feedback, and so on. 
-* `packages/tests/stuff/` - artifacts for integration testing. For example: pre-trained ML artifacts, test toolchain integrations, and so on.
-* `packages/tests/e2e/` - directory with the RobotFramework tests.
+* `packages/tests/stuff/` - setup, cleanup scripts and artifacts for integration testing. For example: pre-trained ML artifacts, test toolchain integrations, and so on.
+* `packages/tests/e2e/` - directory with the Robot Framework tests.
 
 ## Preparing for testing
 --------------------
 
-It's expected that you are using Unix-like operating system and have installed Python 3.6.9+ and pip.
+It's expected that you are using a Unix-like operating system and have installed conda (4.10+), preferably [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 1. [Clone](https://github.com/odahu/odahu-flow) ODAHU project from git repository and proceed to main dir – `odahu-flow`.
-1. [Create](https://docs.python.org/3/library/venv.html) Python virtual environment
-e.g. in the folder `./odahu-flow/virtual_environment/` and activate one.
-1. [Install](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst) Robot Framework
+1. [Create](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) Conda virtual environment with python version 3.6+.
 1. Update and/or install **pip** and **setuptools**:
     ```bash 
     $ pip install -U pip setuptools
@@ -73,9 +71,15 @@ We set up robot tests for `gke-odahu-flow-test` cluster in the example below.
    ```bash 
     /odahu-flow$ make setup-e2e-robot
     ```
-    **NB.** You should execute the previous command only once for a new cluster.
+   **NB.** You should execute the `setup` command only once for a new cluster.
 
-1. Finally, start the robot tests:
+1. The next step is to run the Robot Framework tests:
    ```bash
    /odahu-flow$ make e2e-robot
    ```
+   
+1. Finally, cleanup the cluster after testing:
+   ```bash
+   /odahu-flow$ make cleanup-e2e-robot
+   ```
+   **NB.** You should run the `cleanup` command only once, after all testing has been completed.
