@@ -90,6 +90,9 @@ General training structure
           # This must be specified here OR in Git connection itself
           # In case of using objectStorage, specify path: <remote path> instead of reference
           reference: master
+      # You can set connection which points to place where the Trained Model Binary will be stored.
+      # Optional. Default value is taken from the ODAHU cluster configuration.
+      outputConnection: custom-connection
       # Node selector that exactly matches a node pool from ODAHU config
       # This is optional; when omitted, ODAHU uses any of available training node pools
       # Read more about node selector: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
