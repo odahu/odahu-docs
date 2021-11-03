@@ -114,7 +114,7 @@ Bug Fixes:
     * Interface is now works as expected with long fields on edit connection page (`#65 <https://github.com/odahu/odahu-ui/issues/65>`_)
 
 
-Odahu 1.3.0, 07 October 2020
+Odahu 1.3.0, 7 October 2020
 --------------------------
 
 Features:
@@ -162,7 +162,7 @@ Bug Fixes:
 - SDK:
     * All API connection errors now should be correctly handled and retried.
 
-Odahu 1.2.0, 26 June 2020
+Odahu 1.2.0, 21 August 2020
 --------------------------
 
 Features:
