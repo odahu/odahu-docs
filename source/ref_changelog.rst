@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Odahu 1.6.0
+Odahu 1.6.0, 3 September 2021
 --------------------------
 Features:
 """"""""""""
@@ -15,7 +15,7 @@ Bug Fixes:
 - Core:
     * Model feedback & Triton model logs are now stored with model name/version (`#607 <https://github.com/odahu/odahu-flow/issues/607>`_,).
 
-Odahu 1.5.0
+Odahu 1.5.0, 1 August 2021
 --------------------------
 Features:
 """"""""""""
@@ -62,7 +62,7 @@ Bug Fixes:
     * Fix packaging deletion via `bulk delete` command (`#416 <https://github.com/odahu/odahu-flow/issues/416>`_).
 
 
-Odahu 1.4.0, 26 February 2021
+Odahu 1.4.0, 27 February 2021
 --------------------------
 
 Features:
