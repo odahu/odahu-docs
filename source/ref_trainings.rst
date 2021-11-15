@@ -79,7 +79,7 @@ General training structure
           value: TEST_ENV_VALUE
       # A Docker image where the training will be launched.
       # By default, the image from a toolchain is used.
-      # image: python:3.8
+      image: python:3.8
       # A section defining training source code
       algorithmSource:
         # Use vcs if source code located in a repository and objectStorage if in a storage. Should not use both
