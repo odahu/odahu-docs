@@ -49,6 +49,7 @@ General training structure
       # Mlflow MLProject file contains the list of entrypoints. You must choose one of those.
       entrypoint: main
       # Working directory inside a training (docker) container, which GIT repository copied in.
+      # Optional. The default directory is "./".
       workDir: work/dir
       # The training data for a ML script. You can find full description there: https://docs.odahu.org/ref_trainings.html#training-data
       data:
