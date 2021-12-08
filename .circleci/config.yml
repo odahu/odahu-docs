@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Deploy docs
           command: |
-            git clone git@github.com:odahu/docs.odahu.org.git
+            git clone git@github.com:odahu/docs.odahu.epam.com.git
             cp -r out/* docs.odahu.org/
             cp -r out/.[^.]* docs.odahu.org/
             cd docs.odahu.org
