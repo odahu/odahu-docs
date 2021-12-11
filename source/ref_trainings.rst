@@ -129,6 +129,7 @@ First of all, we should create an :ref:`Odahu-flow GCS connection<ref_connection
 .. code-block:: yaml
     :caption: Training Data GCS:
 
+    kind: ModelTraining
     id: "wine-training-data-conn"
     spec:
         type: gcs

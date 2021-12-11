@@ -146,6 +146,7 @@ The following fields of connection API are required:
     :caption: Example of Connection S3:
     :name: Connection S3 file
 
+    kind: Connection
     id: "training-data"
     spec:
         type: s3
@@ -188,6 +189,7 @@ The following fields of connection API are required:
     :caption: Example of Connection GCS:
     :name: Connection GCS file
 
+    kind: Connection
     id: "training-data"
     spec:
         type: gcs
@@ -240,6 +242,7 @@ The following fields of connection API are required:
     :caption: Example of Connection Blob Storage:
     :name: Connection Blob Storage file
 
+    kind: Connection
     id: "training-data"
     spec:
         type: azureblob
@@ -277,6 +280,7 @@ Example of command to encode ssh key:
     :caption: Example of GIT Connection:
     :name: GIT Connection
 
+    kind: Connection
     id: "ml-repository"
     spec:
         type: git
@@ -319,6 +323,7 @@ The following fields of connection API are required:
     :caption: Example of GCR Docker connection
     :name: GCR docker connection file
 
+    kind: Connection
     id: "docker-registry"
     spec:
         type: docker
@@ -348,6 +353,7 @@ The following fields of connection API are required:
     :caption: Example of Docker Hub
     :name: Connection Docker Hub file
 
+    kind: Connection
     id: "docker-registry"
     spec:
         type: docker
@@ -384,6 +390,7 @@ The following fields of connection API are required:
     :caption: Example of Connection ECR:
     :name: Connection ECR file
 
+    kind: Connection
     id: "docker-registry"
     spec:
         type: ecr

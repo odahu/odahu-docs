@@ -529,8 +529,8 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 4, 6-8
 
-   id: wine-tutorial
    kind: ModelPackaging
+   id: wine-tutorial
    spec:
      artifactName: "<fill-in>"  # Use artifact name from Train step
      targets:
@@ -616,8 +616,8 @@ Paste code into the file:
    :linenos:
    :emphasize-lines: 4, 6-8
 
-   id: wine-tutorial
    kind: ModelDeployment
+   id: wine-tutorial
    spec:
      image: "<fill-in>"
      predictor: odahu-ml-server

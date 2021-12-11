@@ -69,9 +69,9 @@ We are ready to launch the local training. Copy, past and execute the following 
     MLFlow metrics does not propagate to the tracking server during training.
     This will be implemented in the near future.
 
-`odahuflowctl` trains the model, verify that it satisfy the GPPI spec and save
-GPPI binary in the host filesystem. Execute the following command to take a look
-all trained models.
+`odahuflowctl` trains the model, verify that it satisfy the GPPI spec and save GPPI binary
+in the host filesystem. Execute the following command to take a look at all trained models
+in the default output directory.
 
 .. code-block:: console
 
