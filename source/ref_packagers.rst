@@ -75,7 +75,8 @@ You can find the description of all fields below:
       # You should provide a list of connections for a packager to get access to them.
       targets: []
       # You can set connection which points to some bucket where the Trained Model Binary is stored
-      # then packager will extract your binary from this connection
+      # then packager will extract your binary from this connection.
+      # Optional. Default value is taken from the ODAHU cluster configuration.
       outputConnection: custom-connection
       # Node selector that exactly matches a node pool from ODAHU config
       # This is optional; when omitted, ODAHU uses any of available packaging node pools

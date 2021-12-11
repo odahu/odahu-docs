@@ -49,6 +49,7 @@ General training structure
       # Mlflow MLProject file contains the list of entrypoints. You must choose one of those.
       entrypoint: main
       # Working directory inside a training (docker) container, which GIT repository copied in.
+      # Optional. The default directory is "./".
       workDir: work/dir
       # The training data for a ML script. You can find full description there: https://docs.odahu.org/ref_trainings.html#training-data
       data:
@@ -79,7 +80,7 @@ General training structure
           value: TEST_ENV_VALUE
       # A Docker image where the training will be launched.
       # By default, the image from a toolchain is used.
-      # image: python:3.8
+      image: python:3.8
       # A section defining training source code
       algorithmSource:
         # Use vcs if source code located in a repository and objectStorage if in a storage. Should not use both
@@ -90,6 +91,9 @@ General training structure
           # This must be specified here OR in Git connection itself
           # In case of using objectStorage, specify path: <remote path> instead of reference
           reference: master
+      # You can set a connection that points where the Trained Model Binary will be stored.
+      # Optional. Default value is taken from the ODAHU cluster configuration.
+      outputConnection: custom-connection
       # Node selector that exactly matches a node pool from ODAHU config
       # This is optional; when omitted, ODAHU uses any of available training node pools
       # Read more about node selector: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
