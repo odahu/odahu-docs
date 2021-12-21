@@ -74,7 +74,7 @@ General Deployment Manifest Structure
         image: gcr.io/project/test-e2e-wine-1.0:b591c752-43d4-43e0-8392-9a5715b67573
         # If the Docker image is pulled from a private Docker repository then
         # you have to create a Odahu-flow connecton and specify its id here.
-        # imagePullConnID: test
+        imagePullConnID: test
 
         # Compute resources for the deployment job.
         resources:
