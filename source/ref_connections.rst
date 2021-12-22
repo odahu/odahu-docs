@@ -51,6 +51,8 @@ Below you can find the description of all fields:
         keySecret: b2RhaHUK
         # SSH public key, must be base64-encoded
         publicKey: b2RhaHUK
+        # Defines if connection is vital. Vital connections cannot be deleted
+        vital: false
 
 *********************
 Connection management

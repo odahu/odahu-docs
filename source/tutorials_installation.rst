@@ -545,6 +545,7 @@ a) :ref:`Docker registry connection<ref_connections:Docker>` is used to pull/pus
         type: docker
         uri: docker.io/odahu-models-repo
         webUILink: https://hub.docker.com/r/odahu-models-repo
+        vital: true
 
 b) :ref:`Google Cloud Storage connection<ref_connections:Google Cloud Storage>` is used to store model trained artifacts and input data for ML models
 
@@ -559,6 +560,7 @@ b) :ref:`Google Cloud Storage connection<ref_connections:Google Cloud Storage>` 
         type: gcs
         uri: gs://odahu-flow-test-store/output
         webUILink: https://console.cloud.google.com/storage/browser/odahu-flow-test-store/output?project=my-gcp-project-id-zzzzz
+        vital: true
 
 
 If you install :ref:`Open Policy Agent <_opa_installation>` for ODAHU then you will need to configure service accounts
