@@ -21,7 +21,7 @@ Features:
 """"""""""""
 
 - Core:
-    * `New Batch Inference API <https://docs.odahu.org/ref_batch.html>`_ (`#500 <https://github.com/odahu/odahu-flow/issues/500>`_, `#537 <https://github.com/odahu/odahu-flow/issues/537>`_).
+    * `New Batch Inference API <https://docs.odahu.epam.com/ref_batch.html>`_ (`#500 <https://github.com/odahu/odahu-flow/issues/500>`_, `#537 <https://github.com/odahu/odahu-flow/issues/537>`_).
     * Object storage added as an option of ML project source code repository (`#360 <https://github.com/odahu/odahu-flow/issues/360>`_).
 
 - Python SDK:
