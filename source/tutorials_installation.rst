@@ -495,7 +495,7 @@ Example:
       common:
         external_urls:
         - name: Documentation
-          url: http://docs.odahu.epam.com
+          url: https://docs.odahu.epam.com
         databaseConnectionString: postgresql://odahu:PASSWORD@odahu-db.postgresql/odahu
       connection:
         enabled: true
