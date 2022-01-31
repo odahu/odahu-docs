@@ -12,7 +12,7 @@ RUN apt-get update && apt-get upgrade -y && \
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
-RUN wget https://deac-riga.dl.sourceforge.net/project/plantuml/plantuml.jar
+RUN wget https://deac-ams.dl.sourceforge.net/project/plantuml/plantuml.jar
 
 ADD generate.sh /
 RUN chmod +x /generate.sh
