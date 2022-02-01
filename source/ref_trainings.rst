@@ -51,7 +51,7 @@ General training structure
       # Working directory inside a training (docker) container, which GIT repository copied in.
       # Optional. The default directory is "./".
       workDir: work/dir
-      # The training data for a ML script. You can find full description there: https://docs.odahu.org/ref_trainings.html#training-data
+      # The training data for a ML script. You can find full description there: https://docs.odahu.epam.com/ref_trainings.html#training-data
       data:
           # You can specify a connection name
         - connection: wine

@@ -39,7 +39,7 @@ An apache airflow plugin for the Odahu Platform.
 
 ## [odahu/odahu-docs](https://github.com/odahu/odahu-docs)
 
-The repository contains Odahu documentation, which is available [here](https://docs.odahu.org/).
+The repository contains Odahu documentation, which is available [here](https://docs.odahu.epam.com/).
 
 ## [odahu/odahu-examples](https://github.com/odahu/odahu-examples)
 
